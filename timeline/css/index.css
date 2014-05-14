@@ -1,0 +1,141 @@
+body {
+  font-size: 20px;
+}
+
+#arrow {
+  font-size: 6vw;
+  line-height: 10vh;
+  height: 10vh;
+  width: 10vh;
+  position: fixed;
+  top: 50%;
+  left: 65%;
+  margin-top: -7.6vh;
+}
+
+#timepillar {
+  position: fixed;
+  top: 0;
+  left: 71%;
+  height: 100%;
+  width: 1vh;
+  background: black;
+}
+
+#pillarmask {
+  display: block;
+  width: 100%;
+  height: 47vh;
+  background: white;
+  position: relative;
+}
+#bottommask {
+  display: block;
+  width: 100%;
+  height: 50vh;
+  background: none;
+  position: relative;
+  background: url('../pics/sumikko.png') no-repeat left bottom;
+  opacity: 0.5;
+}
+
+#age {
+  position: fixed;
+  top: 5vh;
+  left: 5vh;
+  width: 20vh;
+  height: 20vh;
+  overflow: hidden;
+}
+#age span {
+  position: absolute;
+  top: 8vh;
+  left: 13vh;
+  font-size: 4vh;
+}
+.age {
+  overflow: hidden;
+  height: 0%;
+  font-size: 10vh;
+  text-align: right;
+  line-height: 20vh;
+  box-shadow: silver 0px 1px 2px;
+  -webkit-transform: scale(0.9);
+  padding-right: 7vh;
+  border-radius: 3vh;
+}
+.age.active {
+  height: 100%;
+}
+
+#pop {
+  position: absolute;
+  top: 300px;
+  padding: 5px;
+  border-radius: 10px;
+  border: 2px solid silver;
+  text-align: center;
+  background-color: white;
+  font-size: 15px;
+  left: 80%;
+  opacity: 0;
+}
+
+.item {
+}
+.year {
+  margin-left: 71%;
+  padding-left: 10px;
+}
+.year.empty {
+  color: #eee;
+}
+.year.active {
+  background: #eef;
+}
+.year.empty.active {
+  background: #fee;
+}
+.month {
+  height: 40px;
+  line-height: 40px;
+  padding-left: 10px;
+  color: #555;
+  font-size: 15px;
+}
+.month.empty {
+  height: 5px;
+}
+.month.active {
+  background: #ccf;
+  border-left: solid 5px black;
+  color: black;
+  padding-left: 5px;
+}
+.month.empty.active {
+  background: none;
+  border: none;
+}
+
+.pic {
+  position: fixed;
+  left: 13vh;
+  top: 30vh;
+  display: none;
+  width: 55vw;
+  max-height: 67vh;
+  overflow: scroll;
+}
+.pic.active {
+  display: block;
+}
+.pic img {
+  max-width: 50vw;
+  border: solid 1px silver;
+  padding: 2px;
+  margin: 2px;
+  max-height: 90%;
+}
+.pic img:hover {
+  border-color: black;
+}
