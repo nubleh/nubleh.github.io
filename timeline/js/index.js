@@ -47,10 +47,12 @@ $(function($) {
     },
     '2013': {
       '4': "3DS ゲット",
+      '10': "ねこ",
+      '12': "パン",
     },
     '2014': {
-      '1': "はじめてにほんにいく",
-      '2': "モンハン",
+      '1': "ねこ",
+      '2': "はじめてにほんにいく",
       '5': "Pixiv",
     },
   };
@@ -99,6 +101,7 @@ $(function($) {
     'y1989m6': ['3yo.jpg'],
     'y1993m1': ['primary.jpg'],
     'y1999m1': ['highschool.jpg'],
+    'y2002m6': ['neko-0.jpg'],
     'y2004m5': ['uni.jpg'],
     'y2005m3': ['neko-1a.jpg','neko-1b.jpg','neko-1c.jpg','neko-1d.jpg'],
     'y2006m3': ['neko-2a.jpg','neko-2b.jpg'],
@@ -108,8 +111,10 @@ $(function($) {
     'y2012m12': ['wiiu.jpg'],
     'y2013m4': ['3ds.jpg'],
     'y2013m9': ['chiidon.jpg'],
-    'y2014m1': ['hajimete-1.jpg','hajimete-2.jpg','hajimete-3.jpg','hajimete-4.jpg','hajimete-5.jpg'],
-    'y2014m2': ['mh4.jpg'],
+    'y2013m10': ['neko-5.jpg'],
+    'y2013m12': ['pan-1a.jpg','pan-1b.jpg','pan-1c.jpg'],
+    'y2014m1': ['neko-6a.jpg','neko-6b.jpg'],
+    'y2014m2': ['mh4.jpg','hajimete-1.jpg','hajimete-2.jpg','hajimete-3.jpg','hajimete-4.jpg','hajimete-5.jpg'],
     'y2014m5': ['pixiv.jpg'],
   }
   var pics_el = $(Handlebars.compile($('#pics-tpl').html())({pics: pics}));
