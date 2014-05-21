@@ -1,0 +1,108 @@
+<html>
+<head>
+  <style type="text/css">
+    body {
+      background: black;
+    }
+    .ball {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+<div class="ball"></div>
+
+
+<script type="text/javascript" src="jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+  $(function(){
+    var ball_w = 24;
+    var tick = 1000;
+    var ball_limit = 50;
+    var h = window.innerHeight;
+    var w = window.innerWidth;
+    var random_color = function(){
+      var a, b, c;
+      var low = '6';
+      var hi = 'b';
+      a = (Math.random() < 0.5) ? low : hi;
+      b = (Math.random() < 0.5) ? low : hi;
+      if(a == b){
+        c = (a == low) ? hi : low;
+      } else {
+        c = (Math.random() < 0.5) ? low : hi;
+      }
+      return '#' + a + b + c;
+    }
+    var move_balls = function(){
+      if($('.ball').length < ball_limit){
+        $('.ball').each(function(index, el){
+          if(Math.random()<0.1){
+            $(el).clone().data('new', true).appendTo(document.body);
+            $(el).css('background-color', random_color()).data('new', true);
+          }
+
+        });
+        //if(Math.random()<0.5){
+        //  $('.ball').first().clone().appendTo(document.body);
+        //  $('.ball').first().css('background-color', random_color());
+        //}
+      } else {
+
+      }
+      $('.ball').each(function(index, el){
+        if(Math.random()<0.1 && !$(el).data('new')){
+          return;
+        }
+        $(el).data('new', false);
+        var tick_a = tick/5 + Math.random()*(tick/4);
+        var _el = $(el);
+        var xy = _el.offset();
+        var x = xy.left;
+        var y = xy.top;
+        var hor = (Math.random() < 0.5);
+        var limit;
+        if(hor){
+          limit = w - ball_w;
+        } else {
+          limit = h - ball_w;
+        }
+        var new_loc = Math.floor(Math.random()*(limit+1));
+        var params_1 = {}, params_2 = {};
+        if(hor){
+          params_1['width'] = ball_w + Math.abs((new_loc - x)) + 'px';
+          params_2['width'] = ball_w + 'px';
+          if(x > new_loc){
+            params_1['left'] = new_loc + 'px';
+          } else {
+            params_2['left'] = new_loc + 'px';
+          }
+        } else {
+          params_1['height'] = ball_w + Math.abs((new_loc - y)) + 'px';
+          params_2['height'] = ball_w + 'px';
+          if(y > new_loc){
+            params_1['top'] = new_loc + 'px';
+          } else {
+            params_2['top'] = new_loc + 'px';
+          }
+        }
+        //params_2[new_dim] = new_loc + 'px';
+        $(el).animate(params_1, tick_a).animate(params_2, tick_a);
+      });
+    };
+
+    $('.ball')
+      .css('background-color', random_color())
+      .css('top', (h/2 - ball_w/2)+'px')
+      .css('left', (w/2 - ball_w/2)+'px')
+      .css('width', ball_w + 'px')
+      .css('height', ball_w + 'px')
+      .css('border-radius', ball_w/2 + 'px')
+    t = setInterval(move_balls, tick);
+  });
+
+</script>
+</body>
+</html>
