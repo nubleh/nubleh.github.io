@@ -4469,6 +4469,21 @@ Graphics + compute:
 	<div id="chart-container">
 		<div id="chart"></div>
 	</div>
+	<div id="info">
+		<div class="i">i</div>
+		<div class="text">
+		Each bar in the chart shows the time it took for the async compute to finish.
+		<br>
+		The red block that floats to the top is the time it would take for the compute, by itself, to finish.
+		<br>
+		The blue block at the bottom is the time it would take for the graphics, by itself, to finish.
+		<br>
+		<br>
+		What we want here is for the red and blue to overlap, this signifies the async compute running faster than if you were to run the compute and graphics separately.
+		<br>
+		Sometimes we see a white gap between the 2 colors, this signifies that the async compute run is slower than it would have been if the two were run separately.
+		</div>
+	</div>
 </div>
 <script type="text/javascript">
 raw = document.getElementById('data').innerHTML.split('\n');
@@ -4668,6 +4683,33 @@ function parse_data(raw){
 	padding: 5px;
 	background: white;
 	border-radius: 5px;
+}
+#info {
+	position: fixed;
+	top: 10px;
+	right: 10px;
+	border: solid 1px white;
+	border-radius: 10px;
+	text-align: center;
+	background: black;
+	color: white;
+}
+#info .i {
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+}
+#info .text {
+	display: none;
+	width: 500px;
+	padding: 10px;
+	text-align: left;
+}
+#info:hover .text{
+	display: block;
+}
+#info:hover .i {
+	display: none;
 }
 </style>
 </body>
