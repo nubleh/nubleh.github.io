@@ -4483,6 +4483,10 @@ list_el.onclick = function(e){
 		target = target.parentElement
 	}
 	draw_chart(index);
+	for(var x=0;x<list_el.children.length;x++){
+		list_el.children[x].classList.remove('active');
+	}
+	document.getElementById('li-'+index).classList.add('active');
 };
 function draw_chart(index){
 	var chart_data = data[index];
@@ -4521,11 +4525,11 @@ function draw_chart(index){
 }
 function init(){
 	var list_el = document.getElementById('test-list');
-	var list_item_el = '<li data-index="__X__"><div class="name">__NAME__</div><div class="link"><a target="_blank" href="__LINK__">src</a></div></li>';
+	var list_item_el = '<li id="li-__X__" data-index="__X__"><div class="name">__NAME__</div><div class="link"><a target="_blank" href="__LINK__">src</a></div></li>';
 	var html = '', datum;
 	for(var x=0;x<data.length;x++){
 		datum = data[x];
-		html += list_item_el.replace('__X__', x).replace('__NAME__', datum.name).replace('__LINK__', datum.url);
+		html += list_item_el.replace(/__X__/g, x).replace('__NAME__', datum.name).replace('__LINK__', datum.url);
 	}
 	list_el.innerHTML = html;
 }
@@ -4649,6 +4653,9 @@ function parse_data(raw){
 	border-radius: 5px;
 	padding: 5px;
 	cursor: pointer;
+}
+#test-list > li.active {
+	border-width: 3px;
 }
 #test-list > li:hover {
 	background-color: #fafafa;
