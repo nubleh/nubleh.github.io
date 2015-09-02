@@ -111,7 +111,7 @@ function draw_chart(index, sc_as_max){
 	max = Math.ceil(max);
 	html += '<div class="max">↑ ' + max + 'ms</div>';
 	for(var x=0;x<chart_data.a.length;x++){
-		html += '<div class="bar" style="width:' + bar_width + '%;">';
+		html += '<div class="bar" style="width:' + bar_width + '%;" tabindex="' + x + '">';
 		html +=  '<div class="a" style="height:' + ((chart_data.a[x]/max)*100) + '%;">'
 		html +=   '<div class="g" style="height:' + ((chart_data.g/chart_data.a[x])*100) + '%;">'
 		html +=   '</div>';
@@ -211,7 +211,7 @@ function init(){
 	cursor: pointer;
 	background: white;
 }
-#chart .bar:hover {
+#chart .bar:hover, #chart .bar:focus {
 	background-color: #f0f0f0;
 }
 #chart .bar {
@@ -242,7 +242,7 @@ function init(){
 	bottom: 0;
 	border-top: solid 1px black;
 }
-#chart .bar:hover .a{
+#chart .bar:hover .a, #chart .bar:focus .a {
 	opacity: 0.8;
 }
 #chart .bar .tooltip {
@@ -258,7 +258,10 @@ function init(){
 	text-align: right;
 	z-index: 2;
 }
-#chart .bar:hover .tooltip {
+#chart .bar:hover .tooltip{
+	z-index: 3;
+}
+#chart .bar:hover .tooltip, #chart .bar:focus .tooltip {
 	display: block;
 }
 #test-list-container {
