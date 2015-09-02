@@ -95,9 +95,11 @@ function draw_chart(index){
 		}
 		html +=  '<div class="tooltip">';
 		html +=   'Kernels run: ' + x + '<br>';
+		html +=   '-----<br>';
 		html +=   'Compute: ' + chart_data.c[x].toFixed(2) + 'ms<br>';
 		html +=   'Graphics: ' + chart_data.g.toFixed(2) + 'ms<br>';
 		html +=   'Total: ' + (chart_data.c[x]+chart_data.g).toFixed(2) + 'ms<br>';
+		html +=   '-----<br>';
 		html +=   'Async: ' + chart_data.a[x].toFixed(2) + 'ms<br>';
 		diff = ((chart_data.c[x]+chart_data.g) - chart_data.a[x]);
 		html +=    diff > 0 ? 'Faster by ' : 'Slower by ';
