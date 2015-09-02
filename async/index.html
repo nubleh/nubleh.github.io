@@ -36,6 +36,9 @@ if(location.hostname == 'nubleh.github.io'){
 	</div>
 	<div id="chart-container">
 		<div id="chart"></div>
+		<div id="alt-tip" title="Click to dismiss">
+			Are the forced sync values too large, pushing the rest of the chart down to tiny tiny sizes? Hold Alt and click again! 
+		</div>
 	</div>
 	<div id="info">
 		<div class="i">i</div>
@@ -58,6 +61,9 @@ if(location.hostname == 'nubleh.github.io'){
 </div>
 <script type="text/javascript">
 init();
+document.getElementById('alt-tip').onclick = function(e){
+	e.currentTarget.classList.remove('active');
+}
 list_el = document.getElementById('test-list');
 list_el.onclick = function(e){
 	var target = e.target;
@@ -84,6 +90,7 @@ function draw_chart(index, sc_as_max){
 	chart_el.innerHTML = '';
 	var html = '';
 	var max = 0, diff;
+	document.getElementById('alt-tip').classList.remove('active');
 	for(var x=0;x<chart_data.a.length;x++){
 		if(chart_data.a[x] > max){
 			max = chart_data.a[x];
@@ -124,6 +131,10 @@ function draw_chart(index, sc_as_max){
 		html +=  '</div>';
 		html += '</div>';
 	}
+	var biggest_ac = ((chart_data.a[x-1]/max)*100);
+	if(biggest_ac < 10){
+		document.getElementById('alt-tip').classList.add('active');
+	}
 	chart_el.innerHTML = html;
 }
 function init(){
@@ -132,7 +143,7 @@ function init(){
 		ga('send', 'event', 'referrer', dr);
 	}
 	var list_el = document.getElementById('test-list');
-	var list_item_el = '<li id="li-__X__" data-index="__X__" class="__SC__" title="Hold Alt for alternate plot"><div class="name">__NAME__</div><div class="link"><a target="_blank" href="__LINK__">src</a></div></li>';
+	var list_item_el = '<li id="li-__X__" data-index="__X__" class="__SC__"><div class="name">__NAME__</div><div class="link"><a target="_blank" href="__LINK__">src</a></div></li>';
 	var html = '', datum;
 	for(var x=0;x<data.length;x++){
 		datum = data[x];
@@ -285,6 +296,21 @@ function init(){
 }
 #info:hover .i {
 	display: none;
+}
+#alt-tip {
+	display: none;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+    background: red;
+    color: white;
+    cursor: pointer;
+}
+#alt-tip.active {
+	display: block;
 }
 </style>
 </body>
