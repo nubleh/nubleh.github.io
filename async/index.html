@@ -79,6 +79,7 @@ list_el.onclick = function(e){
 		sc_as_max = false;
 	}
 	draw_chart(index, sc_as_max);
+	location.hash = index;
 	for(var x=0;x<list_el.children.length;x++){
 		list_el.children[x].classList.remove('active');
 	}
@@ -86,6 +87,9 @@ list_el.onclick = function(e){
 };
 function draw_chart(index, sc_as_max){
 	index = +index;
+	if(typeof data[index] == 'undefined'){
+		return;
+	}
 	var chart_data = data[index];
 	var chart_el = document.getElementById('chart');
 	var count = chart_data.c.length;
@@ -160,6 +164,16 @@ function init(){
 		html += list_item_el.replace(/__X__/g, x).replace(/__SC__/g, 'sc'+datum.sc.length).replace('__NAME__', datum.name).replace('__LINK__', datum.url);
 	}
 	list_el.innerHTML = html;
+
+	// let's do permalinking
+	var hash = location.hash, li_el;
+	if(hash.length){
+		hash = +hash.substr(1);
+		draw_chart(hash);
+		li_el = document.getElementById('li-'+hash);
+		li_el.classList.add('active');
+		setTimeout(function(){li_el.scrollIntoView();}, 100);
+	}
 }
 
 </script>
