@@ -79,6 +79,8 @@ function draw_chart(index){
 			max = chart_data.sc[x];
 		}
 	}
+	max = Math.ceil(max);
+	html += '<div class="max">↑ ' + max + 'ms</div>';
 	for(var x=0;x<chart_data.a.length;x++){
 		html += '<div class="bar" style="width:' + bar_width + '%;">';
 		html +=  '<div class="a" style="height:' + ((chart_data.a[x]/max)*100) + '%;">'
@@ -137,6 +139,19 @@ function init(){
 	width: 100%;
 	height: 100%;
 	position: relative;
+}
+#chart .max:hover {
+	opacity: 1;
+}
+#chart .max {
+	opacity: 0.1;
+	padding: 5px;
+	width: 100%;
+	text-align: center;
+	border-top: solid 1px black;
+	position: absolute;
+	z-index: 2;
+	cursor: pointer;
 }
 #chart .bar:hover {
 	background-color: #f0f0f0;
