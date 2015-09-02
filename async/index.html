@@ -52,7 +52,7 @@ if(location.hostname == 'nubleh.github.io'){
 		<br><br>
 		* Green items contain data for forced sync runs.
 		<br>
-		* Hold Alt while clicking to use the data's async compute max as the bounding vertical limit of the chart. Otherwise, the forced sync max value will be used as the bounding limit instead.
+		* Hold Alt while clicking to ignore forced sync data when calculating the max bounding limit for the y-axis.
 		</div>
 	</div>
 </div>
@@ -132,7 +132,7 @@ function init(){
 		ga('send', 'event', 'referrer', dr);
 	}
 	var list_el = document.getElementById('test-list');
-	var list_item_el = '<li id="li-__X__" data-index="__X__" class="__SC__"><div class="name">__NAME__</div><div class="link"><a target="_blank" href="__LINK__">src</a></div></li>';
+	var list_item_el = '<li id="li-__X__" data-index="__X__" class="__SC__" title="Hold Alt for alternate plot"><div class="name">__NAME__</div><div class="link"><a target="_blank" href="__LINK__">src</a></div></li>';
 	var html = '', datum;
 	for(var x=0;x<data.length;x++){
 		datum = data[x];
