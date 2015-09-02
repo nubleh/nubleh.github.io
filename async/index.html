@@ -37,7 +37,8 @@ if(location.hostname == 'nubleh.github.io'){
 	<div id="chart-container">
 		<div id="chart"></div>
 		<div id="alt-tip" title="Click to dismiss">
-			Are the forced sync values too large, pushing the rest of the chart down to tiny tiny sizes? Hold Alt and click again! 
+			Are the forced sync values too large, pushing the rest of the chart down to tiny tiny sizes?
+			<br><br>Click here to zoom in!
 		</div>
 	</div>
 	<div id="info">
@@ -62,7 +63,8 @@ if(location.hostname == 'nubleh.github.io'){
 <script type="text/javascript">
 init();
 document.getElementById('alt-tip').onclick = function(e){
-	e.currentTarget.classList.remove('active');
+	var index = e.currentTarget.getAttribute('data-index');
+	draw_chart(index, false);
 }
 list_el = document.getElementById('test-list');
 list_el.onclick = function(e){
@@ -83,6 +85,7 @@ list_el.onclick = function(e){
 	document.getElementById('li-'+index).classList.add('active');
 };
 function draw_chart(index, sc_as_max){
+	index = +index;
 	var chart_data = data[index];
 	var chart_el = document.getElementById('chart');
 	var count = chart_data.c.length;
@@ -90,7 +93,6 @@ function draw_chart(index, sc_as_max){
 	chart_el.innerHTML = '';
 	var html = '';
 	var max = 0, diff;
-	document.getElementById('alt-tip').classList.remove('active');
 	for(var x=0;x<chart_data.a.length;x++){
 		if(chart_data.a[x] > max){
 			max = chart_data.a[x];
@@ -131,11 +133,19 @@ function draw_chart(index, sc_as_max){
 		html +=  '</div>';
 		html += '</div>';
 	}
+	chart_el.innerHTML = html;
+
+	// floating tip box
+	var alt_tip_el = document.getElementById('alt-tip');
+	alt_tip_el.classList.remove('active');
+	alt_tip_el.setAttribute('data-index', index);
 	var biggest_ac = ((chart_data.a[x-1]/max)*100);
 	if(biggest_ac < 10){
-		document.getElementById('alt-tip').classList.add('active');
+		alt_tip_el.classList.add('active');
+		setTimeout(function(){
+			alt_tip_el.classList.remove('active');
+		}, 5000);
 	}
-	chart_el.innerHTML = html;
 }
 function init(){
 	var dr = document.referrer;
