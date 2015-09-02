@@ -90,6 +90,9 @@ function draw_chart(index, sc_as_max){
 	if(typeof data[index] == 'undefined'){
 		return;
 	}
+	if(typeof sc_as_max == 'undefined'){
+		sc_as_max = true;
+	}
 	var chart_data = data[index];
 	var chart_el = document.getElementById('chart');
 	var count = chart_data.c.length;
