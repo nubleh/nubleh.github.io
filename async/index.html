@@ -45,17 +45,18 @@ if(location.hostname == 'nubleh.github.io'){
 		The red block that floats to the top is the time it would take for the compute, by itself, to finish.
 		<br>
 		The blue block at the bottom is the time it would take for the graphics, by itself, to finish.
-		<br>
-		<br>
+		<br><br>
 		What we want here is for the red and blue to overlap, this signifies the async compute running faster than if you were to run the compute and graphics separately.
 		<br>
 		Sometimes we see a white gap between the 2 colors, this signifies that the async compute run is slower than it would have been if the two were run separately.
+		<br><br>
+		* Green items contain data for forced sync runs.
+		<br>
+		* Hold Alt while clicking to use the data's async compute max as the bounding vertical limit of the chart. Otherwise, the forced sync max value will be used as the bounding limit instead.
 		</div>
 	</div>
 </div>
 <script type="text/javascript">
-//raw = document.getElementById('data').innerHTML.split('\n');
-//data = parse_data(raw);
 init();
 list_el = document.getElementById('test-list');
 list_el.onclick = function(e){
@@ -65,13 +66,17 @@ list_el.onclick = function(e){
 		index = +target.getAttribute('data-index');
 		target = target.parentElement
 	}
-	draw_chart(index);
+	var sc_as_max = true;
+	if(e.altKey){
+		sc_as_max = false;
+	}
+	draw_chart(index, sc_as_max);
 	for(var x=0;x<list_el.children.length;x++){
 		list_el.children[x].classList.remove('active');
 	}
 	document.getElementById('li-'+index).classList.add('active');
 };
-function draw_chart(index){
+function draw_chart(index, sc_as_max){
 	var chart_data = data[index];
 	var chart_el = document.getElementById('chart');
 	var count = chart_data.c.length;
@@ -83,7 +88,7 @@ function draw_chart(index){
 		if(chart_data.a[x] > max){
 			max = chart_data.a[x];
 		}
-		if(chart_data.sc[x] > max){
+		if(sc_as_max && chart_data.sc[x] > max){
 			max = chart_data.sc[x];
 		}
 	}
