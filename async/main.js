@@ -7,10 +7,13 @@ document.getElementById('alt-tip').onclick = function(e){
 list_el = document.getElementById('test-list');
 list_el.onclick = function(e){
 	var target = e.target;
-	var index;
+	var index=null;
 	while(target != list_el){
 		index = +target.getAttribute('data-index');
 		target = target.parentElement
+	}
+	if(index==null){
+		return;
 	}
 	var sc_as_max = true;
 	if(e.altKey){
