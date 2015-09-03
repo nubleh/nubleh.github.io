@@ -21,12 +21,30 @@ Async Compute Test Visualizer
 <script type="text/javascript" src="ga.js"></script>
 <div id="body">
 	<div id="test-list-container">
-		<a href="line.html">simple line version</a>
+		<a href="index.html">overlap version</a>
 		<ul id="test-list">
 		</ul>
 	</div>
 	<div id="chart-container">
 		<div id="chart"></div>
+		<div id="legend">
+			<div class="unit g">
+				<div class="color"></div>
+				Graphics
+			</div>
+			<div class="unit c">
+				<div class="color"></div>
+				Compute
+			</div>
+			<div class="unit ac">
+				<div class="color"></div>
+				Graphics + Compute (asynchronous)
+			</div>
+			<div class="unit sc">
+				<div class="color"></div>
+				Graphics + Compute (forced synchronous)
+			</div>
+		</div>
 		<div id="alt-tip" title="Click to dismiss">
 			Are the forced sync values too large, pushing the rest of the chart down to tiny tiny sizes?
 			<br><br>Click here to zoom in!
@@ -35,19 +53,11 @@ Async Compute Test Visualizer
 	<div id="info">
 		<div class="i">i</div>
 		<div class="text">
-		Each bar in the chart shows the time it took for the async compute to finish.
-		<br>
-		The red block that floats to the top is the time it would take for the compute, by itself, to finish.
-		<br>
-		The blue block at the bottom is the time it would take for the graphics, by itself, to finish.
+		Are the green dots mostly close to and aligning to the red dots? This shows asynchronous execution.
 		<br><br>
-		What we want here is for the red and blue to overlap, this signifies the async compute running faster than if you were to run the compute and graphics separately.
+		Are the green dots mostly higher than the red dots?
 		<br>
-		Sometimes we see a white gap between the 2 colors, this signifies that the async compute run is slower than it would have been if the two were run separately.
-		<br><br>
-		* Green items contain data for forced sync runs.
-		<br>
-		* Hold Alt while clicking to ignore forced sync data when calculating the max bounding limit for the y-axis.
+		No asynchronous shading here, the 2 operations are done practically in serial.
 		</div>
 	</div>
 </div>
@@ -76,14 +86,16 @@ function draw_chart(index, sc_as_max){
 		}
 	}
 	max = Math.ceil(max);
-	html += '<div class="max">↑ ' + max + 'ms</div>';
+	var rel_g = ((chart_data.g/max)*100);
+	html += '<div class="max-y"><div class="val">' + max + 'ms</div></div>';
+	html += '<div class="max-x"><div class="val">' + (chart_data.a.length) + ' kernels</div></div>';
 	for(var x=0;x<chart_data.a.length;x++){
 		html += '<div class="bar" style="width:' + bar_width + '%;" tabindex="' + x + '">';
 		html +=  '<div class="a" style="height:' + ((chart_data.a[x]/max)*100) + '%;">'
-		html +=   '<div class="g" style="height:' + ((chart_data.g/chart_data.a[x])*100) + '%;">'
-		html +=   '</div>';
-		html +=   '<div class="c" style="height:' + ((chart_data.c[x]/chart_data.a[x])*100) + '%;">'
-		html +=   '</div>';
+		html +=  '</div>';
+		html +=  '<div class="g" style="height:' + rel_g + '%;">'
+		html +=  '</div>';
+		html +=  '<div class="c" style="height:' + ((chart_data.c[x]/max)*100) + '%;">'
 		html +=  '</div>';
 		if(chart_data.sc[x]){
 			html +=  '<div class="sc" style="height:' + ((chart_data.sc[x]/max)*100) + '%;">'
@@ -134,59 +146,70 @@ function draw_chart(index, sc_as_max){
 	height: 100%;
 	padding-left: 300px;
 }
+#chart, #legend {
+	float: left;
+}
 #chart {
-	display: inline-block;
-	width: 100%;
-	height: 100%;
-	position: relative;
+    width: 80%;
+    height: 80%;
+    position: relative;
+    margin-left: 10%;
+    margin-top: 5%;
+    border: solid 1px black;
+    border-width: 0 0 2px 2px;
 }
-#chart .max:hover {
-	opacity: 0.8;
+#chart .max-y, #chart .max-x {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    box-sizing: border-box;
+    border: solid 1px black;
+    font-size: 12px;
 }
-#chart .max {
-	opacity: 0.1;
-	padding: 5px;
-	width: 100%;
-	text-align: center;
-	border-top: solid 1px black;
+#chart .max-y .val, #chart .max-x .val{
+	padding: 0 5px;
+}
+#chart .max-y {
+    border-width: 0 2px 2px 0;
+    top: -10px;
+    left: -10px;
+}
+#chart .max-y .val{
 	position: absolute;
-	z-index: 2;
-	cursor: pointer;
-	background: white;
+	bottom: 0;
+	right: 0;
 }
-#chart .bar:hover, #chart .bar:focus {
-	background-color: #f0f0f0;
+#chart .max-x {
+    border-width: 2px 0 0 2px;
+    bottom: -10px;
+    right: -10px;
+}
+#chart .bar:hover {
+	background: #eeeeee;
 }
 #chart .bar {
-	float: left;
 	height: 100%;
+	float: left;
 	position: relative;
 }
-#chart .bar .a, #chart .bar .sc, #chart .bar .g, #chart .bar .c {
-	position: absolute;
-	left: 0;
+#chart .bar .a, #chart .bar .g, #chart .bar .c, #chart .bar .sc{
 	width: 100%;
-	opacity: 0.5;
-}
-#chart .bar .c {
-	top: 0;
-	background: red;
-}
-#chart .bar .g {
+	position: absolute;
 	bottom: 0;
-	background: blue;
+	border-top: solid 3px black;
+	opacity:0.7;
 }
-#chart .bar .a {
-	bottom: 0;
-	cursor: pointer;
-	border-top: solid 1px black;
+#chart .bar .a{
+	border-color: green;
 }
-#chart .bar .sc {
-	bottom: 0;
-	border-top: solid 1px black;
+#chart .bar .g{
+	border-color: blue;
 }
-#chart .bar:hover .a, #chart .bar:focus .a {
-	opacity: 0.8;
+#chart .bar .c{
+	border-color: red;
+}
+#chart .bar .sc{
+	border-color: purple;
 }
 #chart .bar .tooltip {
 	position: fixed;
@@ -206,6 +229,38 @@ function draw_chart(index, sc_as_max){
 }
 #chart .bar:hover .tooltip, #chart .bar:focus .tooltip {
 	display: block;
+}
+#legend {
+	width: 100%;
+	bottom: 0;
+	height: 10%;
+	padding: 10px 0;
+	text-align: center;
+}
+#legend .unit {
+	display: inline-block;
+	margin-right: 10px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 12px;
+}
+#legend .unit .color{
+	width: 10px;
+	height: 10px;
+	float: left;
+	margin: 5px;
+}
+#legend .unit.g .color{
+	background: blue;
+}
+#legend .unit.c .color{
+	background: red;
+}
+#legend .unit.ac .color{
+	background: green;
+}
+#legend .unit.sc .color{
+	background: purple;
 }
 #test-list-container {
 	width: 300px;
