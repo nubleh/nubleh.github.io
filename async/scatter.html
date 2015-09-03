@@ -14,131 +14,6 @@ Async Compute Test Visualizer
 #data {
 	display: none;
 }
-#info {
-	display: none;
-}
-</style>
-</head>
-<body>
-<script type="text/javascript" src="data.js"></script>
-<script type="text/javascript" src="ga.js"></script>
-<div id="body">
-	<div id="test-list-container">
-		<a href="index.html">overlap version</a>
-		<ul id="test-list">
-		</ul>
-	</div>
-	<div id="chart-container">
-		<div id="chart"></div>
-		<div id="legend">
-			<div class="unit g">
-				<div class="color"></div>
-				Graphics
-			</div>
-			<div class="unit c">
-				<div class="color"></div>
-				Compute
-			</div>
-			<div class="unit ac">
-				<div class="color"></div>
-				Graphics + Compute (asynchronous)
-			</div>
-			<div class="unit sc">
-				<div class="color"></div>
-				Graphics + Compute (forced synchronous)
-			</div>
-		</div>
-		<div id="alt-tip" title="Click to dismiss">
-			Are the forced sync values too large, pushing the rest of the chart down to tiny tiny sizes?
-			<br><br>Click here to zoom in!
-		</div>
-	</div>
-	<div id="info">
-		<div class="i">i</div>
-		<div class="text">
-		Are the green dots mostly close to and aligning to the red dots? This shows asynchronous execution.
-		<br><br>
-		Are the green dots mostly higher than the red dots?
-		<br>
-		No asynchronous shading here, the 2 operations are done practically in serial.
-		</div>
-	</div>
-</div>
-<script type="text/javascript">
-function draw_chart(index, sc_as_max){
-	index = +index;
-	if(typeof data[index] == 'undefined'){
-		return;
-	}
-	if(typeof sc_as_max == 'undefined'){
-		sc_as_max = true;
-	}
-	var chart_data = data[index];
-	var chart_el = document.getElementById('chart');
-	var count = chart_data.c.length;
-	var bar_width = 100/count;
-	chart_el.innerHTML = '';
-	var html = '';
-	var max = 0, diff;
-	for(var x=0;x<chart_data.a.length;x++){
-		if(chart_data.a[x] > max){
-			max = chart_data.a[x];
-		}
-		if(sc_as_max && chart_data.sc[x] > max){
-			max = chart_data.sc[x];
-		}
-	}
-	max = Math.ceil(max);
-	var rel_g = ((chart_data.g/max)*100);
-	html += '<div class="max-y"><div class="val">' + max + 'ms</div></div>';
-	html += '<div class="max-x"><div class="val">' + (chart_data.a.length) + ' kernels</div></div>';
-	for(var x=0;x<chart_data.a.length;x++){
-		html += '<div class="bar" style="width:' + bar_width + '%;" tabindex="' + x + '">';
-		html +=  '<div class="a" style="height:' + ((chart_data.a[x]/max)*100) + '%;">'
-		html +=  '</div>';
-		html +=  '<div class="g" style="height:' + rel_g + '%;">'
-		html +=  '</div>';
-		html +=  '<div class="c" style="height:' + ((chart_data.c[x]/max)*100) + '%;">'
-		html +=  '</div>';
-		if(chart_data.sc[x]){
-			html +=  '<div class="sc" style="height:' + ((chart_data.sc[x]/max)*100) + '%;">'
-			html +=  '</div>';
-		}
-		html +=  '<div class="tooltip">';
-		html +=   'Kernels run: ' + x + '<br>';
-		html +=   '-----<br>';
-		html +=   'Compute: ' + chart_data.c[x].toFixed(2) + 'ms<br>';
-		html +=   'Graphics: ' + chart_data.g.toFixed(2) + 'ms<br>';
-		html +=   'Total: ' + (chart_data.c[x]+chart_data.g).toFixed(2) + 'ms<br>';
-		html +=   '-----<br>';
-		html +=   'Async: ' + chart_data.a[x].toFixed(2) + 'ms<br>';
-		diff = ((chart_data.c[x]+chart_data.g) - chart_data.a[x]);
-		html +=    diff > 0 ? 'Faster by ' : 'Slower by ';
-		html +=   Math.abs(diff).toFixed(2) + 'ms<br>';
-		if(chart_data.sc[x]){
-			html +=   '-----<br>';
-			html +=   'Forced sync: ' + chart_data.sc[x].toFixed(2) + 'ms<br>';
-		}
-		html +=  '</div>';
-		html += '</div>';
-	}
-	chart_el.innerHTML = html;
-
-	// floating tip box
-	var alt_tip_el = document.getElementById('alt-tip');
-	alt_tip_el.classList.remove('active');
-	alt_tip_el.setAttribute('data-index', index);
-	var biggest_ac = ((chart_data.a[x-1]/max)*100);
-	if(biggest_ac < 10){
-		alt_tip_el.classList.add('active');
-		setTimeout(function(){
-			alt_tip_el.classList.remove('active');
-		}, 5000);
-	}
-}
-</script>
-<script type="text/javascript" src="main.js"></script>
-<style type="text/css">
 #chart-container, #test-list-container {
 	position: absolute;
 	top: 0;
@@ -306,7 +181,6 @@ function draw_chart(index, sc_as_max){
 	border-radius: 5px;
 }
 #info {
-	display: block;
 	position: fixed;
 	bottom: 10px;
 	right: 10px;
@@ -348,6 +222,128 @@ function draw_chart(index, sc_as_max){
 #alt-tip.active {
 	display: block;
 }
+</style>
+</head>
+<body>
+<script type="text/javascript" src="data.js"></script>
+<script type="text/javascript" src="ga.js"></script>
+<div id="body">
+	<div id="test-list-container">
+		<a href="index.html">overlap version</a>
+		<ul id="test-list">
+		</ul>
+	</div>
+	<div id="chart-container">
+		<div id="chart"></div>
+		<div id="legend">
+			<div class="unit g">
+				<div class="color"></div>
+				Graphics
+			</div>
+			<div class="unit c">
+				<div class="color"></div>
+				Compute
+			</div>
+			<div class="unit ac">
+				<div class="color"></div>
+				Graphics + Compute (asynchronous)
+			</div>
+			<div class="unit sc">
+				<div class="color"></div>
+				Graphics + Compute (forced synchronous)
+			</div>
+		</div>
+		<div id="alt-tip" title="Click to dismiss">
+			Are the forced sync values too large, pushing the rest of the chart down to tiny tiny sizes?
+			<br><br>Click here to zoom in!
+		</div>
+	</div>
+	<div id="info">
+		<div class="i">i</div>
+		<div class="text">
+		Are the green dots mostly close to and aligning to the red dots? This shows asynchronous execution.
+		<br><br>
+		Are the green dots mostly higher than the red dots?
+		<br>
+		No asynchronous shading here, the 2 operations are done practically in serial.
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+function draw_chart(index, sc_as_max){
+	index = +index;
+	if(typeof data[index] == 'undefined'){
+		return;
+	}
+	if(typeof sc_as_max == 'undefined'){
+		sc_as_max = true;
+	}
+	var chart_data = data[index];
+	var chart_el = document.getElementById('chart');
+	var count = chart_data.c.length;
+	var bar_width = 100/count;
+	chart_el.innerHTML = '';
+	var html = '';
+	var max = 0, diff;
+	for(var x=0;x<chart_data.a.length;x++){
+		if(chart_data.a[x] > max){
+			max = chart_data.a[x];
+		}
+		if(sc_as_max && chart_data.sc[x] > max){
+			max = chart_data.sc[x];
+		}
+	}
+	max = Math.ceil(max);
+	var rel_g = ((chart_data.g/max)*100);
+	html += '<div class="max-y"><div class="val">' + max + 'ms</div></div>';
+	html += '<div class="max-x"><div class="val">' + (chart_data.a.length) + ' kernels</div></div>';
+	for(var x=0;x<chart_data.a.length;x++){
+		html += '<div class="bar" style="width:' + bar_width + '%;" tabindex="' + x + '">';
+		html +=  '<div class="a" style="height:' + ((chart_data.a[x]/max)*100) + '%;">'
+		html +=  '</div>';
+		html +=  '<div class="g" style="height:' + rel_g + '%;">'
+		html +=  '</div>';
+		html +=  '<div class="c" style="height:' + ((chart_data.c[x]/max)*100) + '%;">'
+		html +=  '</div>';
+		if(chart_data.sc[x]){
+			html +=  '<div class="sc" style="height:' + ((chart_data.sc[x]/max)*100) + '%;">'
+			html +=  '</div>';
+		}
+		html +=  '<div class="tooltip">';
+		html +=   'Kernels run: ' + x + '<br>';
+		html +=   '-----<br>';
+		html +=   'Compute: ' + chart_data.c[x].toFixed(2) + 'ms<br>';
+		html +=   'Graphics: ' + chart_data.g.toFixed(2) + 'ms<br>';
+		html +=   'Total: ' + (chart_data.c[x]+chart_data.g).toFixed(2) + 'ms<br>';
+		html +=   '-----<br>';
+		html +=   'Async: ' + chart_data.a[x].toFixed(2) + 'ms<br>';
+		diff = ((chart_data.c[x]+chart_data.g) - chart_data.a[x]);
+		html +=    diff > 0 ? 'Faster by ' : 'Slower by ';
+		html +=   Math.abs(diff).toFixed(2) + 'ms<br>';
+		if(chart_data.sc[x]){
+			html +=   '-----<br>';
+			html +=   'Forced sync: ' + chart_data.sc[x].toFixed(2) + 'ms<br>';
+		}
+		html +=  '</div>';
+		html += '</div>';
+	}
+	chart_el.innerHTML = html;
+
+	// floating tip box
+	var alt_tip_el = document.getElementById('alt-tip');
+	alt_tip_el.classList.remove('active');
+	alt_tip_el.setAttribute('data-index', index);
+	var biggest_ac = ((chart_data.a[x-1]/max)*100);
+	if(biggest_ac < 10){
+		alt_tip_el.classList.add('active');
+		setTimeout(function(){
+			alt_tip_el.classList.remove('active');
+		}, 5000);
+	}
+}
+</script>
+<script type="text/javascript" src="main.js"></script>
+<style type="text/css">
 </style>
 </body>
 </html>
