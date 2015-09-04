@@ -27,10 +27,6 @@ list_el.onclick = function(e){
 	document.getElementById('li-'+index).classList.add('active');
 };
 function init(){
-	var dr = document.referrer;
-	if(dr.length){
-		ga('send', 'event', 'referrer', dr);
-	}
 	var list_el = document.getElementById('test-list');
 	var list_item_el = '<li id="li-__X__" data-index="__X__" class="__SC__"><div class="name">__NAME__</div><div class="link"><a target="_blank" href="__LINK__">src</a></div></li>';
 	var html = '', datum;
