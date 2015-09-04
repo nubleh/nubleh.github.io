@@ -280,7 +280,9 @@ Async Compute Test Visualizer
 	</div>
 </div>
 <script type="text/javascript">
+var tip_timeout;
 function draw_chart(index, sc_as_max){
+	clearTimeout(tip_timeout);
 	index = +index;
 	if(typeof data[index] == 'undefined'){
 		return;
@@ -350,7 +352,7 @@ function draw_chart(index, sc_as_max){
 	var biggest_ac = ((chart_data.a[x-1]/max)*100);
 	if(biggest_ac < 10){
 		alt_tip_el.classList.add('active');
-		setTimeout(function(){
+		tip_timeout = setTimeout(function(){
 			alt_tip_el.classList.remove('active');
 		}, 5000);
 	}
