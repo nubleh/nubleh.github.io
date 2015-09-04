@@ -70,7 +70,7 @@ Async Compute Test Visualizer
 	float: left;
 	position: relative;
 }
-#chart .bar .a, #chart .bar .g, #chart .bar .c, #chart .bar .sc{
+#chart .bar .a, #chart .bar .g, #chart .bar .c, #chart .bar .sc, #chart .bar .diff{
 	width: 100%;
 	position: absolute;
 	bottom: 0;
@@ -88,6 +88,9 @@ Async Compute Test Visualizer
 }
 #chart .bar .sc{
 	border-color: purple;
+}
+#chart .bar .diff{
+	border-color: orange;
 }
 #chart .bar .tooltip {
 	position: fixed;
@@ -112,7 +115,7 @@ Async Compute Test Visualizer
 	width: 100%;
 	bottom: 0;
 	height: 10%;
-	padding: 10px 0;
+	padding: 10px 10%;
 	text-align: center;
 }
 #legend .unit {
@@ -139,6 +142,9 @@ Async Compute Test Visualizer
 }
 #legend .unit.sc .color{
 	background: purple;
+}
+#legend .unit.diff .color{
+	background: orange;
 }
 #test-list-container {
 	width: 300px;
@@ -246,11 +252,15 @@ Async Compute Test Visualizer
 			</div>
 			<div class="unit ac">
 				<div class="color"></div>
-				Graphics + Compute (asynchronous)
+				G + C (asynchronous)
 			</div>
 			<div class="unit sc">
 				<div class="color"></div>
-				Graphics + Compute (forced synchronous)
+				G + C (forced synchronous)
+			</div>
+			<div class="unit diff">
+				<div class="color"></div>
+				Time saved by async
 			</div>
 		</div>
 		<div id="alt-tip" title="Click to dismiss">
@@ -309,6 +319,11 @@ function draw_chart(index, sc_as_max){
 			html +=  '<div class="sc" style="height:' + ((chart_data.sc[x]/max)*100) + '%;">'
 			html +=  '</div>';
 		}
+		diff = ((chart_data.c[x]+chart_data.g) - chart_data.a[x]);
+		if(diff > 0){
+			html +=  '<div class="diff" style="height:' + ((diff/max)*100) + '%;">'
+			html +=  '</div>';
+		}
 		html +=  '<div class="tooltip">';
 		html +=   'Kernels run: ' + x + '<br>';
 		html +=   '-----<br>';
@@ -317,7 +332,6 @@ function draw_chart(index, sc_as_max){
 		html +=   'Total: ' + (chart_data.c[x]+chart_data.g).toFixed(2) + 'ms<br>';
 		html +=   '-----<br>';
 		html +=   'Async: ' + chart_data.a[x].toFixed(2) + 'ms<br>';
-		diff = ((chart_data.c[x]+chart_data.g) - chart_data.a[x]);
 		html +=    diff > 0 ? 'Faster by ' : 'Slower by ';
 		html +=   Math.abs(diff).toFixed(2) + 'ms<br>';
 		if(chart_data.sc[x]){
