@@ -5,12 +5,4 @@ if(location.hostname == 'nubleh.github.io'){
 	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 	ga('create', 'UA-59242016-2', 'auto');
 	ga('send', 'pageview');
-	var dr = document.referrer;
-	if(dr.length){
-		ga('send', 'event', 'referrer', dr);
-	}
-	if(dr.match('nubleh.github.io')){
-		console.log(dr);
-		window.derp = dr;
-	}
 }
