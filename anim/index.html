@@ -26,6 +26,7 @@
 		padding: 10px;
 		background: #cccccc;
 		overflow: hidden;
+		font-family: sans-serif;
 	}
 	.container {
 		width: 500px;
@@ -44,16 +45,165 @@
 		height: 100%;
 		border: solid 20px black;
 		border-color: black transparent white transparent;
-		-webkit-border-radius:100%;
-		-webkit-animation: rotate 20s linear infinite reverse;
 		border-radius:100%;
+		-webkit-animation: rotate 20s linear infinite reverse;
 		-moz-animation: rotate 20s linear infinite reverse;
 	}
+	.control {
+		padding: 10px;
+		position: fixed;
+		bottom: 5;
+		left: 5;
+		background: rgba(255,255,255,0.5);
+		cursor: pointer;
+		border-radius: 10px;
+		-webkit-transition: all 0.25s linear;
+		-moz-transition: all 0.25s linear;
+		overflow: hidden;
+		line-height: 1.5em;
+	}
+	.control input {
+		text-align: right;
+		width: 30px;
+	}
+</style>
+<style type="text/css" id="css-outer-timing" data-css=".container {-webkit-animation-timing-function: __VAL__;-moz-animation-timing-function: __VAL__;}">
+</style>
+<style type="text/css" id="css-outer-duration" data-css=".container {-webkit-animation-duration: __VAL__;-moz-animation-duration: __VAL__;}">
+</style>
+<style type="text/css" id="css-outer-direction" data-css=".container {-webkit-animation-direction: __VAL__;-moz-animation-direction: __VAL__;}">
+</style>
+<style type="text/css" id="css-inner-timing" data-css=".ring {-webkit-animation-timing-function: __VAL__;-moz-animation-timing-function: __VAL__;}">
+</style>
+<style type="text/css" id="css-inner-duration" data-css=".ring {-webkit-animation-duration: __VAL__;-moz-animation-duration: __VAL__;}">
+</style>
+<style type="text/css" id="css-inner-direction" data-css=".ring {-webkit-animation-direction: __VAL__;-moz-animation-direction: __VAL__;}">
 </style>
 </head>
 <body>
 	<div class="container">
 		<div class="ring"><div class="ring"><div class="ring"><div class="ring"><div class="ring"><div class="ring"><div class="ring"><div class="ring"><div class="ring"></div></div></div></div></div></div></div></div></div>
 	</div>
+	<div class="control">
+		Outer animation:
+		<br>
+		Timing:
+		<select id="outer-timing" class="param">
+			<option value="linear">Linear</option>
+			<option value="ease-in">Ease In</option>
+			<option value="ease-out">Ease Out</option>
+			<option value="ease-in-out">Ease In & Out</option>
+		</select>
+		<br>
+		Duration (seconds):
+		<input type="text" id="outer-duration" value="2" class="param">
+		<br>
+		Direction: 
+		<select id="outer-direction" class="param">
+			<option value="normal">Normal</option>
+			<option value="reverse">Reverse</option>
+			<option value="alternate">Alternate</option>
+			<option value="alternate-reverse">Alternate Reverse</option>
+		</select>
+		<br><br>
+		Inner animation:
+		<br>
+		Timing:
+		<select id="inner-timing" class="param">
+			<option value="linear">Linear</option>
+			<option value="ease-in">Ease In</option>
+			<option value="ease-out">Ease Out</option>
+			<option value="ease-in-out">Ease In & Out</option>
+		</select>
+		<br>
+		Duration (seconds):
+		<input type="text" id="inner-duration" value="20" class="param">
+		<br>
+		Direction: 
+		<select id="inner-direction" class="param">
+			<option value="normal">Normal</option>
+			<option value="reverse" selected>Reverse</option>
+			<option value="alternate">Alternate</option>
+			<option value="alternate-reverse">Alternate Reverse</option>
+		</select>
+	</div>
+	<script type="text/javascript">
+		var q = location.hash, el, id, val, pair;
+		if(q.length){
+			q = q.substr(1);
+			q_ = q.split('&');
+			for(var x=0; x<q_.length; x++){
+				try {
+					pair = q_[x].split('=');
+					id = pair[0];
+					val = pair[1];
+					el = document.getElementById(id);
+					el.value = val;
+					setTimeout(function(){
+						var ev = new Event('change');
+						this.el.dispatchEvent(ev);
+						ev = new Event('keyup');
+						this.el.dispatchEvent(ev);
+					}.bind({el:el}), 100);
+				} catch (e){
+				}
+			}
+			location.hash = '';
+		}
+
+		document.getElementById('outer-timing').onchange = function(e){
+			var val = e.target.value;
+			var css = document.getElementById('css-outer-timing');
+			css.innerHTML = css.getAttribute('data-css').replace(/__VAL__/g, val);
+			refreshSearch();
+		};
+		document.getElementById('outer-duration').onkeyup = function(e){
+			var val = parseFloat(e.target.value);
+			if(typeof val != 'number'){
+				return;
+			}
+			val = val + 's';
+			var css = document.getElementById('css-outer-duration');
+			css.innerHTML = css.getAttribute('data-css').replace(/__VAL__/g, val);
+			refreshSearch();
+		};
+		document.getElementById('outer-direction').onchange = function(e){
+			var val = e.target.value;
+			var css = document.getElementById('css-outer-direction');
+			css.innerHTML = css.getAttribute('data-css').replace(/__VAL__/g, val);
+			refreshSearch();
+		};
+
+		document.getElementById('inner-timing').onchange = function(e){
+			var val = e.target.value;
+			var css = document.getElementById('css-inner-timing');
+			css.innerHTML = css.getAttribute('data-css').replace(/__VAL__/g, val);
+			refreshSearch();
+		};
+		document.getElementById('inner-duration').onkeyup = function(e){
+			var val = parseFloat(e.target.value);
+			if(typeof val != 'number'){
+				return;
+			}
+			val = val + 's';
+			var css = document.getElementById('css-inner-duration');
+			css.innerHTML = css.getAttribute('data-css').replace(/__VAL__/g, val);
+			refreshSearch();
+		};
+		document.getElementById('inner-direction').onchange = function(e){
+			var val = e.target.value;
+			var css = document.getElementById('css-inner-direction');
+			css.innerHTML = css.getAttribute('data-css').replace(/__VAL__/g, val);
+			refreshSearch();
+		};
+		function refreshSearch(){
+			var params = document.getElementsByClassName('param');
+			var q = '';
+			for(var x=0; x<params.length; x++){
+				q += params[x].id + '=' + params[x].value + '&';
+			}
+			location.hash = q;
+		}
+	</script>
 </body>
 </html>
