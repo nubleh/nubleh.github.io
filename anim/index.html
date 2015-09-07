@@ -1,6 +1,14 @@
 <html>
 <head>
 <style type="text/css">
+	@keyframes rotate {
+		0% {
+			transform: none;
+		}
+		100% {
+			transform: rotateZ(360deg);
+		}
+	}
 	@-webkit-keyframes rotate {
 		0% {
 			-webkit-transform: none;
@@ -28,7 +36,7 @@
 		overflow: hidden;
 		font-family: sans-serif;
 	}
-	.container {
+	.container, ._container {
 		width: 500px;
 		height: 500px;
 		position: absolute;
@@ -36,6 +44,9 @@
 		left: 50%;
 		margin-top: -250px;
 		margin-left: -250px;
+	}
+	.container {
+		animation: rotate 2s linear infinite;
 		-webkit-animation: rotate 2s linear infinite;
 		-moz-animation: rotate 2s linear infinite;
 	}
@@ -46,6 +57,7 @@
 		border: solid 20px black;
 		border-color: black transparent white transparent;
 		border-radius:100%;
+		animation: rotate 20s linear infinite reverse;
 		-webkit-animation: rotate 20s linear infinite reverse;
 		-moz-animation: rotate 20s linear infinite reverse;
 	}
@@ -57,27 +69,32 @@
 		background: rgba(255,255,255,0.5);
 		cursor: pointer;
 		border-radius: 10px;
+		transition: all 0.25s linear;
 		-webkit-transition: all 0.25s linear;
 		-moz-transition: all 0.25s linear;
 		overflow: hidden;
 		line-height: 1.5em;
+	}
+	.control input.color {
+		width: 6em;
+		text-align: left;
 	}
 	.control input {
 		text-align: right;
 		width: 30px;
 	}
 </style>
-<style type="text/css" id="css-outer-timing" data-css=".container {-webkit-animation-timing-function: __VAL__;-moz-animation-timing-function: __VAL__;}">
+<style type="text/css" id="css-outer-timing" data-css=".container {-webkit-animation-timing-function: __VAL__;-moz-animation-timing-function: __VAL__;animation-timing-function: __VAL__;}">
 </style>
-<style type="text/css" id="css-outer-duration" data-css=".container {-webkit-animation-duration: __VAL__;-moz-animation-duration: __VAL__;}">
+<style type="text/css" id="css-outer-duration" data-css=".container {-webkit-animation-duration: __VAL__;-moz-animation-duration: __VAL__;}animation-duration: __VAL__;}">
 </style>
-<style type="text/css" id="css-outer-direction" data-css=".container {-webkit-animation-direction: __VAL__;-moz-animation-direction: __VAL__;}">
+<style type="text/css" id="css-outer-direction" data-css=".container {-webkit-animation-direction: __VAL__;-moz-animation-direction: __VAL__;}animation-direction: __VAL__;}">
 </style>
-<style type="text/css" id="css-inner-timing" data-css=".ring {-webkit-animation-timing-function: __VAL__;-moz-animation-timing-function: __VAL__;}">
+<style type="text/css" id="css-inner-timing" data-css=".container .ring {-webkit-animation-timing-function: __VAL__;-moz-animation-timing-function: __VAL__;}animation-timing-function: __VAL__;}">
 </style>
-<style type="text/css" id="css-inner-duration" data-css=".ring {-webkit-animation-duration: __VAL__;-moz-animation-duration: __VAL__;}">
+<style type="text/css" id="css-inner-duration" data-css=".container .ring {-webkit-animation-duration: __VAL__;-moz-animation-duration: __VAL__;}animation-duration: __VAL__;}">
 </style>
-<style type="text/css" id="css-inner-direction" data-css=".ring {-webkit-animation-direction: __VAL__;-moz-animation-direction: __VAL__;}">
+<style type="text/css" id="css-inner-direction" data-css=".container .ring {-webkit-animation-direction: __VAL__;-moz-animation-direction: __VAL__;}animation-direction: __VAL__;}">
 </style>
 </head>
 <body>
@@ -149,6 +166,7 @@
 				}
 			}
 			location.hash = '';
+			reloadClass();
 		}
 
 		document.getElementById('outer-timing').onchange = function(e){
@@ -196,13 +214,25 @@
 			css.innerHTML = css.getAttribute('data-css').replace(/__VAL__/g, val);
 			refreshSearch();
 		};
+		function reloadClass(){
+			try {
+				var container = document.getElementsByClassName('container')[0];
+				container.classList.remove('container');
+				container.classList.add('_container');
+				setTimeout(function(){
+					document.getElementsByClassName('_container')[0].classList.add('container');
+				}, 100);
+			} catch(e){}
+		}
 		function refreshSearch(){
 			var params = document.getElementsByClassName('param');
 			var q = '';
 			for(var x=0; x<params.length; x++){
 				q += params[x].id + '=' + params[x].value + '&';
 			}
+			q = q.substr(0, q.length-1);
 			location.hash = q;
+			reloadClass();
 		}
 	</script>
 </body>
