@@ -1,3 +1,9 @@
+if(location.hostname == 'nubleh.github.io'){
+	var dr = document.referrer;
+	if(dr.length && !dr.match(/^http:\/\/nubleh.github.io/)){
+		ga('send', 'event', 'referrer', dr);
+	}
+}
 bar_width = 100/data.length;
 style = document.createElement('style');
 style.setAttribute('type', 'text/css');
