@@ -33,7 +33,6 @@ for(x=0;x<data.length;x++){
 
 tooltip = document.getElementById('tooltip');
 chart.onmousemove = function(e){
-	console.log(e);
 	tooltip.style.top = e.clientY + 20;
 	tooltip.style.left = e.clientX - 100;
 	tooltip.style.display = 'block';
