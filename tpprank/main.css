@@ -1,0 +1,76 @@
+body {
+	font-family: sans-serif;
+}
+.ax {
+	position: absolute;
+	width: 200px;
+	text-align: center;
+}
+.ax.x {
+	bottom: 10px;
+	left: 50%;
+	margin-left: -100px;
+}
+.ax.y {
+	top: 10px;
+}
+#tooltip {
+	position: fixed;
+	display: none;
+	background: white;
+	border-radius: 5px;
+	padding: 5px;
+	box-sizing: border-box;
+	width: 200px;
+	box-shadow: 0 2px 3px rgba(0,0,0,0.3);
+}
+#chart {
+	margin: 30px 100px 60px;
+	height: calc(100% - 90px);
+}
+.bar {
+	display: inline-block;
+	box-sizing: border-box;
+	position: relative;
+}
+.bar:hover {
+	background: black;
+}
+.bar:hover .x-tooltip {
+	display: block;
+}
+.x-label {
+	position: absolute;
+	bottom: -2em;
+	left: 0;
+}
+.part {
+	opacity: 1;
+}
+.part:hover {
+	opacity: 0.9;
+}
+.part.g-rank {
+	background: #333333;
+}
+.part.f-rank {
+	background: #666666;
+}
+.part.e-rank {
+	background: #888888;
+}
+.part.d-rank {
+	background: #aaaaaa;
+}
+.part.c-rank {
+	background: #cccc00;
+}
+.part.b-rank {
+	background: #ffff00;
+}
+.part.a-rank {
+	background: #FE9505;
+}
+.part.s-rank {
+	background: #ff3333;
+}
