@@ -1,32 +1,78 @@
 <html>
 <head>
 <style type="text/css">
+body {
+	padding: 0;
+	margin: 0;
+	background: #f5f5f5;
+}
+dl > div {
+    margin: 10px;
+    background: white;
+    border-radius: 5px;
+    padding: 10px;
+    vertical-align: middle;
+	display: inline-block;
+}
 dd {
 	white-space: pre;
-	margin-bottom: 20px;
+}
+#controls {
+	width: 100%;
+	height: 40px;
+	background: white;
+	line-height: 50px;
+}
+#controls input {
+	margin: 10px;
+}
+#csvBox.active {
+	display: block;
+}
+#csvBox {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 40px;
+	left: 0;
+	display: none;
 }
 
 </style>
 </head>
 <body>
+<div id="controls">
+	<input type="button" id="CSV" value="CSV">
+</div>
+<textarea id="csvBox"></textarea>
 <div id="itemData"></div>
 <script type="text/javascript" src="data.js"></script>
 <script type="text/javascript" src="names.js"></script>
 <script type="text/javascript">
 box = document.getElementById('itemData');
+csvBox = document.getElementById('csvBox');
 output = '<dl>';
+csv = '';
 for(x=0;x<names.length;x++){
 	name = names[x];
 	desc = data[name];
-	output += '<dt><dfn>';
+	output += '<div><dt><dfn>';
 	output += name;
 	output += '</dfn></dt>';
 	output += '<dd>';
 	output += desc;
-	output += '</dd>';
+	output += '</dd></div>';
+	if(desc){
+		csv += name + ',' + desc.replace(/\n/g, "\\n") + "\n";
+	}
 }
 output += '</dl>';
 box.innerHTML = output;
+csvBox.value = csv;
+
+document.getElementById('CSV').onclick = function(){
+	csvBox.classList.toggle('active');
+}
 
 </script>
 </body>
