@@ -1,0 +1,33 @@
+<html>
+<head>
+<style type="text/css">
+dd {
+	white-space: pre;
+	margin-bottom: 20px;
+}
+
+</style>
+</head>
+<body>
+<div id="itemData"></div>
+<script type="text/javascript" src="data.js"></script>
+<script type="text/javascript" src="names.js"></script>
+<script type="text/javascript">
+box = document.getElementById('itemData');
+output = '<dl>';
+for(x=0;x<names.length;x++){
+	name = names[x];
+	desc = data[name];
+	output += '<dt><dfn>';
+	output += name;
+	output += '</dfn></dt>';
+	output += '<dd>';
+	output += desc;
+	output += '</dd>';
+}
+output += '</dl>';
+box.innerHTML = output;
+
+</script>
+</body>
+</html>
