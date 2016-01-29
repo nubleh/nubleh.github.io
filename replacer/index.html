@@ -1,0 +1,63 @@
+<html>
+<head>
+<style type="text/css">
+	textarea {
+		margin: 0;
+		padding: 15px;
+		display: in;
+	}
+	#doc, #words {
+		width: 50%;
+		height: 40%;
+	}
+	#output {
+		width: 100%;
+		height: 40%;
+	}
+</style>
+</head>
+<body>
+	<textarea id="doc" placeholder="Body text here"></textarea><textarea id="words" placeholder="Word pairs here (in CSV)"></textarea><textarea id="output" placeholder="Output will appear here"></textarea>
+	<script type="text/javascript">
+		input = document.getElementById('doc');
+		words_input = document.getElementById('words');
+		output = document.getElementById('output');
+
+		process = function(){
+			var doc = input.value;
+			var words = words_input.value;
+			var word_pairs = {};
+			var word_keys = [];
+
+			words = words.split("\n");
+			var x, word;
+			for(x=0; x<words.length; x++){
+				word = words[x];
+				word = word.split(",");
+				if(word.length == 2){
+					word_keys.push(word[0]);
+					word_pairs[word[0]] = word[1];
+				}
+			}
+
+			// longer strings go to the top of the array.
+			// this is to make sure substrings are not replaced first. 
+			word_keys.sort(function(a,b){
+				if(a.length >= b.length){
+					return -1;
+				}
+				return 1;
+			})
+
+			var re, word_key;
+			for(x=0; x<word_keys.length; x++){
+				word_key = word_keys[x];
+				re = new RegExp(word_key, "g");
+				doc = doc.replace(re, word_pairs[word_key]);
+			}
+			output.value = doc
+		};
+		input.onchange = words.onchange = process;
+	</script>
+</body>
+</html>

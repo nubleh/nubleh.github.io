@@ -1,0 +1,161 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Kinsect Simulator</title>
+<link rel="stylesheet" type="text/css" href="InsectSim.css">
+<script src="./js/jquery.min.js"></script>
+<script src="./js/jquery.cookie.js"></script>
+<script src="./InsectSimModel.js"></script>
+<script src="./InsectSim.js"></script>
+</head>
+<body>
+
+<div class="layout">
+<h1>Nectar List</h1>
+<table id="foodList">
+<tr>
+	<th>Nectar Name</th>
+	<th>Stat Increase 1</th>
+	<th>Stat Increase 2</th>
+	<th>Stat Decrease 1</th>
+	<th>Stat Decrease 2</th>
+</tr>
+<tr><td><input type="button" class="FoodPower"   value="Power Nectar: Fire"></td><td>Power+1</td><td>Fire+1</td><td>Water-2</td><td>&nbsp;</td></tr>
+<tr><td><input type="button" class="FoodPower"   value="Power Nectar: Fire+"></td><td>Power+1</td><td>Fire+2</td><td>Water-3</td><td>&nbsp;</td></tr>
+<tr><td><input type="button" class="FoodPower"   value="Power+ Nectar"></td><td>Power+2</td><td>&nbsp;</td><td>Speed-1</td><td>Fire-1</td></tr>
+<tr><td><input type="button" class="FoodPower"   value="Power+ Nectar: Fire"></td><td>Power+2</td><td>Fire+1</td><td>Speed-3</td><td>&nbsp;</td></tr>
+<tr><td><input type="button" class="FoodStamina" value="Stam Nectar: Water"></td><td>Stamina+1</td><td>Water+1</td><td>Thunder-2</td><td>&nbsp;</td></tr>
+<tr><td><input type="button" class="FoodStamina" value="Stam Nectar: Dragon"></td><td>Stamina+1</td><td>Dragon+1</td><td>Fire-2</td><td>&nbsp;</td></tr>
+<tr><td><input type="button" class="FoodStamina" value="Stam Nectar: Dragon+"></td><td>Stamina+1</td><td>Dragon+2</td><td>Fire-3</td><td>&nbsp;</td></tr>
+<tr><td><input type="button" class="FoodStamina" value="Stamina+ Nectar"></td><td>Stamina+2</td><td>&nbsp;</td><td>Power-1</td><td>Water-1</td></tr>
+<tr><td><input type="button" class="FoodStamina" value="Stam+ Nectar: Water"></td><td>Stamina+2</td><td>Water+1</td><td>Power-3</td><td>&nbsp;</td></tr>
+<tr><td><input type="button" class="FoodSpeed"   value="Speed Nectar: Water+"></td><td>Speed+1</td><td>Water+2</td><td>Thunder-3</td><td>&nbsp;</td></tr>
+<tr><td><input type="button" class="FoodSpeed"   value="Spd Nectar: Thunder"></td><td>Speed+1</td><td>Thunder+1</td><td>Ice-2</td><td>&nbsp;</td></tr>
+<tr><td><input type="button" class="FoodSpeed"   value="Spd Nectar: Thunder+"></td><td>Speed+1</td><td>Thunder+2</td><td>Ice-3</td><td>&nbsp;</td></tr>
+<tr><td><input type="button" class="FoodSpeed"   value="Speed Nectar: Ice"></td><td>Speed+1</td><td>Ice+1</td><td>Dragon-2</td><td>&nbsp;</td></tr>
+<tr><td><input type="button" class="FoodSpeed"   value="Speed Nectar: Ice+"></td><td>Speed+1</td><td>Ice+2</td><td>Dragon-3</td><td>&nbsp;</td></tr>
+<tr><td><input type="button" class="FoodSpeed"   value="Speed+ Nectar"></td><td>Speed+2</td><td>&nbsp;</td><td>Stamina-1</td><td>Thunder-1</td></tr>
+<tr><td><input type="button" class="FoodSpeed"   value="Spd+ Nectar: Thunder"></td><td>Speed+2</td><td>Thunder+1</td><td>Stamina-3</td><td>&nbsp;</td></tr>
+<tr><td><input type="button" class="FoodElement" value="Nectar: Fire+"></td><td>Fire+2</td><td>&nbsp;</td><td>Water-1</td><td>Ice-1</td></tr>
+<tr><td><input type="button" class="FoodElement" value="Nectar: Water+"></td><td>Water+2</td><td>&nbsp;</td><td>Thunder-1</td><td>Dragon-1</td></tr>
+<tr><td><input type="button" class="FoodElement" value="Nectar: Thunder+"></td><td>Thunder+2</td><td>&nbsp;</td><td>Speed-1</td><td>Ice-1</td></tr>
+<tr><td><input type="button" class="FoodElement" value="Nectar: Ice+"></td><td>Ice+2</td><td>&nbsp;</td><td>Stamina-1</td><td>Dragon-1</td></tr>
+<tr><td><input type="button" class="FoodElement" value="Nectar: Dragon+"></td><td>Dragon+2</td><td>&nbsp;</td><td>Power-1</td><td>Fire-1</td></tr>
+</table>
+<div id="levelUpButtons">
+<input id="btnLevelUp0" type="button" value="-">
+<input id="btnLevelUp1" type="button" value="-">
+<input id="btnLevelUp2" type="button" value="-">
+<input id="btnLevelUp3" type="button" value="-">
+</div>
+<div>
+<input id="btnUndo"    type="button" value="Undo">
+<input id="btnReset"   type="button" value="Reset">
+<input id="btnInitDialogShow" type="button" value="Current Stat Input">
+</div>
+<div>
+<h1>Simulation Output</h1>
+<input id="txtResultUrl" type="text"><br>
+<select id="cmbResultList"></select>
+<input id="btnResultSave" type="button" value="Save">
+<input id="btnResultLoad" type="button" value="読込">
+</div>
+
+</div>
+
+<div class="layout">
+<h1>Degree of Growth</h1>
+<table id="tblAllGrowthPoint">
+<tr><th>Level</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td></tr>
+<tr><th>Maximum Points</th><td>15</td><td>30</td><td>45</td><td>54</td><td>63</td><td>72</td><td>81</td><td>90</td></tr>
+<tr><th>Current Points</th><td>0</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+</table>
+
+<h1>Attribute</h1>
+<table>
+<tr>
+	<th>Attribute</th>
+	<th>Status</th>
+	<th>Growth Points</th>
+	<th>Points Needed</th>
+</tr>
+<tr id="trPower"  ><td>Power  </td><td>60</td><td>0 > 0</td><td>9(+9)</td></tr>
+<tr id="trStamina"><td>Stamina</td><td>60</td><td>0 > 0</td><td>6(+6)</td></tr>
+<tr id="trSpeed"  ><td>Speed</td><td>60</td><td>0 > 0</td><td>3(+3)</td></tr>
+<tr id="trFire"   ><td>Fire  </td><td>0 </td><td>0 > 0</td><td>3(+2)</td></tr>
+<tr id="trWater"  ><td>Water  </td><td>0 </td><td>0 > 0</td><td>3(+2)</td></tr>
+<tr id="trThunder"><td>Thunder  </td><td>0 </td><td>0 > 0</td><td>6(+4)</td></tr>
+<tr id="trIce"    ><td>Ice  </td><td>0 </td><td>0 > 0</td><td>6(+4)</td></tr>
+<tr id="trDragon" ><td>Dragon  </td><td>0 </td><td>0 > 0</td><td>9(+6)</td></tr>
+</table>
+
+<h1>Evolution Table</h1>
+<table>
+<tr>
+	<th>Type</th>
+	<th>Lv</th>
+	<th>Pw</th>
+	<th>St</th>
+	<th>Sp</th>
+	<th>Skill</th>
+</tr>
+<tr><td><span id="lblEvo0">Starter</span>    </td><td>1</td><td>60</td><td>60</td><td>60</td><td style="font-size:x-small">None</td></tr>
+<tr><td>├<span id="lblEvo1">攻</span>    </td><td>4</td><td>78</td><td>60</td><td>60</td><td style="font-size:x-small">Attack Up S</td></tr>
+<tr><td>│├<span id="lblEvo2">攻＋</span></td><td>7</td><td>96</td><td>60</td><td>60</td><td style="font-size:x-small">Attack Up L</td></tr>
+<tr><td>│└<span id="lblEvo3">攻回</span></td><td>7</td><td>87</td><td>66</td><td>63</td><td style="font-size:x-small">Attack Up M / Recovery Up S</td></tr>
+<tr><td>├<span id="lblEvo4">体</span>    </td><td>4</td><td>60</td><td>78</td><td>60</td><td style="font-size:x-small">Stamina Up S</td></tr>
+<tr><td>│├<span id="lblEvo5">体＋</span></td><td>7</td><td>60</td><td>96</td><td>60</td><td style="font-size:x-small">Stamina Up L</td></tr>
+<tr><td>│└<span id="lblEvo6">体回</span></td><td>7</td><td>69</td><td>84</td><td>63</td><td style="font-size:x-small">Stamina Up M / Recovery Up S</td></tr>
+<tr><td>├<span id="lblEvo7">速</span>    </td><td>4</td><td>60</td><td>60</td><td>78</td><td style="font-size:x-small">Speed Up S</td></tr>
+<tr><td>│├<span id="lblEvo8">速＋</span></td><td>7</td><td>60</td><td>60</td><td>96</td><td style="font-size:x-small">Speed Up L</td></tr>
+<tr><td>│└<span id="lblEvo9">速回</span></td><td>7</td><td>69</td><td>66</td><td>81</td><td style="font-size:x-small">Speed Up M / Recovery Up S</td></tr>
+<tr><td>└<span id="lblEvo10">汎</span>    </td><td>4</td><td>69</td><td>66</td><td>63</td><td style="font-size:x-small">All Stats Up S</td></tr>
+<tr><td>　└<span id="lblEvo11">汎＋</span></td><td>7</td><td>78</td><td>72</td><td>66</td><td style="font-size:x-small">All Stats Up M / Recovery Up L</td></tr>
+</table>
+</div>
+
+<div class="layout">
+<h1>History</h1>
+<div id="lstFoodHistory">Loading</div>
+<h1>Total Nectar</h1>
+<div id="lstFoodSummary"></div>
+</div>
+
+<div style="clear:both;">
+<a href="./history.html" target="_blank">Changelog</a>
+</div>
+
+<div id="initDialog" class="dialogBackground"><div class="dialogBody">
+	<h1>Current Stat Input</h1>
+	<form id="frmInitDialog">
+		<div class="InfoArea">
+			※Please enter Growth Point value.
+		</div>
+		<div class="TextArea">
+			<label>Power：</label><input id="txtPower"   type="text" value="0">
+			<label>Stamina：</label><input id="txtStamina" type="text" value="0">
+			<label>Speed：</label><input id="txtSpeed"   type="text" value="0">
+			<span id="lblErrorProvider">&nbsp;</span>
+		</div>
+		<div class="TextArea">
+			<label>Fire：</label><input id="txtFire"      type="text" value="0">
+			<label>Water：</label><input id="txtWater"     type="text" value="0">
+			<label>Thunder：</label><input id="txtThunder"   type="text" value="0">
+			<label>Ice：</label><input id="txtIce"       type="text" value="0">
+			<label>Dragon：</label><input id="txtDragon"    type="text" value="0">
+		</div>
+		<div class="ComboArea">
+			<label>Kinsect Type</label>
+			<select id="cmbInsectType">
+				<option>(Starter)マルドローン/クルドローン</option>
+			</select>
+		</div>
+		<div class="ButtonArea">
+			<input id="btnInitDialogOk" type="button" value="OK">
+			<input id="btnInitDialogCancel" type="button" value="キャンセル">
+		</div>
+	</form>
+</div></div>
+
+</body>
+</html>
