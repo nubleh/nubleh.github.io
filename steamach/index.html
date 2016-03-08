@@ -1,0 +1,213 @@
+<html>
+<head>
+<style type="text/css">
+body {
+	background-image: url("fo4.jpg");
+	background-size: cover;
+}
+@keyframes anim-box {
+  0% {
+  	height: 0;
+  }
+  100% {
+	height: 45px;
+	border:solid 1px rgba(255, 255, 255, 0.2);
+  }
+}
+@keyframes anim-box2 {
+  0% {
+  	height: 45px;
+  }
+  100% {
+	height: 0;
+  }
+}
+.box {
+	width: 230px;
+	height: 0;
+	background: #40576e;
+	position: absolute;
+	overflow: hidden;
+}
+.box.tl {
+	left: 10px;
+	top: 10px;
+}
+.box.bl {
+	left: 10px;
+	bottom: 10px;
+}
+.box.br {
+	right: 10px;
+	bottom: 10px;
+}
+.box.tr {
+	right: 10px;
+	top: 10px;
+}
+.box.run {
+	animation: anim-box 0.5s ease-in-out 1, anim-box2 0.25s ease-in-out 4.75s;
+	animation-fill-mode: forwards;
+}
+@keyframes anim-logo {
+  0% {
+   	background-position: -55px;
+  }
+  100% {
+   	background-position: -18px;
+  }
+}
+.logo {
+	width: 45px;
+	height: 45px;
+	background: #34465d;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-image: url("steamlogo.png");
+	background-repeat: no-repeat;
+   	background-position: -18px;
+}
+.box.run .logo {
+	animation: anim-logo 0.5s ease-in-out 1, anim-img 0.25s ease-in-out 4.75s 1;
+}
+@keyframes anim-unlocked {
+  0% {
+  	top: 45px;
+  }
+  100% {
+  	top: 0;
+  }
+}
+.unlocked {
+	width: 185px;
+	height: 45px;
+	color: #ffffff;
+	position: absolute;
+	top: 45px;
+	right: 0;
+	font-family: sans-serif;
+	line-height: 45px;
+	text-align: center;
+}
+.box.run .unlocked {
+	animation: anim-unlocked 0.5s ease-in-out 0.5s 1;
+	animation-fill-mode: forwards;
+}
+@keyframes anim-content {
+  0% {
+  	top: 0;
+  }
+  100% {
+  	top: -45px;
+  }
+}
+.content {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 230px;
+	height: 90px;
+}
+.box.run .content {
+	animation: anim-content 0.5s ease-in-out 2s 1;
+	animation-fill-mode: forwards;
+}
+.ach {
+	position: absolute;
+	top: 45px;
+	left: 0;
+	width: 230px;
+	height: 45px;
+	padding-left: 50px;
+}
+@keyframes anim-img {
+	0% {
+		left: 0;
+	}
+	100% {
+		left: -45px;
+	}
+}
+.ach img {
+	width: 44px;
+	height: 44px;
+	border: solid 1px #34465d;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.box.run .ach img {
+	animation: anim-img 0.25s ease-in-out 4.75s 1;
+	animation-fill-mode: forwards;
+}
+.ach dd, .ach dt {
+	font-family: sans-serif;
+	color: white;
+	margin: 0;
+}
+.ach dd {
+	font-size: 12px;
+	margin-top: 8px;
+}
+.ach dt {
+	font-size: 10px;
+}
+</style>
+</head>
+<body>
+	<div class="box">
+		<div class="logo">
+		</div>
+		<div class="content">
+			<div class="unlocked">
+				Achievement Unlocked
+			</div>
+			<div class="ach">
+				<img src="ach.png">
+				<dd>War Never Changes</dd>
+				<dt>Enter the wasteland</dt>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		lock = false;
+		box = document.getElementsByClassName('box')[0];
+		document.body.onclick = function(e){
+			if(lock){
+				return;
+			}
+			if(e.clientX > window.innerWidth/2 && e.clientY > window.innerHeight/2){
+				box.classList.remove('tl');
+				box.classList.remove('tr');
+				box.classList.remove('bl');
+				box.classList.add('br');
+			}
+			if(e.clientX > window.innerWidth/2 && e.clientY <= window.innerHeight/2){
+				box.classList.remove('tl');
+				box.classList.add('tr');
+				box.classList.remove('bl');
+				box.classList.remove('br');
+			}
+			if(e.clientX <= window.innerWidth/2 && e.clientY > window.innerHeight/2){
+				box.classList.remove('tl');
+				box.classList.remove('tr');
+				box.classList.add('bl');
+				box.classList.remove('br');
+			}
+			if(e.clientX <= window.innerWidth/2 && e.clientY <= window.innerHeight/2){
+				box.classList.add('tl');
+				box.classList.remove('tr');
+				box.classList.remove('bl');
+				box.classList.remove('br');
+			}
+			lock = true;
+			box.classList.add('run');
+			setTimeout(function(){
+				lock = false;
+				box.classList.remove('run');
+			}, 5000);
+		}
+	</script>
+</body>
+</html>
