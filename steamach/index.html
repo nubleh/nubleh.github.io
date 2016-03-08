@@ -45,6 +45,16 @@ body {
 	right: 10px;
 	top: 10px;
 }
+.box.b {
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 10px;
+}
+.box.t {
+	left: 50%;
+	transform: translateX(-50%);
+	top: 10px;
+}
 .box.run {
 	animation: anim-box 0.5s ease-in-out 1, anim-box2 0.25s ease-in-out 4.75s;
 	animation-fill-mode: forwards;
@@ -178,28 +188,28 @@ body {
 				return;
 			}
 			if(e.clientX > window.innerWidth/2 && e.clientY > window.innerHeight/2){
-				box.classList.remove('tl');
-				box.classList.remove('tr');
-				box.classList.remove('bl');
+				box.setAttribute('class', 'box')
 				box.classList.add('br');
 			}
 			if(e.clientX > window.innerWidth/2 && e.clientY <= window.innerHeight/2){
-				box.classList.remove('tl');
+				box.setAttribute('class', 'box')
 				box.classList.add('tr');
-				box.classList.remove('bl');
-				box.classList.remove('br');
 			}
 			if(e.clientX <= window.innerWidth/2 && e.clientY > window.innerHeight/2){
-				box.classList.remove('tl');
-				box.classList.remove('tr');
+				box.setAttribute('class', 'box')
 				box.classList.add('bl');
-				box.classList.remove('br');
 			}
 			if(e.clientX <= window.innerWidth/2 && e.clientY <= window.innerHeight/2){
+				box.setAttribute('class', 'box')
 				box.classList.add('tl');
-				box.classList.remove('tr');
-				box.classList.remove('bl');
-				box.classList.remove('br');
+			}
+			if(e.clientY > window.innerHeight*0.75 && e.clientX < 0.67*window.innerWidth && e.clientX > 0.33*window.innerWidth){
+				box.setAttribute('class', 'box')
+				box.classList.add('b');
+			}
+			if(e.clientY < window.innerHeight*0.25 && e.clientX < 0.67*window.innerWidth && e.clientX > 0.33*window.innerWidth){
+				box.setAttribute('class', 'box')
+				box.classList.add('t');
 			}
 			lock = true;
 			box.classList.add('run');
