@@ -1,6 +1,9 @@
 <html>
 <head>
 	<style type="text/css">
+		body {
+			font-family: sans-serif;
+		}
 		#img {
 			display: none;
 		}
@@ -9,7 +12,21 @@
 <body>
 	<button type="button" onclick="generate();">Generate</button>
 	<br>
+	<label>
+		<input type="checkbox" id="freespace"/>
+		Lock Free Space at the center
+	</label>
+	<br>
 <canvas id="bingo" width="704" height="980"></canvas>
+<br>
+This is a canvas image element. It's not hosted anywhere, it's simply drawn and rendered on your browser.
+<br>
+In order to use this image elsewhere, right click on it and Copy it.
+<br>
+Then, paste it in your favorite Paint or Paint alternatives or even on <a href="http://www.imgur.com" target="_blank" rel="noopener">imgur</a> if you're using Chrome.
+<p>
+Credits go to <a href="https://www.reddit.com/user/fawcan">fawcan</a>.
+</p>
 <div id="img">
 	<img src="img/head.png" id="imgHead" onload="done();">
 	<img src="img/1.png" id="img1" onload="done();">
@@ -63,11 +80,23 @@
 	function generate(){
 		// free space is 13
 		var _images = images.concat();
-		while(_images.length > 0) {
-			var index = Math.floor(Math.random() * _images.length);
+		var start_x = 278;
+		var start_y = 2;
+		var lockFreeSpace = document.getElementById('freespace').checked;
+		if (lockFreeSpace){
+			var index = 12;
 			var current = _images.splice(index, 1)[0];
-			console.log(current);
-			ctx.drawImage(current, index * 10, 0);
+			ctx.drawImage(current, start_y + (2 * 140), start_x + (2 * 140));
+		}
+		for(var x = 0; x < 5; x++){
+			for(var y = 0; y < 5; y++){
+					if(lockFreeSpace && y == 2 && x == 2){
+						continue;
+					}
+					var index = Math.floor(Math.random() * _images.length);
+					var current = _images.splice(index, 1)[0];
+					ctx.drawImage(current, start_y + (y * 140), start_x + (x * 140));
+			}
 		}
 	}
 </script>
