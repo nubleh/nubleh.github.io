@@ -1,0 +1,75 @@
+<html>
+<head>
+	<style type="text/css">
+		#img {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<button type="button" onclick="generate();">Generate</button>
+	<br>
+<canvas id="bingo" width="704" height="980"></canvas>
+<div id="img">
+	<img src="img/head.png" id="imgHead" onload="done();">
+	<img src="img/1.png" id="img1" onload="done();">
+	<img src="img/2.png" id="img2" onload="done();">
+	<img src="img/3.png" id="img3" onload="done();">
+	<img src="img/4.png" id="img4" onload="done();">
+	<img src="img/5.png" id="img5" onload="done();">
+	<img src="img/6.png" id="img6" onload="done();">
+	<img src="img/7.png" id="img7" onload="done();">
+	<img src="img/8.png" id="img8" onload="done();">
+	<img src="img/9.png" id="img9" onload="done();">
+	<img src="img/10.png" id="img10" onload="done();">
+	<img src="img/11.png" id="img11" onload="done();">
+	<img src="img/12.png" id="img12" onload="done();">
+	<img src="img/13.png" id="img13" onload="done();">
+	<img src="img/14.png" id="img14" onload="done();">
+	<img src="img/15.png" id="img15" onload="done();">
+	<img src="img/16.png" id="img16" onload="done();">
+	<img src="img/17.png" id="img17" onload="done();">
+	<img src="img/18.png" id="img18" onload="done();">
+	<img src="img/19.png" id="img19" onload="done();">
+	<img src="img/20.png" id="img20" onload="done();">
+	<img src="img/21.png" id="img21" onload="done();">
+	<img src="img/22.png" id="img22" onload="done();">
+	<img src="img/23.png" id="img23" onload="done();">
+	<img src="img/24.png" id="img24" onload="done();">
+	<img src="img/25.png" id="img25" onload="done();">
+</div>
+<script type="text/javascript">
+
+	loading = 0;
+	function done(){
+		loading++;
+		if(loading > 25) {
+			init();
+		}
+	}
+
+	var ctx;
+	var images = [];
+	function init(){
+		for(var x = 1; x <= 25; x++){
+			images.push(document.getElementById('img' + x));
+		}
+		var bingo = document.getElementById('bingo');
+		ctx = bingo.getContext('2d');
+		var head = document.getElementById('imgHead');
+		ctx.drawImage(head, 0, 0);
+	}
+
+	function generate(){
+		// free space is 13
+		var _images = images.concat();
+		while(_images.length > 0) {
+			var index = Math.floor(Math.random() * _images.length);
+			var current = _images.splice(index, 1)[0];
+			console.log(current);
+			ctx.drawImage(current, index * 10, 0);
+		}
+	}
+</script>
+</body>
+</html>
