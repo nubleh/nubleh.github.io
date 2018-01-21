@@ -1,0 +1,69 @@
+.orb {
+  position: absolute;
+  width: 39px;
+  height: 39px;
+  background-size: 100% 100%;
+}
+
+.activeOrb {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-size: 100% 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.transmutation {
+  background-image: url('ui/CurrencyUpgradeToMagic.png');
+  top: 150px;
+  left: 20px;
+}
+
+.alchemy {
+  background-image: url('ui/CurrencyUpgradeToRare.png');
+  top: 150px;
+  left: 454px;
+}
+
+.chaos {
+  background-image: url('ui/CurrencyRerollRare.png');
+  top: 150px;
+  left: 514px;
+}
+
+.alteration {
+  background-image: url('ui/CurrencyRerollMagic.png');
+  top: 150px;
+  left: 80px;
+}
+
+.regal {
+  background-image: url('ui/CurrencyUpgradeMagicToRare.png');
+  top: 150px;
+  left: 395px;
+}
+
+.augmentation {
+  background-image: url('ui/CurrencyAddModToMagic.png');
+  top: 206px;
+  left: 197px;
+}
+
+.exalted {
+  background-image: url('ui/CurrencyAddModToRare.png');
+  top: 150px;
+  left: 266px;
+}
+
+.scouring {
+  background-image: url('ui/CurrencyConvertToNormal.png');
+  top: 294px;
+  left: 395px;
+}
+
+.divine {
+  background-image: url('ui/CurrencyModValues.png');
+  top: 206px;
+  left: 572px;
+}

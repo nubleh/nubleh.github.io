@@ -1,0 +1,55 @@
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="main.css">
+<link rel="stylesheet" type="text/css" href="item.css">
+<link rel="stylesheet" type="text/css" href="orb.css">
+</head>
+<body>
+	<div id="mount"></div>
+	<template id="main-app">
+		<div class="wrapper" @mousemove="moveCursor" @click.exact="clearActiveOrb">
+			<div class="activeOrb" :class="activeOrb" v-if="activeOrb !== ''" :style="{left: cursorLeft, top: cursorTop}"></div>
+			<div class="stash">
+				<div class="orb transmutation" @contextmenu="activateTransmutation"></div>
+				<div class="orb alchemy" @contextmenu="activateAlchemy"></div>
+				<div class="orb chaos" @contextmenu="activateChaos"></div>
+				<div class="orb alteration" @contextmenu="activateAlteration"></div>
+				<div class="orb regal" @contextmenu="activateRegal"></div>
+				<div class="orb augmentation" @contextmenu="activateAugmentation"></div>
+				<div class="orb exalted" @contextmenu="activateExalted"></div>
+				<div class="orb scouring" @contextmenu="activateScouring"></div>
+				<div class="orb divine" @contextmenu="activateDivine"></div>
+				<div class="item">
+					<div class="itemSprite" @click="useActiveOrb"></div>
+					<div class="itemTooltip">
+						<div class="itemToolTipHeader" :class="{'magic': rarity === 'magic', 'rare': rarity === 'rare'}">
+							<div class="rareName" v-if="rarity === 'rare'">{{ rareName }}</div>
+							<div class="baseName">{{ baseName }}</div>
+						</div>
+						<div class="tooltipBody" :class="{'magic': rarity === 'magic', 'rare': rarity === 'rare'}">
+							<div class="attr">One Handed Mace</div>
+							<div class="attr">Physical Damage: <span>{{ physicalDamage }}</span></div>
+							<div class="attr">Critical Strike Chance: <span>{{ criticalStrikeChance }}</span></div>
+							<div class="attr">Attacks per Second: <span>{{ attacksPerSecond }}</span></div>
+							<div class="attr">Weapon Range: <span>{{ weaponRange }}</span></div>
+							<hr>
+							<div class="attr">Requires Level <span>{{ reqLevel }}</span>, <span>{{ reqStr }}</span> Str, <span>{{ reqInt }}</span> Int</div>
+							<hr>
+							<div class="mod">Damage Penetrates 6% Elemental Resistances</div>
+							<template v-if="prefix.length > 0 || suffix.length > 0">
+								<hr>
+								<div class="mod" v-for="item in affixes">{{ item.text }}</div>
+							</template>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</template>
+	<script type="text/javascript" src="vue.min.js"></script>
+	<script type="text/javascript" src="modGenerator2.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+	<textarea id="a"></textarea>
+</body>
+</html>

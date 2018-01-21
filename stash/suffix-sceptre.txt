@@ -1,0 +1,197 @@
+# to Strength
+T10	of the Brute	1	8 to 12	0.8%	
+T9	of the Wrestler	11	13 to 17	0.8%	3xAlteration Shard
+T8	of the Bear	22	18 to 22	0.8%	3xAlteration Shard
+T7	of the Lion	33	23 to 27	0.8%	3xAlteration Shard
+T6	of the Gorilla	44	28 to 32	0.8%	3xAlteration Shard
+T5	of the Goliath	55	33 to 37	0.8%	3xAlteration Shard
+T4	of the Leviathan	66	38 to 42	0.8%	3xAlteration Shard
+T3	of the Titan	74	43 to 50	0.8%	3xAlteration Shard
+T2	of the Gods	82	51 to 55	0.8%	3xAlteration Shard
+
+# to Intelligence
+T10	of the Pupil	1	8 to 12	0.8%	3xAlteration Shard
+T9	of the Student	11	13 to 17	0.8%	3xAlteration Shard
+T8	of the Prodigy	22	18 to 22	0.8%	3xAlteration Shard
+T7	of the Augur	33	23 to 27	0.8%	3xAlteration Shard
+T6	of the Philosopher	44	28 to 32	0.8%	3xAlteration Shard
+T5	of the Sage	55	33 to 37	0.8%	3xAlteration Shard
+T4	of the Savant	66	38 to 42	0.8%	3xAlteration Shard
+T3	of the Virtuoso	74	43 to 50	0.8%	3xAlteration Shard
+T2	of the Genius	82	51 to 55	0.8%	3xAlteration Shard
+
+#% increased Cast Speed
+T7	of Talent	2	5 to 7	0.8%	3xAlteration Shard
+T6	of Nimbleness	15	8 to 10	0.8%	3xAlteration Shard
+T5	of Expertise	30	11 to 13	0.8%	3xAlteration Shard
+T4	of Legerdemain	40	14 to 16	0.8%	3xAlteration Shard
+T3	of Prestidigitation	55	17 to 19	0.8%	3xAlteration Shard
+T2	of Sortilege	72	20 to 22	0.4%	3xAlteration Shard
+T1	of Finesse	83	23 to 25	0.2%	3xAlteration Shard
+
+#% increased Attack Speed
+T8	of Skill	1	5 to 7	0.8%	3xAlteration Shard
+T7	of Ease	11	8 to 10	0.8%	3xAlteration Shard
+T6	of Mastery	22	11 to 13	0.8%	3xAlteration Shard
+T5	of Renown	30	14 to 16	0.8%	3xAlteration Shard
+T4	of Acclaim	37	17 to 19	0.8%	3xAlteration Shard
+T3	of Fame	45	20 to 22	0.8%	3xAlteration Shard
+T2	of Infamy	60	23 to 25	0.8%	3xAlteration Shard
+T1	of Celebration	77	26 to 27	0.8%	3xAlteration Shard
+
+#% increased Mana Regeneration Rate
+T6	of Excitement	2	10 to 19	0.8%	1xAlteration Shard
+T5	of Joy	18	20 to 29	0.8%	1xAlteration Shard
+T4	of Elation	29	30 to 39	0.8%	1xAlteration Shard
+T3	of Bliss	42	40 to 49	0.8%	1xAlteration Shard
+T2	of Euphoria	55	50 to 59	0.8%	1xAlteration Shard
+T1	of Nirvana	79	60 to 69	0.8%	1xAlteration Shard
+
+#% reduced Enemy Stun Threshold
+T5	of the Pugilist	5	5 to 7	0.8%	1xAlteration Shard
+T4	of the Brawler	20	8 to 9	0.8%	1xAlteration Shard
+T3	of the Boxer	30	10 to 11	0.8%	1xAlteration Shard
+T2	of the Combatant	44	12 to 13	0.8%	1xAlteration Shard
+T1	of the Gladiator	58	14 to 15	0.8%	1xAlteration Shard
+
+#% to Fire Resistance
+T8	of the Whelpling	1	6 to 11	0.4%	1xAlteration Shard
+T7	of the Salamander	12	12 to 17	0.4%	1xAlteration Shard
+T6	of the Drake	24	18 to 23	0.4%	1xAlteration Shard
+T5	of the Kiln	36	24 to 29	0.4%	1xAlteration Shard
+T4	of the Furnace	48	30 to 35	0.4%	1xAlteration Shard
+T3	of the Volcano	60	36 to 41	0.4%	1xAlteration Shard
+T2	of the Magma	72	42 to 45	0.4%	1xAlteration Shard
+T1	of Tzteosh	84	46 to 48	0.4%	1xAlteration Shard
+
+#% to Cold Resistance
+T8	of the Inuit	1	6 to 11	0.4%	1xAlteration Shard
+T7	of the Seal	14	12 to 17	0.4%	1xAlteration Shard
+T6	of the Penguin	26	18 to 23	0.4%	1xAlteration Shard
+T5	of the Yeti	38	24 to 29	0.4%	1xAlteration Shard
+T4	of the Walrus	50	30 to 35	0.4%	1xAlteration Shard
+T3	of the Polar Bear	60	36 to 41	0.4%	1xAlteration Shard
+T2	of the Ice	72	42 to 45	0.4%	1xAlteration Shard
+T1	of Haast	84	46 to 48	0.4%	1xAlteration Shard
+
+#% to Lightning Resistance
+T8	of the Cloud	1	6 to 11	0.4%	1xAlteration Shard
+T7	of the Squall	13	12 to 17	0.4%	1xAlteration Shard
+T6	of the Storm	25	18 to 23	0.4%	1xAlteration Shard
+T5	of the Thunderhead	37	24 to 29	0.4%	1xAlteration Shard
+T4	of the Tempest	49	30 to 35	0.4%	1xAlteration Shard
+T3	of the Maelstrom	60	36 to 41	0.4%	1xAlteration Shard
+T2	of the Lightning	72	42 to 45	0.4%	1xAlteration Shard
+T1	of Ephij	84	46 to 48	0.4%	1xAlteration Shard
+
+#% to Chaos Resistance
+T6	of the Lost	16	5 to 10	0.1%	1xAlchemy Shard
+T5	of Banishment	30	11 to 15	0.1%	1xAlchemy Shard
+T4	of Eviction	44	16 to 20	0.1%	1xAlchemy Shard
+T3	of Expulsion	56	21 to 25	0.1%	1xAlchemy Shard
+T2	of Exile	65	26 to 30	0.1%	1xAlchemy Shard
+T1	of Bameth	81	31 to 35	0.1%	1xAlchemy Shard
+
+#% increased Stun Duration on Enemies
+T5	of Impact	5	11 to 15	0.8%	3xAlteration Shard
+T4	of Dazing	18	16 to 20	0.8%	3xAlteration Shard
+T3	of Stunning	30	21 to 25	0.8%	3xAlteration Shard
+T2	of Slamming	44	26 to 30	0.8%	3xAlteration Shard
+T1	of Staggering	58	31 to 35	0.8%	3xAlteration Shard
+
+#% increased Critical Strike Chance for Spells
+T6	of Menace	11	10 to 19	0.8%	3xAlteration Shard
+T5	of Havoc	21	20 to 39	0.8%	3xAlteration Shard
+T4	of Disaster	28	40 to 59	0.8%	3xAlteration Shard
+T3	of Calamity	41	60 to 79	0.8%	3xAlteration Shard
+T2	of Ruin	59	80 to 99	0.8%	3xAlteration Shard
+T1	of Unmaking	76	100 to 109	0.8%	3xAlteration Shard
+
+# Life gained for each Enemy hit by Attacks
+T4	of Rejuvenation	8	2	0.8%	1xAlteration Shard
+T3	of Restoration	20	3	0.8%	1xAlteration Shard
+T2	of Regrowth	30	4	0.8%	1xAlteration Shard
+T1	of Nourishment	40	5	0.8%	1xAlteration Shard
+
+#% increased Fire Damage
+T6	of Embers	8	3 to 7	0.8%	3xAlteration Shard
+T5	of Coals	22	8 to 12	0.8%	3xAlteration Shard
+T4	of Cinders	36	13 to 17	0.8%	3xAlteration Shard
+T3	of Flames	50	18 to 22	0.8%	3xAlteration Shard
+T2	of Immolation	64	23 to 26	0.8%	3xAlteration Shard
+T1	of Ashes	76	27 to 30	0.8%	3xAlteration Shard
+
+#% increased Cold Damage
+T6	of Snow	12	3 to 7	0.8%	3xAlteration Shard
+T5	of Sleet	24	8 to 12	0.8%	3xAlteration Shard
+T4	of Ice	36	13 to 17	0.8%	3xAlteration Shard
+T3	of Rime	50	18 to 22	0.8%	3xAlteration Shard
+T2	of Floe	64	23 to 26	0.8%	3xAlteration Shard
+T1	of Glaciation	76	27 to 30	0.8%	3xAlteration Shard
+
+#% increased Lightning Damage
+T6	of Sparks	10	3 to 7	0.8%	3xAlteration Shard
+T5	of Static	23	8 to 12	0.8%	3xAlteration Shard
+T4	of Electricity	36	13 to 17	0.8%	3xAlteration Shard
+T3	of Voltage	50	18 to 22	0.8%	3xAlteration Shard
+T2	of Discharge	64	23 to 26	0.8%	3xAlteration Shard
+T1	of Arcing	76	27 to 30	0.8%	3xAlteration Shard
+
+# Life gained on Kill
+T3	of Success	1	3 to 6	0.8%	1xAlteration Shard
+T2	of Victory	23	7 to 10	0.8%	1xAlteration Shard
+T1	of Triumph	40	11 to 14	0.8%	1xAlteration Shard
+
+# Mana gained on Kill
+T3	of Absorption	1	1	0.8%	1xAlteration Shard
+T2	of Osmosis	24	2 to 3	0.8%	1xAlteration Shard
+T1	of Consumption	40	4 to 6	0.8%	1xAlteration Shard
+
+#% increased Critical Strike Chance
+T6	of Needling	1	10 to 14	0.8%	3xAlteration Shard
+T5	of Stinging	20	15 to 19	0.8%	3xAlteration Shard
+T4	of Piercing	30	20 to 24	0.8%	3xAlteration Shard
+T3	of Puncturing	44	25 to 29	0.8%	3xAlteration Shard
+T2	of Penetrating	59	30 to 34	0.8%	3xAlteration Shard
+T1	of Incision	73	35 to 38	0.8%	3xAlteration Shard
+
+#% to Global Critical Strike Multiplier
+T6	of Ire	8	10 to 14	0.8%	5xAlteration Shard
+T5	of Anger	21	15 to 19	0.8%	5xAlteration Shard
+T4	of Rage	30	20 to 24	0.8%	5xAlteration Shard
+T3	of Fury	44	25 to 29	0.8%	5xAlteration Shard
+T2	of Ferocity	59	30 to 34	0.8%	5xAlteration Shard
+T1	of Destruction	73	35 to 38	0.8%	5xAlteration Shard
+
+# to Accuracy Rating
+T9	of Calm	1	5 to 15	0.8%	1xAlteration Shard
+T8	of Steadiness	12	16 to 60	0.8%	1xAlteration Shard
+T7	of Accuracy	20	61 to 100	0.8%	1xAlteration Shard
+T6	of Precision	26	101 to 130	0.8%	1xAlteration Shard
+T5	of the Sniper	33	131 to 165	0.8%	1xAlteration Shard
+T4	of the Marksman	41	166 to 200	0.8%	1xAlteration Shard
+T3	of the Deadeye	50	201 to 250	0.8%	1xAlteration Shard
+T2	of the Ranger	63	251 to 320	0.8%	1xAlteration Shard
+
+#% reduced Attribute Requirements
+T2	of the Worthy	36	18	0.8%	1xAlteration Shard
+T1	of the Apt	60	32	0.8%	1xAlteration Shard
+
+#% increased Light Radius, # to Accuracy Rating
+T3	of Shining	8	5	10 to 20	0.4%	1xAlteration Shard
+T2	of Light	15	10	21 to 40	0.4%	1xAlteration Shard
+T1	of Radiance	30	15	5 to 10	0.4%	1xAlteration Shard
+
+#% chance to Ignite
+T1	of Ignition	15	6 to 8	0.8%	4xAlchemy Shard
+
+#% chance to Freeze
+T1	of Freezing	15	6 to 8	0.8%	4xAlchemy Shard
+
+#% chance to Shock
+T1	of Shocking	15	6 to 8	0.8%	2xAlchemy Shard
+
+#% increased Burning Damage
+T3	of Burning	20	16 to 20	1.2%	2xAlchemy Shard
+T2	of Combusting	40	21 to 25	1.2%	2xAlchemy Shard
+T1	of Conflagrating	60	26 to 30	0.6%	2xAlchemy Shard

@@ -1,0 +1,196 @@
+# to maximum Mana
+T13	Beryl	1	15 to 19	1.09%	1xAlteration Shard
+T12	Cobalt	11	20 to 24	1.09%	1xAlteration Shard
+T11	Azure	17	25 to 29	1.09%	1xAlteration Shard
+T10	Sapphire	23	30 to 34	1.09%	1xAlteration Shard
+T9	Cerulean	29	35 to 39	1.09%	1xAlteration Shard
+T8	Aqua	35	40 to 44	1.09%	1xAlteration Shard
+T7	Opalescent	42	45 to 49	1.09%	1xAlteration Shard
+T6	Gentian	51	50 to 54	1.09%	1xAlteration Shard
+T5	Chalybeous	60	55 to 59	1.09%	1xAlteration Shard
+T4	Mazarine	69	60 to 64	1.09%	1xAlteration Shard
+T3	Blue	75	65 to 68	1.09%	1xAlteration Shard
+T2	Zaffre	81	69 to 73	1.09%	1xAlteration Shard
+
+#% increased Physical Damage, # to Accuracy Rating
+T8	Squire's	1	15 to 19	3 to 7	1.09%	3xAlteration Shard
+T7	Journeyman's	11	20 to 24	8 to 30	1.09%	3xAlteration Shard
+T6	Reaver's	23	25 to 34	31 to 50	1.09%	3xAlteration Shard
+T5	Mercenary's	35	35 to 44	51 to 64	0.44%	3xAlteration Shard
+T4	Champion's	46	45 to 54	65 to 82	0.22%	3xAlteration Shard
+T3	Conqueror's	60	55 to 64	83 to 99	0.11%	3xAlteration Shard
+T2	Emperor's	73	65 to 74	100 to 134	0.05%	3xAlteration Shard
+T1	Dictator's	83	75 to 79	135 to 169	0.03%	3xAlteration Shard
+
+#% increased Physical Damage
+T8	Heavy	1	40 to 49	1.09%	5xAlteration Shard
+T7	Serrated	11	50 to 64	1.09%	5xAlteration Shard
+T6	Wicked	23	65 to 84	1.09%	5xAlteration Shard
+T5	Vicious	35	85 to 109	0.44%	5xAlteration Shard
+T4	Bloodthirsty	46	110 to 134	0.22%	5xAlteration Shard
+T3	Cruel	60	135 to 154	0.11%	5xAlteration Shard
+T2	Tyrannical	73	155 to 169	0.05%	5xAlteration Shard
+T1	Merciless	83	170 to 179	0.03%	5xAlteration Shard
+
+Adds # to Physical Damage, Adds # to Physical Damage
+T9	Glinting	2	1	2 to 3	1.09%	5xAlteration Shard
+T8	Burnished	13	4 to 5	8 to 9	1.09%	5xAlteration Shard
+T7	Polished	21	6 to 8	13 to 15	1.09%	5xAlteration Shard
+T6	Honed	29	7 to 11	16 to 19	1.09%	5xAlteration Shard
+T5	Gleaming	36	9 to 13	20 to 24	1.09%	5xAlteration Shard
+T4	Annealed	46	13 to 17	26 to 30	0.87%	5xAlteration Shard
+T3	Razor-sharp	54	14 to 19	29 to 35	0.65%	5xAlteration Shard
+T2	Tempered	65	17 to 24	36 to 41	0.44%	5xAlteration Shard
+T1	Flaring	77	20 to 27	41 to 49	0.22%	5xAlteration Shard
+
+Adds # to Fire Damage, Adds # to Fire Damage
+T9	Heated	1	1 to 2	3 to 4	0.87%	3xAlteration Shard
+T8	Smouldering	11	8 to 10	15 to 18	0.87%	3xAlteration Shard
+T7	Smoking	18	12 to 16	24 to 28	0.87%	3xAlteration Shard
+T6	Burning	26	17 to 22	33 to 39	0.87%	3xAlteration Shard
+T5	Flaming	33	21 to 28	42 to 49	0.87%	3xAlteration Shard
+T4	Scorching	42	26 to 35	53 to 61	0.87%	3xAlteration Shard
+T3	Incinerating	51	32 to 42	63 to 74	0.87%	3xAlteration Shard
+T2	Blasting	62	38 to 51	77 to 89	0.87%	3xAlteration Shard
+T1	Cremating	74	45 to 61	91 to 106	0.87%	3xAlteration Shard
+
+Adds # to Cold Damage, Adds # to Cold Damage
+T9	Frosted	2	1 to 2	3	0.87%	1xAlteration Shard
+T8	Chilled	12	6 to 8	13 to 15	0.87%	1xAlteration Shard
+T7	Icy	19	10 to 13	19 to 23	0.87%	1xAlteration Shard
+T6	Frigid	27	14 to 18	27 to 32	0.87%	1xAlteration Shard
+T5	Freezing	34	17 to 23	34 to 40	0.87%	1xAlteration Shard
+T4	Frozen	43	22 to 29	43 to 50	0.87%	1xAlteration Shard
+T3	Glaciated	52	26 to 35	52 to 60	0.87%	1xAlteration Shard
+T2	Polar	63	31 to 42	63 to 73	0.87%	1xAlteration Shard
+T1	Entombing	75	37 to 50	74 to 87	0.87%	1xAlteration Shard
+
+Adds # to Lightning Damage, Adds # to Lightning Damage
+T9	Humming	3	1	6	0.87%	3xAlteration Shard
+T8	Buzzing	13	1 to 2	27 to 28	0.87%	3xAlteration Shard
+T7	Snapping	19	1 to 3	41 to 43	0.87%	3xAlteration Shard
+T6	Crackling	31	2 to 5	58 to 61	0.87%	3xAlteration Shard
+T5	Sparking	34	2 to 6	72 to 76	0.87%	3xAlteration Shard
+T4	Arcing	42	2 to 7	91 to 96	0.87%	3xAlteration Shard
+T3	Shocking	51	3 to 9	110 to 116	0.87%	3xAlteration Shard
+T2	Discharging	63	4 to 11	133 to 140	0.87%	3xAlteration Shard
+T1	Electrocuting	74	4 to 13	158 to 166	0.87%	3xAlteration Shard
+
+#% increased Spell Damage
+T8	Apprentice's	2	10 to 19	0.82%	5xAlteration Shard
+T7	Adept's	11	20 to 29	0.82%	5xAlteration Shard
+T6	Scholar's	23	30 to 39	0.82%	5xAlteration Shard
+T5	Professor's	35	40 to 49	0.33%	5xAlteration Shard
+T4	Occultist's	46	50 to 59	0.16%	5xAlteration Shard
+T3	Incanter's	58	60 to 69	0.08%	5xAlteration Shard
+T2	Glyphic	64	70 to 74	0.04%	5xAlteration Shard
+T1	Runic	84	75 to 79	0.02%	5xAlteration Shard
+
+#% increased Spell Damage, # to maximum Mana
+T7	Caster's	2	5 to 9	8 to 10	0.82%	3xAlteration Shard
+T6	Conjuror's	11	10 to 14	11 to 13	0.82%	3xAlteration Shard
+T5	Wizard's	23	15 to 19	14 to 16	0.82%	3xAlteration Shard
+T4	Warlock's	35	20 to 24	17 to 19	0.65%	3xAlteration Shard
+T3	Mage's	46	25 to 29	20 to 22	0.33%	3xAlteration Shard
+T2	Archmage's	58	30 to 34	23 to 25	0.16%	3xAlteration Shard
+T1	Lich's	80	35 to 39	26 to 28	0.08%	3xAlteration Shard
+
+#% increased Fire Damage
+T8	Searing	2	10 to 19	0.27%	3xAlteration Shard
+T7	Sizzling	11	20 to 29	0.27%	3xAlteration Shard
+T6	Blistering	23	30 to 39	0.27%	3xAlteration Shard
+T5	Cauterising	35	40 to 49	0.11%	3xAlteration Shard
+T4	Volcanic	46	50 to 59	0.05%	3xAlteration Shard
+T3	Magmatic	58	60 to 69	0.03%	3xAlteration Shard
+T2	Pyroclastic	64	70 to 74	0.01%	3xAlteration Shard
+T1	Xoph's	84	75 to 79	0.01%	3xAlteration Shard
+
+#% increased Cold Damage
+T8	Bitter	2	10 to 19	0.27%	3xAlteration Shard
+T7	Biting	11	20 to 29	0.27%	3xAlteration Shard
+T6	Alpine	23	30 to 39	0.27%	3xAlteration Shard
+T5	Snowy	35	40 to 49	0.11%	3xAlteration Shard
+T4	Hailing	46	50 to 59	0.05%	3xAlteration Shard
+T3	Crystalline	58	60 to 69	0.03%	3xAlteration Shard
+T2	Cryomancer's	64	70 to 74	0.01%	3xAlteration Shard
+T1	Tul's	84	75 to 79	0.01%	3xAlteration Shard
+
+#% increased Lightning Damage
+T8	Charged	2	10 to 19	0.27%	3xAlteration Shard
+T7	Hissing	11	20 to 29	0.27%	3xAlteration Shard
+T6	Bolting	23	30 to 39	0.27%	3xAlteration Shard
+T5	Coursing	35	40 to 49	0.11%	3xAlteration Shard
+T4	Striking	46	50 to 59	0.05%	3xAlteration Shard
+T3	Smiting	58	60 to 69	0.03%	3xAlteration Shard
+T2	Ionising	64	70 to 74	0.01%	3xAlteration Shard
+T1	Esh's	84	75 to 79	0.01%	3xAlteration Shard
+
+#% increased Elemental Damage with Attack Skills
+T5	Catalysing	4	5 to 10	0.33%	3xAlteration Shard
+T4	Infusing	15	11 to 20	0.33%	3xAlteration Shard
+T3	Empowering	30	21 to 30	0.33%	3xAlteration Shard
+T2	Unleashed	60	31 to 37	0.33%	3xAlteration Shard
+T1	Overpowering	81	38 to 42	0.33%	3xAlteration Shard
+
+# to Level of Socketed Gems
+T1	Paragon's	50	1	0.27%	4xAlchemy Shard
+
+# to Level of Socketed Fire Gems
+T2	Flame Spinner's	2	1	1.09%	4xAlchemy Shard
+T1	Lava Caller's	55	2	1.09%	4xAlchemy Shard
+
+# to Level of Socketed Cold Gems
+T2	Frost Weaver's	2	1	1.09%	4xAlchemy Shard
+T1	Winterbringer's	55	2	1.09%	4xAlchemy Shard
+
+# to Level of Socketed Lightning Gems
+T2	Thunder Lord's	2	1	1.09%	4xAlchemy Shard
+T1	Tempest King's	55	2	1.09%	4xAlchemy Shard
+
+# to Level of Socketed Melee Gems
+T2	Combatant's	8	1	1.09%	4xAlchemy Shard
+T1	Weaponmaster's	63	2	1.09%	4xAlchemy Shard
+
+#% of Physical Attack Damage Leeched as Life
+T3	Remora's	50	0.2 to 0.4	1.09%	3xAlteration Shard
+T2	Lamprey's	60	0.6 to 0.8	0.55%	3xAlteration Shard
+T1	Vampire's	70	1 to 1.2	0.27%	3xAlteration Shard
+
+#% of Physical Attack Damage Leeched as Mana
+T1	Thirsty	50	0.2 to 0.4	1.09%	5xAlteration Shard
+
+Adds # to Fire Damage to Spells, Adds # to Fire Damage to Spells
+T9	Heated	1	1 to 2	3 to 4	0.87%	3xAlteration Shard
+T8	Smouldering	11	6 to 8	12 to 14	0.87%	3xAlteration Shard
+T7	Smoking	18	10 to 13	19 to 22	0.87%	3xAlteration Shard
+T6	Burning	26	13 to 18	27 to 31	0.87%	3xAlteration Shard
+T5	Flaming	33	17 to 22	33 to 39	0.87%	3xAlteration Shard
+T4	Scorching	42	21 to 28	42 to 49	0.87%	3xAlteration Shard
+T3	Incinerating	51	25 to 34	51 to 59	0.87%	3xAlteration Shard
+T2	Blasting	62	31 to 41	61 to 71	0.87%	3xAlteration Shard
+T1	Cremating	74	36 to 49	73 to 85	0.87%	3xAlteration Shard
+
+Adds # to Cold Damage to Spells, Adds # to Cold Damage to Spells
+T9	Frosted	1	1	2 to 3	0.87%	3xAlteration Shard
+T8	Chilled	11	5 to 7	10 to 12	0.87%	3xAlteration Shard
+T7	Icy	18	8 to 10	16 to 18	0.87%	3xAlteration Shard
+T6	Frigid	26	11 to 15	22 to 25	0.87%	3xAlteration Shard
+T5	Freezing	33	14 to 18	27 to 32	0.87%	3xAlteration Shard
+T4	Frozen	42	17 to 23	34 to 40	0.87%	3xAlteration Shard
+T3	Glaciated	51	21 to 28	41 to 48	0.87%	3xAlteration Shard
+T2	Polar	62	25 to 33	50 to 58	0.87%	3xAlteration Shard
+T1	Entombing	74	30 to 40	60 to 69	0.87%	3xAlteration Shard
+
+Adds # to Lightning Damage to Spells, Adds # to Lightning Damage to Spells
+T9	Humming	1	1	4 to 5	0.87%	3xAlteration Shard
+T8	Buzzing	11	1 to 2	21 to 22	0.87%	3xAlteration Shard
+T7	Snapping	18	1 to 3	33 to 35	0.87%	3xAlteration Shard
+T6	Crackling	26	1 to 4	46 to 49	0.87%	3xAlteration Shard
+T5	Sparking	33	2 to 5	58 to 61	0.87%	3xAlteration Shard
+T4	Arcing	42	2 to 6	73 to 77	0.87%	3xAlteration Shard
+T3	Shocking	51	2 to 7	88 to 93	0.87%	3xAlteration Shard
+T2	Discharging	62	3 to 9	106 to 112	0.87%	3xAlteration Shard
+T1	Electrocuting	74	3 to 10	126 to 133	0.87%	3xAlteration Shard
+
+Adds # to Chaos Damage, Adds # to Chaos Damage
+T1	Malicious	83	47 to 72	98 to 123	0.44%	2xAlchemy Shard

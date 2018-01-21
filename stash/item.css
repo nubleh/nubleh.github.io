@@ -1,0 +1,140 @@
+
+.item {
+  position: absolute;
+  width: 84px;
+  height: 168px;
+  top: 278px;
+  left: 278px;
+}
+@keyframes shaper {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -2628px -2628px;
+  }
+}
+.item::before {
+  content: '';
+  position: absolute;
+  width: 308px;
+  height: 468px;
+  transform: scale(0.249);
+  transform-origin: top left;
+  top: 26px;
+  left: 4px;
+  background-image: url('ui/shaper.png');
+  background-size: 2628px 2628px;
+  animation: shaper 180s infinite linear;
+}
+.itemSprite {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 84px;
+  height: 168px;
+  background-image: url('ui/sambarsceptre.png'), url('ui/shapermask.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% auto, 78px 117px;
+}
+.itemSprite:hover + .itemTooltip {
+  display: block;
+}
+.itemTooltip {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+}
+.itemToolTipHeader {
+  line-height: 34px;
+  background-image: url('ui/ItemsHeaderWhiteMiddle.png');
+  position: relative;
+  padding: 0 64px;
+  color: #c8c8c8;
+  font-size: 19px;
+}
+.itemToolTipHeader.magic {
+  color: #8888ff;
+  background-image: url('ui/ItemsHeaderMagicMiddle.png');
+}
+.itemToolTipHeader.rare {
+  color: #ffff77;
+  background-image: url('ui/ItemsHeaderRareMiddle.png');
+  line-height: 27px;
+}
+.itemToolTipHeader::before,
+.itemToolTipHeader::after {
+  content: '';
+  display: inline-block;
+  width: 29px;
+  height: 34px;
+  position: absolute;
+  top: 0;
+  background-repeat: no-repeat;
+  background-position: center, 0 0;
+}
+.itemToolTipHeader::before {
+  left: 0;
+  background-image: url('ui/ShaperItemSymbol.png'), url('ui/ItemsHeaderWhiteLeft.png');
+}
+.itemToolTipHeader::after {
+  right: 0;
+  background-image: url('ui/ShaperItemSymbol.png'), url('ui/ItemsHeaderWhiteRight.png');
+}
+.itemToolTipHeader.magic::before {
+  left: 0;
+  background-image: url('ui/ShaperItemSymbol.png'), url('ui/ItemsHeaderMagicLeft.png');
+}
+.itemToolTipHeader.magic::after {
+  right: 0;
+  background-image: url('ui/ShaperItemSymbol.png'), url('ui/ItemsHeaderMagicRight.png');
+}
+.itemToolTipHeader.rare::before,
+.itemToolTipHeader.rare::after {
+  width: 44px;
+  height: 54px;
+}
+.itemToolTipHeader.rare::before {
+  left: 0;
+  background-image: url('ui/ShaperItemSymbol.png'), url('ui/ItemsHeaderRareLeft.png');
+  background-position: 4px center, 0 0;
+}
+.itemToolTipHeader.rare::after {
+  background-image: url('ui/ShaperItemSymbol.png'), url('ui/ItemsHeaderRareRight.png');
+  background-position: calc(100% - 4px) center, 0 0;
+}
+
+.tooltipBody {
+  padding: 5px;
+  font-size: 14px;
+}
+.attr {
+  color: #7f7f7f;
+}
+
+.attr span {
+  color: white;
+}
+
+hr {
+  border: none;
+  background: url('ui/ItemsSeparatorWhite.png') center no-repeat;
+  height: 8px;
+  margin: 1px 0px;
+}
+.tooltipBody.magic hr {
+  background: url('ui/ItemsSeparatorMagic.png') center no-repeat;
+}
+.tooltipBody.rare hr {
+  background: url('ui/ItemsSeparatorRare.png') center no-repeat;
+}
+
+.mod {
+  color: #8888ff;
+}

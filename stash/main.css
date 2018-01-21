@@ -1,0 +1,23 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: black;
+  color: white;
+  font-family: 'FontinSmallCaps', sans-serif;
+}
+
+/* A font by Jos Buivenga (exljbris) -> www.exljbris.com */
+@font-face {
+  font-family: 'FontinSmallCaps';
+  src: url('Fontin-SmallCaps.ttf')  format('truetype'), url('Fontin-SmallCaps.ttf')  format('opentype');
+}
+
+.stash {
+  margin: 0 auto;
+  width: 632px;
+  height: 632px;
+  background-image: url('ui/currencystash.png');
+  background-size: 632px auto;
+  background-repeat: no-repeat;
+  position: relative;
+}
