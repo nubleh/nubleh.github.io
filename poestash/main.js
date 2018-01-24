@@ -77,7 +77,7 @@ var vm = new Vue({
         if(affix.mods.length > 1 && affix.mods[0] === affix.mods[1]){
           // a multi-value mod
           affixes[affix.mods[0]] = {
-            text: affix.mods[0].replace('#', affix.value[0] + '-' + affix.value[1]),
+            text: affix.mods[0].replace('#', affix.value[0] + ' to ' + affix.value[1]),
           }
         } else {
           affix.mods.map(function(mod, index){
@@ -91,7 +91,22 @@ var vm = new Vue({
           });
         }
       });
-      return affixes;
+      return Object.keys(affixes).map(function(key){
+        return {
+          key: affixes[key].text.replace(/\d+/g, '#'),
+          text: affixes[key].text
+        };
+      }).sort(function(modA, modB){
+        var modAOrderIndex = modOrder.indexOf(modA.key);
+        var modBOrderIndex = modOrder.indexOf(modB.key);
+        if (modAOrderIndex === -1){
+          console.log(modA.key);
+        }
+        if (modBOrderIndex === -1){
+          console.log(modB.key);
+        }
+        return modAOrderIndex - modBOrderIndex;
+      });
     }
   },
   methods: {
