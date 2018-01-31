@@ -1,5 +1,10 @@
 'use strict';
 
+Vue.component('sockets', {
+  name: 'sockets',
+  props: ['sockets'],
+  template: '#component-sockets'
+});
 var vm = new Vue({
   el: '#mount',
   template: '#main-app',

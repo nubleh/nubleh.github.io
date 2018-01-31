@@ -56,6 +56,12 @@ body {
   height: 40px;
   text-align: center;
   padding-top: 10px;
+  position: relative;
+}
+
+.equipped-slot span {
+  position: relative;
+  padding-right: 20px;
 }
 
 .armor-pool {
@@ -69,6 +75,7 @@ body {
   padding: 10px;
   cursor: pointer;
   position: relative;
+  padding-right: 20px;
 }
 
 .armor-piece:hover {
@@ -91,4 +98,37 @@ body {
   top: 0;
   right: 0;
   padding: 20px;
+}
+
+.sockets {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+}
+
+.sockets > div {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+.sockets .socket {
+  border-radius: 20px;
+  background: black;
+}
+
+.sockets .socket.small {
+  width: 4px;
+  height: 4px;
+}
+
+.sockets .socket.medium {
+  width: 8px;
+  height: 8px;
+}
+
+.sockets .socket.big {
+  width: 12px;
+  height: 12px;
 }

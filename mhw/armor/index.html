@@ -6,6 +6,15 @@
 </head>
 <body>
 	<div id="mount"></div>
+	<template id="component-sockets">
+		<div class="sockets">
+			<template v-for="value in sockets">
+				<div v-if="value === 1" class="socket small"></div>
+				<div v-if="value === 2" class="socket medium"></div>
+				<div v-if="value === 3" class="socket big"></div>
+			</template>
+		</div>
+	</template>
 	<template id="main-app">
 		<div class="main-app">
 			<div class="equipped-skills">
@@ -39,7 +48,12 @@
 			<div class="armors">
 				<div class="armor-slot" v-for="slot in Object.keys(equipper)">
 					<div class="equipped-slot">
-						<template v-if="equipper[slot]">{{ equipper[slot].name }}</template>
+						<template v-if="equipper[slot]">
+							<span>
+								{{ equipper[slot].name }}
+								<sockets :sockets="equipper[slot].sockets"></sockets>
+							</span>
+						</template>
 					</div>
 					<div class="armor-pool">
 						<div class="armor-piece"
@@ -56,6 +70,7 @@
 								{{ skill.name }} {{ skill.level }}
 							</div>
 							{{ item.name }}
+							<sockets :sockets="item.sockets"></sockets>
 						</div>
 					</div>
 				</div>
