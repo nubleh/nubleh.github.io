@@ -8,6 +8,14 @@
 			// head chest waist arms legs
 			for(var x = 0; x < armor.length; x++){
 				var item = armor[x];
+				if (typeof item.rank === 'undefined') {
+					console.log(item.name);
+					if (item.name.match('Alpha') || item.name.match('Beta')) {
+						item.rank = 'high';
+					} else {
+						item.rank = 'low';
+					}
+				}
 				if (typeof item.slot === 'undefined') {
 					console.log(item.name);
 					if (item.name.match('Specta')){

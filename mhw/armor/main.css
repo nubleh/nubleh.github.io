@@ -1,71 +1,94 @@
 body {
   margin: 0;
   padding: 0;
-  background: black;
-  color: white;
   font-family: sans-serif;
+  overflow: hidden;
 }
 
-.armor-item {
-  border: solid 1px #333;
+.main-app {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.equipped-skills {
+  height: 200px;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  overflow: auto;
+  background: #f7f7f7;
+}
+
+.skill-item {
+  cursor: pointer;
   display: inline-block;
+  padding: 4px;
+}
+
+.skill-item:hover {
+  background: #eee;
+}
+
+.armors {
+  padding-top: 200px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  box-sizing: border-box;
+}
+
+.armor-slot {
+  height: 100%;
+  width: 20%;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.equipped-slot {
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.armor-pool {
+  height: calc(100% - 40px);
+  overflow: auto;
   padding: 10px;
-  margin: 10px;
-  text-align: center;
-  vertical-align: top;
+  box-sizing: border-box;
 }
 
-.armor-name,
-.armor-skills,
-.armor-sockets {
-  margin: 20px;
-}
-
-.armor-sockets {
-  height: 30px;
-}
-
-.armor-socket {
-  width: 20px;
-  height: 20px;
-  border-radius: 20px;
-  display: inline-block;
-  margin: 4px;
-  line-height: 20px;
-  text-align: center;
-  border: solid 1px white;
-  vertical-align: middle;
+.armor-piece {
+  padding: 10px;
+  cursor: pointer;
   position: relative;
 }
 
-.armor-socket.no-socket {
-  height: 0;
-  overflow: hidden;
-  border-radius: 0;
-  margin: 8px 4px;
+.armor-piece:hover {
+  background: #eee;
 }
 
-.armor-socket > div {
-  background: white;
-  border-radius: 20px;
+.armor-piece:hover .armor-skill {
+  display: block;
+}
+
+.armor-skill {
+  display: none;
+  color: #666;
+  font-size: 0.8em;
+  margin: 4px 0;
+}
+
+.query-controls {
   position: absolute;
-}
-
-.socket-small {
-  width: 4px;
-  height: 4px;
-  top: 8px;
-  left: 8px;
-}
-
-.socket-medium {
-  width: 12px;
-  height: 12px;
-  top: 4px;
-  left: 4px;
-}
-
-.socket-big {
-  width: 20px;
-  height: 20px;
+  top: 0;
+  right: 0;
+  padding: 20px;
 }

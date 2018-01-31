@@ -12,7 +12,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "low"
   },
   {
     "name": "Leather Mail",
@@ -22,7 +23,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "low"
   },
   {
     "name": "Leather Gloves",
@@ -32,7 +34,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "low"
   },
   {
     "name": "Leather Belt",
@@ -42,7 +45,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "low"
   },
   {
     "name": "Leather Trousers",
@@ -52,7 +56,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "low"
   },
   {
     "name": "Chainmail Headgear",
@@ -67,7 +72,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "low"
   },
   {
     "name": "Chainmail Vest",
@@ -77,7 +83,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "low"
   },
   {
     "name": "Chainmail Gloves",
@@ -87,7 +94,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "low"
   },
   {
     "name": "Chainmail Belt",
@@ -97,7 +105,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "low"
   },
   {
     "name": "Chainmail Trousers",
@@ -107,7 +116,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "low"
   },
   {
     "name": "Hunter's Headgear",
@@ -122,7 +132,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "low"
   },
   {
     "name": "Hunter's Mail",
@@ -137,7 +148,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "low"
   },
   {
     "name": "Hunter's Vambraces",
@@ -152,7 +164,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "low"
   },
   {
     "name": "Hunter's Coil",
@@ -167,7 +180,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "low"
   },
   {
     "name": "Hunter's Greaves",
@@ -182,7 +196,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "low"
   },
   {
     "name": "Bone Helm",
@@ -197,7 +212,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "low"
   },
   {
     "name": "Bone Mail",
@@ -212,7 +228,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "low"
   },
   {
     "name": "Bone Vambraces",
@@ -227,7 +244,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "low"
   },
   {
     "name": "Bone Coil",
@@ -242,7 +260,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "low"
   },
   {
     "name": "Bone Greaves",
@@ -257,7 +276,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "low"
   },
   {
     "name": "Vespoid Helm",
@@ -272,7 +292,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "low"
   },
   {
     "name": "Vespoid Mail",
@@ -287,7 +308,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "low"
   },
   {
     "name": "Vespoid Vambraces",
@@ -302,7 +324,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "low"
   },
   {
     "name": "Vespoid Coil",
@@ -317,7 +340,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "low"
   },
   {
     "name": "Vespoid Greaves",
@@ -332,7 +356,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "low"
   },
   {
     "name": "Kestodon Guards",
@@ -347,7 +372,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "low"
   },
   {
     "name": "Jagras Helm",
@@ -362,7 +388,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "low"
   },
   {
     "name": "Jagras Mail",
@@ -377,7 +404,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "low"
   },
   {
     "name": "Jagras Vambraces",
@@ -392,7 +420,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "low"
   },
   {
     "name": "Jagras Coil",
@@ -407,7 +436,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "low"
   },
   {
     "name": "Jagras Greaves",
@@ -422,7 +452,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "low"
   },
   {
     "name": "Kulu Headpiece",
@@ -437,7 +468,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "low"
   },
   {
     "name": "Kulu Mail",
@@ -452,7 +484,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "low"
   },
   {
     "name": "Kulu Vambraces",
@@ -467,7 +500,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "low"
   },
   {
     "name": "Kulu Coil",
@@ -482,7 +516,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "low"
   },
   {
     "name": "Kulu Greaves",
@@ -497,7 +532,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "low"
   },
   {
     "name": "Alloy Helm",
@@ -512,7 +548,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "low"
   },
   {
     "name": "Alloy Mail",
@@ -527,7 +564,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "low"
   },
   {
     "name": "Alloy Vambraces",
@@ -542,7 +580,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "low"
   },
   {
     "name": "Alloy Coil",
@@ -557,7 +596,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "low"
   },
   {
     "name": "Alloy Greaves",
@@ -572,7 +612,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "low"
   },
   {
     "name": "Pukei Hood",
@@ -587,7 +628,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "low"
   },
   {
     "name": "Pukei Mail",
@@ -602,7 +644,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "low"
   },
   {
     "name": "Pukei Vambraces",
@@ -617,7 +660,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "low"
   },
   {
     "name": "Pukei Coil",
@@ -632,7 +676,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "low"
   },
   {
     "name": "Pukei Greaves",
@@ -647,7 +692,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "low"
   },
   {
     "name": "Barroth Helm",
@@ -662,7 +708,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "low"
   },
   {
     "name": "Barroth Mail",
@@ -677,7 +724,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "low"
   },
   {
     "name": "Barroth Vambraces",
@@ -692,7 +740,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "low"
   },
   {
     "name": "Barroth Coil",
@@ -707,7 +756,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "low"
   },
   {
     "name": "Barroth Greaves",
@@ -722,7 +772,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "low"
   },
   {
     "name": "Jyura Helm",
@@ -737,7 +788,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "low"
   },
   {
     "name": "Jyura Mail",
@@ -752,7 +804,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "low"
   },
   {
     "name": "Jyura Vambraces",
@@ -767,7 +820,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "low"
   },
   {
     "name": "Jyura Coil",
@@ -782,7 +836,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "low"
   },
   {
     "name": "Jyura Greaves",
@@ -797,7 +852,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "low"
   },
   {
     "name": "Kadachi Helm",
@@ -812,7 +868,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "low"
   },
   {
     "name": "Kadachi Mail",
@@ -827,7 +884,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "low"
   },
   {
     "name": "Kadachi Vambraces",
@@ -842,7 +900,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "low"
   },
   {
     "name": "Kadachi Coil",
@@ -857,7 +916,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "low"
   },
   {
     "name": "Kadachi Greaves",
@@ -872,7 +932,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "low"
   },
   {
     "name": "High Metal Helm",
@@ -887,7 +948,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "low"
   },
   {
     "name": "High Metal Mail",
@@ -902,7 +964,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "low"
   },
   {
     "name": "High Metal Braces",
@@ -917,7 +980,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "low"
   },
   {
     "name": "High Metal Coil",
@@ -932,7 +996,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "low"
   },
   {
     "name": "High Metal Greaves",
@@ -947,7 +1012,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "low"
   },
   {
     "name": "Shamos Goggles",
@@ -962,7 +1028,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "low"
   },
   {
     "name": "Hornetaur Helm",
@@ -977,7 +1044,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "low"
   },
   {
     "name": "Hornetaur Mail",
@@ -992,7 +1060,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "low"
   },
   {
     "name": "Hornetaur Vambraces",
@@ -1007,7 +1076,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "low"
   },
   {
     "name": "Hornetaur Coil",
@@ -1022,7 +1092,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "low"
   },
   {
     "name": "Hornetaur Greaves",
@@ -1037,7 +1108,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "low"
   },
   {
     "name": "Anja Helm",
@@ -1052,7 +1124,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "low"
   },
   {
     "name": "Anja Mail",
@@ -1067,7 +1140,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "low"
   },
   {
     "name": "Anja Vambraces",
@@ -1082,7 +1156,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "low"
   },
   {
     "name": "Anja Coil",
@@ -1097,7 +1172,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "low"
   },
   {
     "name": "Anja Greaves",
@@ -1112,7 +1188,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "low"
   },
   {
     "name": "Rathian Helm",
@@ -1127,7 +1204,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "low"
   },
   {
     "name": "Rathian Mail",
@@ -1142,7 +1220,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "low"
   },
   {
     "name": "Rathian Vambraces",
@@ -1157,7 +1236,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "low"
   },
   {
     "name": "Rathian Coil",
@@ -1172,7 +1252,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "low"
   },
   {
     "name": "Rathian Greaves",
@@ -1187,7 +1268,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "low"
   },
   {
     "name": "Tzitzi Headgear",
@@ -1202,7 +1284,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "low"
   },
   {
     "name": "Tzitzi Mail",
@@ -1217,7 +1300,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "low"
   },
   {
     "name": "Tzitzi Vambraces",
@@ -1232,7 +1316,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "low"
   },
   {
     "name": "Tzitzi Coil",
@@ -1247,7 +1332,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "low"
   },
   {
     "name": "Tzitzi Greaves",
@@ -1262,7 +1348,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "low"
   },
   {
     "name": "Lumu Hat",
@@ -1277,7 +1364,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "low"
   },
   {
     "name": "Lumu Mail",
@@ -1292,7 +1380,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "low"
   },
   {
     "name": "Lumu Vambraces",
@@ -1307,7 +1396,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "low"
   },
   {
     "name": "Lumu Coil",
@@ -1322,7 +1412,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "low"
   },
   {
     "name": "Lumu Greaves",
@@ -1337,7 +1428,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "low"
   },
   {
     "name": "Girros Mask",
@@ -1352,7 +1444,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "low"
   },
   {
     "name": "Girros Mail",
@@ -1367,7 +1460,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "low"
   },
   {
     "name": "Girros Vambraces",
@@ -1382,7 +1476,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "low"
   },
   {
     "name": "Girros Coil",
@@ -1397,7 +1492,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "low"
   },
   {
     "name": "Girros Greaves",
@@ -1412,7 +1508,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "low"
   },
   {
     "name": "Baan Helm",
@@ -1427,7 +1524,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "low"
   },
   {
     "name": "Baan Mail",
@@ -1442,7 +1540,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "low"
   },
   {
     "name": "Baan Vambraces",
@@ -1457,7 +1556,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "low"
   },
   {
     "name": "Baan Coil",
@@ -1472,7 +1572,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "low"
   },
   {
     "name": "Baan Greaves",
@@ -1487,7 +1588,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "low"
   },
   {
     "name": "Ingot Helm",
@@ -1502,7 +1604,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "low"
   },
   {
     "name": "Ingot Mail",
@@ -1517,7 +1620,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "low"
   },
   {
     "name": "Ingot Vambraces",
@@ -1532,7 +1636,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "low"
   },
   {
     "name": "Ingot Coil",
@@ -1547,7 +1652,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "low"
   },
   {
     "name": "Ingot Greaves",
@@ -1562,7 +1668,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "low"
   },
   {
     "name": "Legiana Helm",
@@ -1577,7 +1684,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "low"
   },
   {
     "name": "Legiana Mail",
@@ -1592,7 +1700,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "low"
   },
   {
     "name": "Legiana Vambraces",
@@ -1607,7 +1716,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "low"
   },
   {
     "name": "Legiana Coil",
@@ -1622,7 +1732,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "low"
   },
   {
     "name": "Legiana Greaves",
@@ -1637,7 +1748,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "low"
   },
   {
     "name": "Odogaron Helm",
@@ -1652,7 +1764,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "low"
   },
   {
     "name": "Odogaron Mail",
@@ -1667,7 +1780,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "low"
   },
   {
     "name": "Odogaron Vambraces",
@@ -1682,7 +1796,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "low"
   },
   {
     "name": "Odogaron Coil",
@@ -1697,7 +1812,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "low"
   },
   {
     "name": "Odogaron Greaves",
@@ -1712,7 +1828,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "low"
   },
   {
     "name": "Rathalos Helm",
@@ -1727,7 +1844,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "low"
   },
   {
     "name": "Rathalos Mail",
@@ -1742,7 +1860,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "low"
   },
   {
     "name": "Rathalos Vambraces",
@@ -1757,7 +1876,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "low"
   },
   {
     "name": "Rathalos Coil",
@@ -1772,7 +1892,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "low"
   },
   {
     "name": "Rathalos Greaves",
@@ -1787,7 +1908,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "low"
   },
   {
     "name": "Diablos Helm",
@@ -1802,7 +1924,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "low"
   },
   {
     "name": "Diablos Mail",
@@ -1817,7 +1940,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "low"
   },
   {
     "name": "Diablos Vambraces",
@@ -1832,7 +1956,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "low"
   },
   {
     "name": "Diablos Coil",
@@ -1847,7 +1972,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "low"
   },
   {
     "name": "Diablos Greaves",
@@ -1862,7 +1988,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "low"
   },
   {
     "name": "Leather Headgear Alpha",
@@ -1877,7 +2004,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Leather Mail Alpha",
@@ -1892,7 +2020,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Leather Gloves Alpha",
@@ -1907,7 +2036,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Leather Belt Alpha",
@@ -1922,7 +2052,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Leather Trousers Alpha",
@@ -1937,7 +2068,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Leather Headgear Beta",
@@ -1952,7 +2084,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Leather Mail Beta",
@@ -1962,7 +2095,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Leather Gloves Beta",
@@ -1972,7 +2106,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Leather Belt Beta",
@@ -1982,7 +2117,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Leather Trousers Beta",
@@ -1992,7 +2128,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Chainmail Headgear Alpha",
@@ -2011,7 +2148,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Chainmail Armor Alpha",
@@ -2026,7 +2164,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Chainmail Gloves Alpha",
@@ -2041,7 +2180,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Chainmail Belt Alpha",
@@ -2056,7 +2196,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Chainmail Trousers Alpha",
@@ -2071,7 +2212,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Chainmail Headgear Beta",
@@ -2086,7 +2228,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Chainmail Armor Beta",
@@ -2096,7 +2239,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Chainmail Gloves Beta",
@@ -2106,7 +2250,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Chainmail Belt Beta",
@@ -2116,7 +2261,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Chainmail Trousers Beta",
@@ -2126,7 +2272,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Hunter's Headgear Alpha",
@@ -2145,7 +2292,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Hunter's Mail Alpha",
@@ -2160,7 +2308,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Hunter's Vambraces Alpha",
@@ -2175,7 +2324,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Hunter's Coil Alpha",
@@ -2194,7 +2344,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Hunter's Greaves Alpha",
@@ -2213,7 +2364,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Hunter's Headgear Beta",
@@ -2228,7 +2380,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Hunter's Mail Beta",
@@ -2243,7 +2396,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Hunter's Vambraces Beta",
@@ -2258,7 +2412,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Hunter's Coil Beta",
@@ -2273,7 +2428,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Hunter's Greaves Beta",
@@ -2288,7 +2444,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Bone Helm Alpha",
@@ -2307,7 +2464,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Bone Mail Alpha",
@@ -2322,7 +2480,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Bone Vambraces Alpha",
@@ -2341,7 +2500,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Bone Coil Alpha",
@@ -2360,7 +2520,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Bone Greaves Alpha",
@@ -2375,7 +2536,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Bone Helm Beta",
@@ -2390,7 +2552,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Bone Mail Beta",
@@ -2405,7 +2568,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Bone Vambraces Beta",
@@ -2420,7 +2584,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Bone Coil Beta",
@@ -2435,7 +2600,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Bone Greaves Beta",
@@ -2450,7 +2616,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Alloy Helm Alpha",
@@ -2469,7 +2636,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Alloy Mail Alpha",
@@ -2484,7 +2652,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Alloy Vambraces Alpha",
@@ -2503,7 +2672,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Alloy Coil Alpha",
@@ -2522,7 +2692,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Alloy Greaves Alpha",
@@ -2537,7 +2708,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Alloy Helm Beta",
@@ -2552,7 +2724,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Alloy Mail Beta",
@@ -2567,7 +2740,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Alloy Vambraces Beta",
@@ -2582,7 +2756,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Alloy Coil Beta",
@@ -2597,7 +2772,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Alloy Greaves Beta",
@@ -2612,7 +2788,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Butterfly Vertex Alpha",
@@ -2631,7 +2808,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Butterfly Thorax Alpha",
@@ -2650,7 +2828,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Butterfly Brachia Alpha",
@@ -2669,7 +2848,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Butterfly Elytra Alpha",
@@ -2688,7 +2868,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Butterfly Crura Alpha",
@@ -2707,7 +2888,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Butterfly Vertex Beta",
@@ -2722,7 +2904,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Butterfly Thorax Beta",
@@ -2737,7 +2920,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Butterfly Brachia Beta",
@@ -2752,7 +2936,8 @@ armor = [
       1,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Butterfly Elytra Beta",
@@ -2767,7 +2952,8 @@ armor = [
       1,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Butterfly Crura Beta",
@@ -2782,7 +2968,8 @@ armor = [
       1,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Vespoid Helm Alpha",
@@ -2801,7 +2988,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Vespoid Mail Alpha",
@@ -2816,7 +3004,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Vespoid Vambraces Alpha",
@@ -2831,7 +3020,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Vespoid Coil Alpha",
@@ -2846,7 +3036,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Vespoid Greaves Alpha",
@@ -2865,7 +3056,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Vespoid Helm Beta",
@@ -2880,7 +3072,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Vespoid Mail Beta",
@@ -2895,7 +3088,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Vespoid Vambraces Beta",
@@ -2910,7 +3104,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Vespoid Coil Beta",
@@ -2925,7 +3120,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Vespoid Greaves Beta",
@@ -2940,7 +3136,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Mossswine Mask Alpha",
@@ -2955,7 +3152,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Kestodon Guards Alpha",
@@ -2974,7 +3172,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Kestodon Guards Beta",
@@ -2989,7 +3188,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Gajau Boots Alpha",
@@ -3008,7 +3208,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Gajau Boots Beta",
@@ -3027,7 +3228,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Pukei Hood Alpha",
@@ -3042,7 +3244,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Pukei Mail Alpha",
@@ -3061,7 +3264,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Pukei Vambraces Alpha",
@@ -3080,7 +3284,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Pukei Coil Alpha",
@@ -3095,7 +3300,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Pukei Greaves Alpha",
@@ -3114,7 +3320,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Pukei Hood Beta",
@@ -3129,7 +3336,8 @@ armor = [
       1,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Pukei Mail Beta",
@@ -3144,7 +3352,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Pukei Vambraces Beta",
@@ -3159,7 +3368,8 @@ armor = [
       1,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Pukei Coil Beta",
@@ -3174,7 +3384,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Pukei Greaves Beta",
@@ -3189,7 +3400,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Barroth Helm Alpha",
@@ -3204,7 +3416,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Barroth Mail Alpha",
@@ -3219,7 +3432,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Barroth Vambraces Alpha",
@@ -3238,7 +3452,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Barroth Coil Alpha",
@@ -3257,7 +3472,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Barroth Greaves Alpha",
@@ -3276,7 +3492,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Barroth Helm Beta",
@@ -3291,7 +3508,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Barroth Mail Beta",
@@ -3306,7 +3524,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Barroth Vambraces Beta",
@@ -3321,7 +3540,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Barroth Coil Beta",
@@ -3336,7 +3556,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Barroth Greaves Beta",
@@ -3351,7 +3572,8 @@ armor = [
       1,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Anja Helm Alpha",
@@ -3370,7 +3592,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Anja Mail Alpha",
@@ -3389,7 +3612,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Anja Vambraces Alpha",
@@ -3408,7 +3632,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Anja Coil Alpha",
@@ -3427,7 +3652,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Anja Greaves Alpha",
@@ -3442,7 +3668,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Anja Helm Beta",
@@ -3457,7 +3684,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Anja Mail Beta",
@@ -3472,7 +3700,8 @@ armor = [
       1,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Anja Vambraces Beta",
@@ -3487,7 +3716,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Anja Coil Beta",
@@ -3502,7 +3732,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Anja Greaves Beta",
@@ -3517,7 +3748,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Kadachi Helm Alpha",
@@ -3532,7 +3764,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Kadachi Mail Alpha",
@@ -3551,7 +3784,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Kadachi Vambraces Alpha",
@@ -3566,7 +3800,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Kadachi Coil Alpha",
@@ -3585,7 +3820,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Kadachi Greaves Alpha",
@@ -3604,7 +3840,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Kadachi Helm Beta",
@@ -3619,7 +3856,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Kadachi Mail Beta",
@@ -3634,7 +3872,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Kadachi Vambraces Beta",
@@ -3649,7 +3888,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Kadachi Coil Beta",
@@ -3664,7 +3904,8 @@ armor = [
       1,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Kadachi Greaves Beta",
@@ -3679,7 +3920,8 @@ armor = [
       1,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Rathian Helm Alpha",
@@ -3698,7 +3940,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Rathian Mail Alpha",
@@ -3717,7 +3960,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Rathian Vambraces Alpha",
@@ -3732,7 +3976,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Rathian Coil Alpha",
@@ -3751,7 +3996,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Rathian Greaves Alpha",
@@ -3766,7 +4012,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Rathian Helm Beta",
@@ -3785,7 +4032,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Rathian Mail Beta",
@@ -3804,7 +4052,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Rathian Vambraces Beta",
@@ -3819,7 +4068,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Rathian Coil Beta",
@@ -3838,7 +4088,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Rathian Greaves Beta",
@@ -3853,7 +4104,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Zorah Headgear Apha",
@@ -3872,7 +4124,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "low"
   },
   {
     "name": "Zorah Hide Alpha",
@@ -3891,7 +4144,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Zorah Claws Alpha",
@@ -3910,7 +4164,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Zorah Spine Alpha",
@@ -3929,7 +4184,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Zorah Spurs Alpha",
@@ -3948,7 +4204,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Zorah Headgear Beta",
@@ -3963,7 +4220,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Zorah Hide Beta",
@@ -3978,7 +4236,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Zorah Claws Beta",
@@ -3993,7 +4252,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Zorah Spine Beta",
@@ -4008,7 +4268,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Zorah Spurs Beta",
@@ -4023,7 +4284,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "King Beetle Vertex Alpha",
@@ -4042,7 +4304,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "King Beetle Thorax Alpha",
@@ -4061,7 +4324,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "King Beetle Brachia Alpha",
@@ -4080,7 +4344,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "King Beetle Elytra Alpha",
@@ -4099,7 +4364,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "King Beetle Crura Alpha",
@@ -4118,7 +4384,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "King Beetle Vertex Beta",
@@ -4133,7 +4400,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "King Beetle Thorax Beta",
@@ -4148,7 +4416,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "King Beetle Brachia Beta",
@@ -4163,7 +4432,8 @@ armor = [
       1,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "King Beetle Elytra Beta",
@@ -4178,7 +4448,8 @@ armor = [
       1,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "King Beetle Crura Beta",
@@ -4193,7 +4464,8 @@ armor = [
       1,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Shamos Goggles Alpha",
@@ -4212,7 +4484,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Shamos Goggles Beta",
@@ -4227,7 +4500,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Jagras Helm Alpha",
@@ -4242,7 +4516,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Jagras Mail Alpha",
@@ -4257,7 +4532,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Jagras Vambraces Alpha",
@@ -4276,7 +4552,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Jagras Coil Alpha",
@@ -4295,7 +4572,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Jagras Greaves Alpha",
@@ -4314,7 +4592,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Jagras Helm Beta",
@@ -4329,7 +4608,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Jagras Mail Beta",
@@ -4344,7 +4624,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Jagras Vambraces Beta",
@@ -4359,7 +4640,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Jagras Coil Beta",
@@ -4374,7 +4656,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Jagras Greaves Beta",
@@ -4389,7 +4672,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Tzitzi Headgear Alpha",
@@ -4408,7 +4692,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Tzitzi Mail Alpha",
@@ -4427,7 +4712,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Tzitzi Vambraces Alpha",
@@ -4446,7 +4732,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Tzitzi Coil Alpha",
@@ -4465,7 +4752,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Tzitzi Greaves Alpha",
@@ -4480,7 +4768,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Tzitzi Headgear Beta",
@@ -4495,7 +4784,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Tzitzi Mail Beta",
@@ -4510,7 +4800,8 @@ armor = [
       1,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Tzitzi Vambraces Beta",
@@ -4525,7 +4816,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Tzitzi Coil Beta",
@@ -4540,7 +4832,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Tzitzi Greaves Beta",
@@ -4555,7 +4848,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Girros Mask Alpha",
@@ -4574,7 +4868,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Girros Mail Alpha",
@@ -4589,7 +4884,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Girros Vambraces Alpha",
@@ -4604,7 +4900,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Girros Coil Alpha",
@@ -4623,7 +4920,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Girros Greaves Alpha",
@@ -4638,7 +4936,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Girros Mask Beta",
@@ -4653,7 +4952,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Girros Mail Beta",
@@ -4668,7 +4968,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Girros Vambraces Beta",
@@ -4683,7 +4984,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Girros Coil Beta",
@@ -4698,7 +5000,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Girros Greaves Beta",
@@ -4713,7 +5016,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Jyura Helm Alpha",
@@ -4728,7 +5032,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Jyura Mail Alpha",
@@ -4747,7 +5052,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Jyura Vambraces Alpha",
@@ -4766,7 +5072,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Jyura Coil Alpha",
@@ -4781,7 +5088,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Jyura Greaves Alpha",
@@ -4796,7 +5104,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Jyura Helm Beta",
@@ -4811,7 +5120,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Jyura Mail Beta",
@@ -4826,7 +5136,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Jyura Vambraces Beta",
@@ -4841,7 +5152,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Jyura Coil Beta",
@@ -4856,7 +5168,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Jyura Greaves Beta",
@@ -4871,7 +5184,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Lumu Hat Alpha",
@@ -4886,7 +5200,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Lumu Mail Alpha",
@@ -4905,7 +5220,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Lumu Vambraces Alpha",
@@ -4920,7 +5236,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Lumu Coil Alpha",
@@ -4935,7 +5252,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Lumu Greaves Alpha",
@@ -4954,7 +5272,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Lumu Hat Beta",
@@ -4969,7 +5288,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Lumu Mail Beta",
@@ -4984,7 +5304,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Lumu Vambraces Beta",
@@ -4999,7 +5320,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Lumu Coil Beta",
@@ -5014,7 +5336,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Lumu Greaves Beta",
@@ -5029,7 +5352,8 @@ armor = [
       1,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Rath Heart Helm Alpha",
@@ -5048,7 +5372,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Rath Heart Mail Alpha",
@@ -5063,7 +5388,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Rath Heart Braces Alpha",
@@ -5078,7 +5404,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Rath Heart Coil Alpha",
@@ -5097,7 +5424,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Rath Heart Greaves Alpha",
@@ -5116,7 +5444,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Rath Heart Helm Beta",
@@ -5131,7 +5460,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Rath Heart Mail Beta",
@@ -5146,7 +5476,8 @@ armor = [
       1,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Rath Heart Braces Beta",
@@ -5161,7 +5492,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Rath Heart Coil Beta",
@@ -5176,7 +5508,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Rath Heart Greaves Beta",
@@ -5191,7 +5524,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Baan Helm Alpha",
@@ -5206,7 +5540,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Baan Mail Alpha",
@@ -5225,7 +5560,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Baan Vambraces Alpha",
@@ -5244,7 +5580,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Baan Coil Alpha",
@@ -5259,7 +5596,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Baan Greaves Alpha",
@@ -5274,7 +5612,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Baan Helm Beta",
@@ -5289,7 +5628,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Baan Mail Beta",
@@ -5304,7 +5644,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Baan Vambraces Beta",
@@ -5323,7 +5664,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Baan Coil Beta",
@@ -5338,7 +5680,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Baan Greaves Beta",
@@ -5353,7 +5696,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Barnos Jacket Alpha",
@@ -5372,7 +5716,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Barnos Jacket Beta",
@@ -5387,7 +5732,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "High Metal Helm Alpha",
@@ -5406,7 +5752,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "High Metal Mail Alpha",
@@ -5425,7 +5772,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "High Metal Braces Alpha",
@@ -5444,7 +5792,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "High Metal Coil Alpha",
@@ -5463,7 +5812,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "High Metal Greaves Alpha",
@@ -5482,7 +5832,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "High Metal Helm Beta",
@@ -5497,7 +5848,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "High Metal Mail Beta",
@@ -5516,7 +5868,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "High Metal Braces Beta",
@@ -5531,7 +5884,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "High Metal Coil Beta",
@@ -5546,7 +5900,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "High Metal Greaves Beta",
@@ -5561,7 +5916,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Ingot Helm Alpha",
@@ -5576,7 +5932,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Ingot Mail Alpha",
@@ -5591,7 +5948,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Ingot Vambraces Alpha",
@@ -5610,7 +5968,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Ingot Coil Alpha",
@@ -5625,7 +5984,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Ingot Greaves Alpha",
@@ -5644,7 +6004,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Ingot Helm Beta",
@@ -5659,7 +6020,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Ingot Mail Beta",
@@ -5674,7 +6036,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Ingot Vambraces Beta",
@@ -5689,7 +6052,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Ingot Coil Beta",
@@ -5704,7 +6068,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Ingot Greaves Beta",
@@ -5719,7 +6084,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Faux Felyne Alpha",
@@ -5734,7 +6100,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Strategist Spectacles Alpha",
@@ -5749,7 +6116,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Lavasioth Helm Alpha",
@@ -5768,7 +6136,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Lavasioth Mail Alpha",
@@ -5787,7 +6156,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Lavasioth Vambraces Alpha",
@@ -5806,7 +6176,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Lavasioth Coil Alpha",
@@ -5825,7 +6196,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Lavasioth Greaves Alpha",
@@ -5844,7 +6216,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Lavasioth Helm Beta",
@@ -5863,7 +6236,8 @@ armor = [
       1,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Lavasioth Mail Beta",
@@ -5878,7 +6252,8 @@ armor = [
       1,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Lavasioth Vambraces Beta",
@@ -5893,7 +6268,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Lavasioth Coil Beta",
@@ -5908,7 +6284,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Lavasioth Greaves Beta",
@@ -5923,7 +6300,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Legiana Helm Alpha",
@@ -5942,7 +6320,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Legiana Mail Alpha",
@@ -5961,7 +6340,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Legiana Vambraces Alpha",
@@ -5980,7 +6360,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Legiana Coil Alpha",
@@ -5999,7 +6380,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Legiana Greaves Alpha",
@@ -6018,7 +6400,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Legiana Helm Beta",
@@ -6033,7 +6416,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Legiana Mail Beta",
@@ -6048,7 +6432,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Legiana Vambraces Beta",
@@ -6063,7 +6448,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Legiana Coil Beta",
@@ -6078,7 +6464,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Legiana Greaves Beta",
@@ -6093,7 +6480,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Odogaron Helm Alpha",
@@ -6112,7 +6500,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Odogaron Mail Alpha",
@@ -6131,7 +6520,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Odogaron Vambraces Alpha",
@@ -6150,7 +6540,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Odogaron Coil Alpha",
@@ -6169,7 +6560,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Odogaron Greaves Alpha",
@@ -6188,7 +6580,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Odogaron Helm Beta",
@@ -6203,7 +6596,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Odogaron Mail Beta",
@@ -6218,7 +6612,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Odogaron Vambraces Beta",
@@ -6233,7 +6628,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Odogaron Coil Beta",
@@ -6248,7 +6644,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Odogaron Greaves Beta",
@@ -6263,7 +6660,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Rathalos Helm Alpha",
@@ -6282,7 +6680,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Rathalos Mail Alpha",
@@ -6301,7 +6700,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Rathalos Vambraces Alpha",
@@ -6320,7 +6720,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Rathalos Coil Alpha",
@@ -6339,7 +6740,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Rathalos Greaves Alpha",
@@ -6358,7 +6760,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Rathalos Helm Beta",
@@ -6373,7 +6776,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Rathalos Mail Beta",
@@ -6388,7 +6792,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Rathalos Vambraces Beta",
@@ -6403,7 +6808,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Rathalos Coil Beta",
@@ -6418,7 +6824,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Rathalos Greaves Beta",
@@ -6433,7 +6840,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Rath Soul Helm Alpha",
@@ -6452,7 +6860,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Rath Soul Mail Alpha",
@@ -6471,7 +6880,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Rath Soul Braces Alpha",
@@ -6490,7 +6900,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Rath Soul Coil Alpha",
@@ -6509,7 +6920,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Rath Soul Greaves Alpha",
@@ -6528,7 +6940,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Rath Soul Helm Beta",
@@ -6543,7 +6956,8 @@ armor = [
       1,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Rath Soul Mail Beta",
@@ -6558,7 +6972,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Rath Soul Braces Beta",
@@ -6573,7 +6988,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Rath Soul Coil Beta",
@@ -6588,7 +7004,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Rath Soul Greaves Beta",
@@ -6603,7 +7020,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Diablos Helm Alpha",
@@ -6622,7 +7040,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Diablos Mail Alpha",
@@ -6641,7 +7060,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Diablos Vambraces Alpha",
@@ -6660,7 +7080,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Diablos Coil Alpha",
@@ -6679,7 +7100,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Diablos Greaves Alpha",
@@ -6698,7 +7120,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Diablos Helm Beta",
@@ -6713,7 +7136,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Diablos Mail Beta",
@@ -6728,7 +7152,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Diablos Vambraces Beta",
@@ -6743,7 +7168,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Diablos Coil Beta",
@@ -6758,7 +7184,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Diablos Greaves Beta",
@@ -6773,7 +7200,8 @@ armor = [
       1,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Uragaan Helm Alpha",
@@ -6788,7 +7216,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Uragaan Mail Alpha",
@@ -6803,7 +7232,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Uragaan Vambraces Alpha",
@@ -6822,7 +7252,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Uragaan Coil Alpha",
@@ -6841,7 +7272,8 @@ armor = [
       1,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Uragaan Greaves Alpha",
@@ -6856,7 +7288,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Uragaan Helm Beta",
@@ -6871,7 +7304,8 @@ armor = [
       1,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Uragaan Mail Beta",
@@ -6886,7 +7320,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Uragaan Vambraces Beta",
@@ -6901,7 +7336,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Uragaan Coil Beta",
@@ -6916,7 +7352,8 @@ armor = [
       1,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Uragaan Greaves Beta",
@@ -6931,7 +7368,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Damascus Helm Alpha",
@@ -6950,7 +7388,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Damascus Mail Alpha",
@@ -6969,7 +7408,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Damascus Vambraces Alpha",
@@ -6988,7 +7428,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Damascus Coil Alpha",
@@ -7007,7 +7448,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Damascus Greaves Alpha",
@@ -7026,7 +7468,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Damascus Helm Beta",
@@ -7041,7 +7484,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Damascus Mail Beta",
@@ -7056,7 +7500,8 @@ armor = [
       1,
       1
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Damascus Vambraces Beta",
@@ -7071,7 +7516,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Damascus Coil Beta",
@@ -7086,7 +7532,8 @@ armor = [
       1,
       1
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Damascus Greaves Beta",
@@ -7101,7 +7548,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Dober Helm Alpha",
@@ -7120,7 +7568,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Dober Mail Alpha",
@@ -7139,7 +7588,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Dober Vambraces Alpha",
@@ -7158,7 +7608,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Dober Coil Alpha",
@@ -7177,7 +7628,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Dober Greaves Alpha",
@@ -7196,7 +7648,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Dober Helm Beta",
@@ -7211,7 +7664,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Dober Mail Beta",
@@ -7226,7 +7680,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Dober Vambraces Beta",
@@ -7245,7 +7700,8 @@ armor = [
       1,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Dober Coil Beta",
@@ -7260,7 +7716,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Dober Greaves Beta",
@@ -7275,7 +7732,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Death Stench Brain Alpha",
@@ -7294,7 +7752,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Death Stench Muscle Alpha",
@@ -7313,7 +7772,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Death Stench Grip Alpha",
@@ -7332,7 +7792,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Death Stench Bowels Alpha",
@@ -7351,7 +7812,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Death Stench Heel Alpha",
@@ -7370,7 +7832,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Death Stench Brain Beta",
@@ -7385,7 +7848,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Death Stench Muscle Beta",
@@ -7400,7 +7864,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Death Stench Grip Beta",
@@ -7415,7 +7880,8 @@ armor = [
       1,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Death Stench Bowels Beta",
@@ -7430,7 +7896,8 @@ armor = [
       1,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Death Stench Heel Beta",
@@ -7445,7 +7912,8 @@ armor = [
       1,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Skull Mask Alpha",
@@ -7460,7 +7928,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Nergigante Helm Alpha",
@@ -7479,7 +7948,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Nergigante Mail Alpha",
@@ -7498,7 +7968,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Nergigante Vambraces Alpha",
@@ -7517,7 +7988,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Nergigante Coil Alpha",
@@ -7536,7 +8008,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Nergigante Greaves Alpha",
@@ -7555,7 +8028,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Nergigante Helm Beta",
@@ -7570,7 +8044,8 @@ armor = [
       1,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Nergigante Mail Beta",
@@ -7585,7 +8060,8 @@ armor = [
       1,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Nergigante Vambraces Beta",
@@ -7600,7 +8076,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Nergigante Coil Beta",
@@ -7615,7 +8092,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Nergigante Greaves Beta",
@@ -7630,7 +8108,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Kaiser Crown Alpha",
@@ -7645,7 +8124,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Kaiser Mail Alpha",
@@ -7664,7 +8144,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Kaiser Vambraces Alpha",
@@ -7679,7 +8160,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Kaiser Coil Alpha",
@@ -7698,7 +8180,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Kaiser Greaves Alpha",
@@ -7717,7 +8200,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Kaiser Crown Beta",
@@ -7732,7 +8216,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Kaiser Mail Beta",
@@ -7747,7 +8232,8 @@ armor = [
       1,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Kaiser Vambraces Beta",
@@ -7762,7 +8248,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Kaiser Coil Beta",
@@ -7777,7 +8264,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Kaiser Greaves Beta",
@@ -7792,7 +8280,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Kushala Glare Alpha",
@@ -7811,7 +8300,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Kushala Cista Alpha",
@@ -7830,7 +8320,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Kushala Grip Alpha",
@@ -7849,7 +8340,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Kushala Cocoon Alpha",
@@ -7868,7 +8360,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Kushala Crus Alpha",
@@ -7887,7 +8380,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Kushala Glare Beta",
@@ -7902,7 +8396,8 @@ armor = [
       1,
       1
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Kushala Cista Beta",
@@ -7917,7 +8412,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Kushala Grip Beta",
@@ -7932,7 +8428,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Kushala Cocoon Beta",
@@ -7947,7 +8444,8 @@ armor = [
       1,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Kushala Crus Beta",
@@ -7962,7 +8460,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Vaal Hazak Helm Alpha",
@@ -7981,7 +8480,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Vaal Hazak Mail Alpha",
@@ -8000,7 +8500,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Vaal Hazak Braces Alpha",
@@ -8019,7 +8520,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Vaal Hazak Coil Alpha",
@@ -8038,7 +8540,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Vaal Hazak Greaves Alpha",
@@ -8057,7 +8560,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Vaal Hazak Helm Beta",
@@ -8072,7 +8576,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Vaal Hazak Mail Beta",
@@ -8087,7 +8592,8 @@ armor = [
       1,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Vaal Hazak Braces Beta",
@@ -8102,7 +8608,8 @@ armor = [
       1,
       1
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Vaal Hazak Coil Beta",
@@ -8117,7 +8624,8 @@ armor = [
       1,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Vaal Hazak Greaves Beta",
@@ -8132,7 +8640,8 @@ armor = [
       1,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Xeno'jiiva Headgear Alpha",
@@ -8151,7 +8660,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Xeno'jiiva Hide Alpha",
@@ -8170,7 +8680,8 @@ armor = [
       0,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Xeno'jiiva Claws Alpha",
@@ -8189,7 +8700,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Xeno'jiiva Spine Alpha",
@@ -8208,7 +8720,8 @@ armor = [
       0,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Xeno'jiiva Spurs Alpha",
@@ -8227,7 +8740,8 @@ armor = [
       0,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Xeno'jiiva Headgear Beta",
@@ -8242,7 +8756,8 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   },
   {
     "name": "Xeno'jiiva Hide Beta",
@@ -8257,7 +8772,8 @@ armor = [
       1,
       0
     ],
-    "slot": "chest"
+    "slot": "chest",
+    "rank": "high"
   },
   {
     "name": "Xeno'jiiva Claws Beta",
@@ -8272,7 +8788,8 @@ armor = [
       0,
       0
     ],
-    "slot": "arms"
+    "slot": "arms",
+    "rank": "high"
   },
   {
     "name": "Xeno'jiiva Spine Beta",
@@ -8287,7 +8804,8 @@ armor = [
       1,
       0
     ],
-    "slot": "waist"
+    "slot": "waist",
+    "rank": "high"
   },
   {
     "name": "Xeno'jiiva Spurs Beta",
@@ -8302,7 +8820,8 @@ armor = [
       1,
       0
     ],
-    "slot": "legs"
+    "slot": "legs",
+    "rank": "high"
   },
   {
     "name": "Dragonking Eyepatch Alpha",
@@ -8317,6 +8836,7 @@ armor = [
       0,
       0
     ],
-    "slot": "head"
+    "slot": "head",
+    "rank": "high"
   }
 ];

@@ -7,21 +7,55 @@
 <body>
 	<div id="mount"></div>
 	<template id="main-app">
-		<div>
-			<div class="armor-pool">
-				<div class="armor-item" v-for="item in armor">
-					<div class="armor-name">{{ item.name }}</div>
-					<div class="armor-sockets">
-						<div class="armor-socket" :class="socket === 0 ? 'no-socket' : ''" v-for="socket in item.sockets">
-							<div class="socket-none" v-if="socket === 0">-</div>
-							<div class="socket-small" v-if="socket === 1"></div>
-							<div class="socket-medium" v-if="socket === 2"></div>
-							<div class="socket-big" v-if="socket === 3"></div>
+		<div class="main-app">
+			<div class="equipped-skills">
+				<span v-if="Object.keys(equippedSkills) < 1">Equipped skills: none!</span>
+				<div>
+					<template v-for="(level, skill) in equippedSkills">
+						<div class="skill-item" @click="search(skill)">
+							{{ skill }} {{ level }}
 						</div>
+						<br/>
+					</template>
+				</div>
+
+				<div class="query-controls">
+					<label>
+						Low Rank
+						<input type="checkbox" v-model="lowRank">
+					</label>
+					<br/>
+					<label>
+						High Rank
+						<input type="checkbox" v-model="highRank">
+					</label>
+					<br/>
+					<label>
+						Search
+						<input type="text" v-model="searchQuery">
+					</label>
+				</div>
+			</div>
+			<div class="armors">
+				<div class="armor-slot" v-for="slot in Object.keys(equipper)">
+					<div class="equipped-slot">
+						<template v-if="equipper[slot]">{{ equipper[slot].name }}</template>
 					</div>
-					<div class="armor-skills">
-						<div class="armor-skill" v-for="skill in item.skills">
-							{{ skill.name }} {{ skill.level }}
+					<div class="armor-pool">
+						<div class="armor-piece"
+							v-for="item in armorBySlot(slot)"
+							v-if="!(equipper[slot] && item.name === equipper[slot].name)"
+							@click="equip(item)"
+						>
+							<div class="armor-skill"
+								v-for="skill in item.skills"
+								:style="{
+									display: exactMatch(skill.name) ? 'block' : ''
+								}"
+							>
+								{{ skill.name }} {{ skill.level }}
+							</div>
+							{{ item.name }}
 						</div>
 					</div>
 				</div>
