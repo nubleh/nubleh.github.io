@@ -1,0 +1,35 @@
+<html>
+
+<head>
+<title>MHW armor skills</title>
+<link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+	<div id="mount"></div>
+	<template id="main-app">
+		<div>
+			<div class="armor-pool">
+				<div class="armor-item" v-for="item in armor">
+					<div class="armor-name">{{ item.name }}</div>
+					<div class="armor-sockets">
+						<div class="armor-socket" :class="socket === 0 ? 'no-socket' : ''" v-for="socket in item.sockets">
+							<div class="socket-none" v-if="socket === 0">-</div>
+							<div class="socket-small" v-if="socket === 1"></div>
+							<div class="socket-medium" v-if="socket === 2"></div>
+							<div class="socket-big" v-if="socket === 3"></div>
+						</div>
+					</div>
+					<div class="armor-skills">
+						<div class="armor-skill" v-for="skill in item.skills">
+							{{ skill.name }} {{ skill.level }}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</template>
+	<script type="text/javascript" src="vue.min.js"></script>
+	<script type="text/javascript" src="armor.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<html>
+<body>
+	<textarea id="output"></textarea>
+	<script type="text/javascript">
+		var source = document.createElement('script');
+		source.src = 'armor.js?' + Date.now();
+		source.onload = function(){
+			// head chest waist arms legs
+			for(var x = 0; x < armor.length; x++){
+				var item = armor[x];
+				if (typeof item.slot === 'undefined') {
+					console.log(item.name);
+					if (item.name.match('Specta')){
+						item.slot = 'head';
+					}
+					if (item.name.match(' Jacket')){
+						item.slot = 'chest';
+					}
+					if (item.name.match(' Guards')){
+						item.slot = 'arms';
+					}
+					if (item.name.match(' Spine')){
+						item.slot = 'waist';
+					}
+					if (item.name.match(' Heel')){
+						item.slot = 'legs';
+					}
+				}
+			}
+			document.getElementById('output').value = 'armor = ' + JSON.stringify(armor, null, 2) + ';';
+		};
+		document.body.appendChild(source);
+	</script>
+</body>
+</html>

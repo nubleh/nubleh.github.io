@@ -1,0 +1,71 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: black;
+  color: white;
+  font-family: sans-serif;
+}
+
+.armor-item {
+  border: solid 1px #333;
+  display: inline-block;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  vertical-align: top;
+}
+
+.armor-name,
+.armor-skills,
+.armor-sockets {
+  margin: 20px;
+}
+
+.armor-sockets {
+  height: 30px;
+}
+
+.armor-socket {
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  display: inline-block;
+  margin: 4px;
+  line-height: 20px;
+  text-align: center;
+  border: solid 1px white;
+  vertical-align: middle;
+  position: relative;
+}
+
+.armor-socket.no-socket {
+  height: 0;
+  overflow: hidden;
+  border-radius: 0;
+  margin: 8px 4px;
+}
+
+.armor-socket > div {
+  background: white;
+  border-radius: 20px;
+  position: absolute;
+}
+
+.socket-small {
+  width: 4px;
+  height: 4px;
+  top: 8px;
+  left: 8px;
+}
+
+.socket-medium {
+  width: 12px;
+  height: 12px;
+  top: 4px;
+  left: 4px;
+}
+
+.socket-big {
+  width: 20px;
+  height: 20px;
+}
