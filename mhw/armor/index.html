@@ -49,10 +49,10 @@
 				<div class="armor-slot" v-for="slot in Object.keys(equipper)">
 					<div class="equipped-slot">
 						<template v-if="equipper[slot]">
-							<span>
+							<span :title="equipper[slot].name" @click="unequip(slot)">
 								{{ equipper[slot].name }}
-								<sockets :sockets="equipper[slot].sockets"></sockets>
 							</span>
+							<sockets :sockets="equipper[slot].sockets"></sockets>
 						</template>
 					</div>
 					<div class="armor-pool">

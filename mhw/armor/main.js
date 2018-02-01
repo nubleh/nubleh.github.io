@@ -112,6 +112,9 @@ var vm = new Vue({
     },
     equip: function(item){
       this.equipper[item.slot] = item;
+    },
+    unequip: function(slot){
+      this.equipper[slot] = null;
     }
   }
 });
