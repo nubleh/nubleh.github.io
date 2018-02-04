@@ -6996,7 +6996,7 @@ armor = [
     "skills": [
       {
         "name": "Windproof",
-        "level": "+1"
+        "level": "+2"
       }
     ],
     "sockets": [
