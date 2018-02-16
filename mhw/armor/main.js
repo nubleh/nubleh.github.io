@@ -21,6 +21,17 @@ var vm = new Vue({
     highRank: true
   },
   mounted: function(){
+    if (window.location.hash !== '') {
+      try {
+        var equipper = JSON.parse(atob(window.location.hash.substr(1)));
+        var slots = Object.keys(equipper);
+        for(var x = 0; x < slots.length; x++){
+          if (equipper[slots[x]] > -1) {
+            this.equipper[slots[x]] = armor[equipper[slots[x]]];
+          }
+        }
+      } catch(e){}
+    }
   },
   watch: {
   },
@@ -110,11 +121,21 @@ var vm = new Vue({
         return result;
       });
     },
+    updateHash: function(){
+      var slots = Object.keys(this.equipper);
+      var equipper = {};
+      for(var x = 0; x < slots.length; x++){
+        equipper[slots[x]] = armor.indexOf(this.equipper[slots[x]]);
+      }
+      window.location.hash = '#' + btoa(JSON.stringify(equipper));
+    },
     equip: function(item){
       this.equipper[item.slot] = item;
+      this.updateHash();
     },
     unequip: function(slot){
       this.equipper[slot] = null;
+      this.updateHash();
     }
   }
 });
