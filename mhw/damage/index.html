@@ -1,0 +1,60 @@
+<html>
+
+<head>
+<title>MHW Damage Comparator</title>
+<link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+	<div id="mount"></div>
+	<template id="component-module">
+		<div class="module">
+			<template v-if="!baseline">
+				Weapon Attack: <input type="text" v-model="data.attack">
+				<br>
+				Weapon Affinity: <input type="text" v-model="data.affinity">
+				<br>
+			</template>
+			<template v-if="baseline">
+				<template v-for="buff_type in buff_types">
+					<div class="buff">
+						<div class="button" v-on:click="add(buff_type)">{{ buff_type }}: {{ count(buff_type) }}</div><div class="button" v-on:click="remove(buff_type)">-</div>
+					</div>
+				</template>
+				<br>
+				Attack: {{ computed_attack.toFixed(1) }}
+				<br>
+				Affinity: {{ computed_affinity.toFixed(2) }}
+			</template>
+			<br>
+			Average attack: {{ average_attack }}
+		</div>
+	</template>
+	<template id="main-app">
+		<div class="main">
+			Using {{ type }}
+			<br>
+			<module
+				:type="type"
+				:data="baseline"
+			></module>
+			<div v-on:click="add_new">Add new comparison</div>
+			<module
+				v-for="compare in compares"
+				:type="type"
+				:data="compare"
+				:baseline="baseline"
+			></module>
+		</div>
+	</template>
+	<script type="text/javascript" src="vue.min.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-59242016-3"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-59242016-3');
+	</script>
+</body>
+</html>

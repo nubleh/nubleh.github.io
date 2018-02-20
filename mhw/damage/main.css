@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+.main {
+  padding: 50px;
+}
+
+.module {
+  margin: 10px;
+  padding: 10px;
+  border: solid 1px black;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.button {
+  font-size: 10px;
+  background: #666;
+  color: #fff;
+  border-radius: 20px;
+  display: inline-block;
+  padding: 4px 10px;
+  min-width: 20px;
+  text-align: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  user-select: none;
+  margin: 1px;
+}
