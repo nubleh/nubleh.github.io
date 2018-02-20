@@ -8838,5 +8838,185 @@ armor = [
     ],
     "slot": "head",
     "rank": "high"
+  },
+  {
+    "name": "Bazel Helm Alpha",
+    "skills": [
+      {
+        "name": "Earplugs",
+        "level": "+2"
+      },
+      {
+        "name": "Blast Attack",
+        "level": "+1"
+      }
+    ],
+    "sockets": [
+      2,
+      0,
+      0
+    ],
+    "slot": "head",
+    "rank": "high"
+  },
+  {
+    "name": "Bazel Mail Alpha",
+    "skills": [
+      {
+        "name": "Guard",
+        "level": "+2"
+      },
+      {
+        "name": "Blast Resistance",
+        "level": "+2"
+      }
+    ],
+    "sockets": [
+      0,
+      0,
+      0
+    ],
+    "slot": "chest",
+    "rank": "high"
+  },
+  {
+    "name": "Bazel Vambraces Alpha",
+    "skills": [
+      {
+        "name": "Critical Draw",
+        "level": "+2"
+      },
+      {
+        "name": "Earplugs",
+        "level": "+1"
+      }
+    ],
+    "sockets": [
+      0,
+      0,
+      0
+    ],
+    "slot": "arms",
+    "rank": "high"
+  },
+  {
+    "name": "Bazel Coil Alpha",
+    "skills": [
+      {
+        "name": "Earplugs",
+        "level": "+2"
+      },
+      {
+        "name": "Jump Master",
+        "level": "+1"
+      }
+    ],
+    "sockets": [
+      1,
+      0,
+      0
+    ],
+    "slot": "waist",
+    "rank": "high"
+  },
+  {
+    "name": "Bazel Greaves Alpha",
+    "skills": [
+      {
+        "name": "Bombardier",
+        "level": "+2"
+      },
+      {
+        "name": "Critical Draw",
+        "level": "+1"
+      }
+    ],
+    "sockets": [
+      1,
+      0,
+      0
+    ],
+    "slot": "legs",
+    "rank": "high"
+  },
+  {
+    "name": "Bazel Helm Beta",
+    "skills": [
+      {
+        "name": "Earplugs",
+        "level": "+2"
+      }
+    ],
+    "sockets": [
+      3,
+      1,
+      0
+    ],
+    "slot": "head",
+    "rank": "high"
+  },
+  {
+    "name": "Bazel Mail Beta",
+    "skills": [
+      {
+        "name": "Guard",
+        "level": "+2"
+      }
+    ],
+    "sockets": [
+      1,
+      1,
+      0
+    ],
+    "slot": "chest",
+    "rank": "high"
+  },
+  {
+    "name": "Bazel Vambraces Beta",
+    "skills": [
+      {
+        "name": "Critical Draw",
+        "level": "+2"
+      }
+    ],
+    "sockets": [
+      3,
+      0,
+      0
+    ],
+    "slot": "arms",
+    "rank": "high"
+  },
+  {
+    "name": "Bazel Coil Beta",
+    "skills": [
+      {
+        "name": "Earplugs",
+        "level": "+2"
+      }
+    ],
+    "sockets": [
+      3,
+      0,
+      0
+    ],
+    "slot": "waist",
+    "rank": "high"
+  },
+  {
+    "name": "Bazel Greaves Beta",
+    "skills": [
+      {
+        "name": "Bombardier",
+        "level": "+2"
+      }
+    ],
+    "sockets": [
+      3,
+      0,
+      0
+    ],
+    "slot": "legs",
+    "rank": "high"
   }
 ];
