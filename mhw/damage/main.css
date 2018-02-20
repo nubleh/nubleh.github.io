@@ -9,6 +9,16 @@ body {
   padding: 50px;
 }
 
+.weapon {
+  margin: 5px;
+  cursor: pointer;
+  padding: 0 5px;
+}
+.weapon.active {
+  background: black;
+  color: white;
+}
+
 .module {
   margin: 10px;
   padding: 10px;

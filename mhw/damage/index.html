@@ -31,7 +31,7 @@
 	</template>
 	<template id="main-app">
 		<div class="main">
-			Using {{ type }}
+			<span class="weapon" :class="{active:weapon===type}" v-for="weapon in weapons" v-on:click="change_weapon(weapon)">{{weapon}}</span>
 			<br>
 			<module
 				:type="type"

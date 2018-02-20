@@ -191,7 +191,8 @@ var vm = new Vue({
       affinity: 0,
       buffs: []
     },
-    compares: []
+    compares: [],
+    weapons: Object.keys(multipliers)
   },
   mounted: function(){
   },
@@ -206,6 +207,9 @@ var vm = new Vue({
         affinity: this.baseline.affinity,
         buffs: []
       });
+    },
+    change_weapon: function(weapon){
+      this.type = weapon;
     }
   }
 });
