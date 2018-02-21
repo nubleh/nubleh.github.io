@@ -26,7 +26,7 @@
 				Affinity: {{ computed_affinity.toFixed(2) }}
 			</template>
 			<br>
-			Average attack: {{ average_attack }}
+			Average attack: {{ parseFloat(average_attack).toFixed(2) }}
 		</div>
 	</template>
 	<template id="main-app">
@@ -37,7 +37,9 @@
 				:type="type"
 				:data="baseline"
 			></module>
-			<div v-on:click="add_new">Add new comparison</div>
+			<br>
+			<div class="button" v-on:click="add_new">Add new comparison</div>
+			<br>
 			<module
 				v-for="compare in compares"
 				:type="type"

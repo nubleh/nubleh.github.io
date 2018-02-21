@@ -21,7 +21,8 @@ var limits = {
   'attack_boost': 7,
   'critical_eye': 7,
   'critical_boost': 3,
-  'weakness_exploit': 3
+  'weakness_exploit': 3,
+  'non_elemental_boost': 1
 };
 
 Vue.component('module', {
@@ -29,7 +30,7 @@ Vue.component('module', {
   props: ['type', 'data', 'baseline'],
   data: function(){
     return {
-      buff_types: ['attack_boost', 'critical_eye', 'critical_boost', 'weakness_exploit']
+      buff_types: Object.keys(limits)
     };
   },
   template: '#component-module',
@@ -132,6 +133,15 @@ Vue.component('module', {
       if (this.baseline) {
         attack = parseInt(this.baseline.attack);
       }
+
+      // check attack boost
+      var non_elemental_boost = this.count('non_elemental_boost');
+      switch(non_elemental_boost){
+        case 1:
+          attack *= 1.1;
+          break;
+      }
+
       // check attack boost
       var attack_boost = this.count('attack_boost');
       switch(attack_boost){
@@ -157,6 +167,7 @@ Vue.component('module', {
           attack += (3 * multipliers[this.type]);
           break;
       }
+
       return attack;
     },
     crit: function(){
@@ -187,8 +198,8 @@ var vm = new Vue({
   data: {
     type: 'Charge Blade',
     baseline: {
-      attack: 648,
-      affinity: 0,
+      attack: 828,
+      affinity: -0.3,
       buffs: []
     },
     compares: [],
