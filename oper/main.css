@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+.toolbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: #f0f0f0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 40px;
+}
+
+.toolbar-items > div {
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  margin: 6px;
+  display: inline-block;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+  transition: box-shadow 1s;
+}
+
+.toolbar-items > div:hover {
+  box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+  transition: box-shadow 0.1s;
+}
+
+.toolbar-items .fas {
+  line-height: 60px;
+  font-size: 30px;
+  color: silver;
+}
