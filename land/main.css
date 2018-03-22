@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+.main {
+  padding: 50px;
+  text-align: center;
+}
+
+.land-container {
+  display: inline-block;
+  transform: perspective(1000px) rotateX(60deg);
+  transform-style: preserve-3d;
+}
+
+.land {
+  display: inline-block;
+  transform: rotateZ(45deg);
+  transform-style: preserve-3d;
+}
+
+.land-row {
+  white-space: nowrap;
+}
+
+.land-cell {
+  width: 50px;
+  height: 50px;
+  background: #999;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 1px;
+  transition: all 1s;
+  cursor: pointer;
+}
+
+.land-cell:hover {
+  transform: translateZ(5px);
+  background: #ccc;
+  transition: all 0.1s;
+}

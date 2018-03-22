@@ -1,0 +1,32 @@
+<html>
+
+<head>
+<title>Land</title>
+<link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+	<div id="mount"></div>
+	<template id="main-app">
+		<div class="main">
+			<div class="land-container">
+				<div class="land">
+					<div class="land-row" v-for="row in this.land">
+						<div class="land-cell" v-for="cell in row">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</template>
+	<script type="text/javascript" src="vue.min.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-59242016-3"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-59242016-3');
+	</script>
+</body>
+</html>
