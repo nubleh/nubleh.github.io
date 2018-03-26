@@ -10,8 +10,13 @@
 		<div class="main">
 			<div class="land-container">
 				<div class="land">
-					<div class="land-row" v-for="row in this.land">
-						<div class="land-cell" v-for="cell in row">
+					<div class="land-row" v-for="(row, rowIndex) in this.land">
+						<div
+							class="land-cell"
+							v-for="(col, colindex) in row"
+							@click="clickCell(rowIndex, colindex)"
+						>
+							<div class="cell-button"></div>
 						</div>
 					</div>
 				</div>

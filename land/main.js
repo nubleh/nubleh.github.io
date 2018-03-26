@@ -5,7 +5,8 @@ var vm = new Vue({
   template: '#main-app',
   data: {
     land: null,
-    size: [5, 5]
+    size: [5, 5],
+
   },
   mounted: function(){
     this.gen();
@@ -28,6 +29,9 @@ var vm = new Vue({
           this.land[x][y] = 0;
         }        
       }
+    },
+    clickCell: function(rowIndex, colIndex) {
+      console.log(rowIndex + '-' + colIndex);
     }
   }
 });

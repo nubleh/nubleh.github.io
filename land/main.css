@@ -35,10 +35,31 @@ body {
   margin: 1px;
   transition: all 1s;
   cursor: pointer;
+  transform-style: preserve-3d;
 }
 
 .land-cell:hover {
-  transform: translateZ(5px);
+  transform: translateZ(1px);
   background: #ccc;
   transition: all 0.1s;
+}
+
+.land-cell:hover .cell-button {
+  display: block;
+}
+
+.cell-button {
+  display: none;
+  position: absolute;
+  background: #666;
+  border-radius: 4px;
+  width: 20px;
+  height: 20px;
+  transform: rotateX(-90deg) rotateY(45deg) translateX(35px) translateZ(20px);
+  transform-origin: bottom;
+  transition: transform 0.1s;
+}
+
+.cell-button:hover {
+  transform: rotateX(-90deg) rotateY(45deg) translateX(35px) translateZ(20px) scale(1.1);
 }
