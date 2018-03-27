@@ -19,3 +19,5 @@ nubleh.github.io - what's on here?
   - https://www.reddit.com/r/pcmasterrace/comments/49fvsr/i_made_a_steam_achievement_animation_too/d0rshed/
 - http://nubleh.github.io/tpprank/
   - visualization of recruitment rate of soldiers in the mother base in Metal Gear Solid V The Phantom Pain
+- http://nubleh.github.io/minsutonaito/
+  - presentation done for the game i made with pixiv
