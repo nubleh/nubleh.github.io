@@ -1,0 +1,28 @@
+X clouds
+X poster timing - match game speed? no
+X how to reproduce 9人 bug	
+X sale, aoru, money doesn't go up
+X shirt color
+X add depth to clouds
+
+X inactive tab
+X funny queueing
+
+X shelf book color
+X pants for customers
+X poster link
+X poster frame
+X add money display above reji
+
+X BGM
+
+X make book count taken align with service level
+	add a multiplier on top of the current combo count
+	based on serviceability stats
+	30	120	270	480	750	1080	1470	1920	2430	3000	3630	4320	5070	5880	6750 - stats
+	2	3	4	5	6	7		8		9		10		11		12		13		14		15		16 - multiplier
+X attractiveness increases outside queue limit
+	1	2	3	4	5				- shop level
+	6	6	6	6	6				- min queue size
+	12	18	25	32	38				- max queue size
+	30	60	300	1000	3000		- point needed to reach max queue size

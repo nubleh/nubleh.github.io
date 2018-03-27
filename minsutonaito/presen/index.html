@@ -1,0 +1,1110 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="presen.css">
+</head>
+<body>
+	<div id="timeBar">
+		<div id="timeChicken"><img src="presen10.gif"></div>
+		<div id="timeMob"><img src="presen8.gif"></div>
+	</div>
+	<div id="screen">
+		<div class="slide" data-add-class="full">
+			<h1>みんスト</h1>
+		</div>
+		<div class="slide dummy" data-remove-class="full"></div>
+
+		<div class="slide">
+			<div class="caption">
+				<h2>Preface</h2>
+				<div class="text">
+					<span class="text-en">
+						- no codes
+						<br>- not too technical
+						<br>- hopefully interesting
+						<br>- unfortunately in english
+					</span>
+					<span class="text-ja">
+						- コードなし
+						<br>- 技術的に簡単
+						<br>- 面白いかも
+						<br>- thanks @kovensky for the japanese translation
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="slide">
+			<h1>A.I. <br>(Artificial "Intelligence")</h1>
+		</div>
+
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled2.gif">
+			</div>
+			<div class="caption">
+				<h2>Movement</h2>
+				<div class="text">
+					<span class="text-en">Individual pathfinding of mobs</span>
+					<span class="text-ja">各モブの経路発見</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="presen8.png">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">Instead of a manager overlooking and coordinating mob movements</span>
+					<span class="text-ja">マネージャーの監視と協同じゃなくて、</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="presen9.png">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">Each mob has its own "intelligence" to decide what to do</span>
+					<span class="text-ja">各モブは自分の「知能」で考えて道を決める</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled6.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">This creates silly (but otherwise very realistic) behaviours</span>
+					<span class="text-ja">これでいろんな面白い（だがリアル的）な動きが発生する</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled17.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">Very realistic</span>
+					<span class="text-ja">リアルを感じる</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="presen11.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">Paths obtained from the pathfinder is also cached to reduce CPU load.
+						<br>Here we can see customers going around empty space because the space was occupied at the time of pathfinding.
+					</span>
+					<span class="text-ja">経略発見の結果は、CPUを重くしないためキャッシュされる
+						<br>発見時に空だったスペースは客が行こうとしない
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="presen2.png">
+			</div>
+			<div class="caption">
+				<h2>Decision making</h2>
+				<div class="text">
+					<span class="text-en">Each mob has its own thought process to decide what to do</span>
+					<span class="text-ja">各モブは自分で考えて自分の意思を決める</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="presen3.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">When a mob's objective queue is empty, one is generated depending on the situation.
+						<br>A customer mob may look for a bookshelf to browse or decide to go home.
+						<br>A staff mob will look for a bookshelf to restock.
+					</span>
+					<span class="text-ja">モブがやりたいことがない時、適切な目的が決められる
+						<br>客さんは本棚を探すか、お家に帰るか
+						<br>店員さんは補給する本棚を探す
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="presen6.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">An objective in the objective queue is able to spawn new objectives into the queue.
+						<br>An objective starts with a lifespan of 100. This value decays as the objective is fulfilled or blocked by other circumstances.
+					</span>
+					<span class="text-ja">目的キューの各目的は他の目的を表すこともできる
+						<br>目的は100点から始まる。目的が達成するか出来ない時に減点される。
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="presen5.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">This is what the objective queues look like during a congestion.
+						<br>This messy and buggy implementation inadvertently recreates the chaotic and irrational nature of human behaviour.
+					</span>
+					<span class="text-ja">混雑になると目的キューはこうなる
+						<br>このおかしくてバグってる実装は割と人間のカオスに近い
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="presen7.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">Continuous failures to fulfill an objective reduces a hidden "energy" value.
+						<br>When depleted, the customer goes home. This (mostly...) prevents the simulation from getting stuck. 
+					</span>
+					<span class="text-ja">ひたすら目的に失敗するとエネルギーの値が減る。
+						<br>エネルギーがなくなったら、客さんは帰る。これは、だいたい、シミュレーションの無限ループを避ける。
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="slide">
+			<h1>Graphics</h1>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../shelfcolor.gif">
+			</div>
+			<div class="caption">
+				<h2>Bookshelf colors</h2>
+				<div class="text">
+					<span class="text-en">shelf colors are generated by drawing and masking onto a template spritesheet</span>
+					<span class="text-ja">色塗りは本棚のテンプレートスプライトに、ステンシルを使ってペイントされる</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../shelfcolor1.png">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">based on the categories of books in a shelf, a "pie" of colors are drawn, with each color proportionate to the number of books of each category</span>
+					<span class="text-ja">本棚に乗ってる本の種類によって、色グラフ見たいな色選択が行う</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../shelfcolor2.png">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">the color "pie" is then repeated and tiled over the spritesheet</span>
+					<span class="text-ja">そのグラフはリピートされスプライトシートにタイリングされる</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../shelfcolor3.png">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">a mask is then applied, followed by overlaying the shading layer over it</span>
+					<span class="text-ja">ステンシルでマスクしてから影エフェクトを乗せる</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../shelfcolor4.png">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">the colors sheet is then applied over the original spritesheet.</span>
+					<span class="text-ja">出来た色レイヤーは最初のスプライトシートにペイントされる</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="presen15.png">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">Hold on, why does the spritesheet look like this?
+						<br>Why split it this way?
+					</span>
+					<span class="text-ja">ちょっと待って、なぜスプライトシートはこうなってる
+						<br>なぜこの切り方をやっている
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="presen16.png">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">Answer: Depth calculation.
+						<br>If the bookshelf is a single sprite, and we set the anchor at the red part of the sprite... this happens
+					</span>
+					<span class="text-ja">それは、奥行き計算
+						<br>もし本棚が単体のスプライトとアンカーがこの赤い部分に指定したら・・・こうなる
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="presen17.png">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">Setting the anchor to the middle doesn't help either</span>
+					<span class="text-ja">アンカーを真ん中に設定しても役に立たない</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="presen15.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">They had to be split into separate 1-tile parts, each with their own anchor</span>
+					<span class="text-ja">みんな自分のアンカーを持って１タイルパーツに分ける必要があった。</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="spritesheet-comicguest.png">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">Spritesheet for the customers
+						<br>(they're naked!)
+					</span>
+					<span class="text-ja">客さんのスプライトシート
+						<br>（裸だ）
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="presen16.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">Clothes are on a different spritesheet
+						<br>(can be colored in canvas on the fly)
+					</span>
+					<span class="text-ja">服装は別のシートにある
+						<br>（キャンバスで色塗りできる）
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="presen18.png">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">
+						The face is actually generated as its own separate spritesheet
+						<br>Why does it have multiple frames, gradually descending?
+					</span>
+					<span class="text-ja">
+						顔は別のスプライトシートで作る
+						<br>なぜ下げてゆく複数のフレームがある？
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="presen17.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">
+						It's positioned to match the face of the character and has its own set of corresponding animations to match the face's vertical position.
+					</span>
+					<span class="text-ja">
+						キャラクターの顔の位置と一致するように調整されている。
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="presen19.png">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">
+						Before this optimization, a complete spritesheet was generated for every single character. This used up a LOT of memory. Sorry! 
+						<br>In the beginning, I never expected to have more than 10 characters on screen.
+						<br>🙇🏻
+					</span>
+					<span class="text-ja">
+						この最適化した前、各キャラは自分の個別スプライトシートを持ってって、メモリーをすごく使ってしまった。ごめん！ 
+						<br>最初は１０キャラ以上が同時に画面に出るのは想定しなかった
+						<br>🙇🏻
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="slide">
+			<h1>Audio</h1>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="presen20.png">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">
+						The game has no sound effects or any sound programming at all, just the BGM.
+					</span>
+					<span class="text-ja">
+						ゲームにBGM以外の音がない
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="slide">
+			<h1>Accidental Features</h1>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="presen12.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">Usually, features are requested by the members of the team.
+						<br>The desired appearance and behaviour of the feature is explained in detail to allow implementation accurate to specifications.
+					</span>
+					<span class="text-ja">普通は、ティームメンバーが機能を申し込む
+						<br>機能のスペック、見た目、挙動は決めてからスペック通り実装する。
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="presen12.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">However, sometimes things are implemented without being asked for.
+					</span>
+					<span class="text-ja">だが、たまに頼まれなくても実現される機能がある。
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="presen13.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">Animation of furnitures and walls falling from the sky, floor tiles falling into the abyss was meant to test the isometric depth calculation, but was kept because the team liked the look.
+					</span>
+					<span class="text-ja">家具と壁が空から落ちるアニメーションは奥行き計算をテストするためだったが、ティームはかっこいいだと思ったから入れた
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="presen14.png">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">The book tower was never specified. It was a test for dynamically assembling and generating a spritesheet on the fly. It looked funny and silly and became a core gameplay mechanic.
+					</span>
+					<span class="text-ja">本の山盛りはスペックされてなかった。ただのスプライトシート生成のテストだった。けど面白いのでゲームのギミックになった。
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="presen14.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">The fever mode animation took 15 minutes to write and was meant for testing how tinting affected performance.
+					</span>
+					<span class="text-ja">フィーバーモードのアニメーションは色合いのベンチマークだった
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="slide">
+			<h1>Development Showcase<br>(Random and arbitrary milestones)</h1>
+		</div>
+
+		<div class="slide">
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">
+						Video clips captured during development to show development progress to the team for feedback and/or confirmation.
+					</span>
+					<span class="text-ja">
+						開発中に撮った動画、進行報告やただ見せるためなもの
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/11/02<br>pathfinding library easystarjs integrated
+					</span>
+					<span class="text-ja">2016/11/02<br>easystarjsライブラリー
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled2.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/11/02<br>pathfinding library easystarjs integrated
+					</span>
+					<span class="text-ja">2016/11/02<br>easystarjsライブラリー
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled3.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/11/04<br>avatars embedded
+					</span>
+					<span class="text-ja">2016/11/04<br>アバターを入れる
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled5.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/11/04<br>they talk!
+					</span>
+					<span class="text-ja">2016/11/04<br>喋る！
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled7.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/11/09
+						<br>shop boundaries
+						<br>shelf entities
+						<br>they read and pay
+					</span>
+					<span class="text-ja">2016/11/09
+						<br>店の領域
+						<br>棚
+						<br>読める、払ってる
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled8.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/11/09
+						<br>shop boundaries
+						<br>shelf entities
+						<br>they read and pay
+					</span>
+					<span class="text-ja">2016/11/09
+						<br>店の領域
+						<br>棚
+						<br>読める、払ってる
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled9.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/11/10
+						<br>more sprites
+					</span>
+					<span class="text-ja">2016/11/10
+						<br>増えるスプライト
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled9.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/11/11
+						<br>even more sprites
+					</span>
+					<span class="text-ja">2016/11/11
+						<br>さらに増えるスプライト
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled10.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/11/11
+						<br>even more sprites
+						<br>money is displayed
+					</span>
+					<span class="text-ja">2016/11/11
+						<br>もっとさらに増えるスプライト
+						<br>お金が見える
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled13.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/11/11
+						<br>staff walks around and needs to be called back to the cash register
+					</span>
+					<span class="text-ja">2016/11/11
+						<br>店員さんが歩いて、レジに呼ばれる
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled14.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/11/17
+						<br>reading animation is added
+					</span>
+					<span class="text-ja">2016/11/17
+						<br>読書アニメーション追加
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled15.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/11/17
+						<br>customers get their own sprites
+					</span>
+					<span class="text-ja">2016/11/17
+						<br>客さんが自分のスプライトをもらう
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled17.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/11/17
+						<br>they learned how to cut in line
+					</span>
+					<span class="text-ja">2016/11/17
+						<br>横入り出来るようになった
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled18.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/11/18
+						<br>world size manipulation
+					</span>
+					<span class="text-ja">2016/11/18
+						<br>ワールドサイズ操作
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled19.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/11/18
+						<br>world size manipulation
+					</span>
+					<span class="text-ja">2016/11/18
+						<br>ワールドサイズ操作
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../pasted_image_at_2016_11_30_01_42_pm.png">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/11/30
+						<br>game and UI come together
+					</span>
+					<span class="text-ja">2016/11/30
+						<br>ゲームとUI
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled20.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/12/01
+						<br>multiple staff AI is introduced
+					</span>
+					<span class="text-ja">2016/12/01
+						<br>複数の店員
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled25.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/12/02
+						<br>test
+					</span>
+					<span class="text-ja">2016/12/02
+						<br>テスト
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled27.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/12/05
+						<br>more gameplay mechanics begin to be introduced
+					</span>
+					<span class="text-ja">2016/12/05
+						<br>ギミックの導入
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled28.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/12/06
+						<br>internal energy mechanic is being tested
+					</span>
+					<span class="text-ja">2016/12/06
+						<br>エネルギー機能のテスト
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled30.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/12/09
+						<br>work started to pile up...
+					</span>
+					<span class="text-ja">2016/12/09
+						<br>仕事が増えてきた
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled32.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/12/12
+						<br>test
+					</span>
+					<span class="text-ja">2016/12/12
+						<br>テスト
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled33.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/12/12
+						<br>test
+					</span>
+					<span class="text-ja">2016/12/12
+						<br>テスト
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../pasted_image_at_2016_12_13_04_37_pm.png">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/12/13
+						<br>posters tested
+					</span>
+					<span class="text-ja">2016/12/13
+						<br>ポスターのテスト
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../pasted_image_at_2016_12_13_04_33_pm.png">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/12/13
+						<br>posters tested
+					</span>
+					<span class="text-ja">2016/12/13
+						<br>ポスターのテスト
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled37.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/12/14
+						<br>animations added during checkout
+					</span>
+					<span class="text-ja">2016/12/14
+						<br>レジアニメーション
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled40.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/12/16
+						<br>congestion issues led to desperate measures
+					</span>
+					<span class="text-ja">2016/12/16
+						<br>混雑問題で抜本的な対策
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../pasted_image_at_2016_12_19_11_16_am.png">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/12/19
+						<br>high resolution posters implemented
+					</span>
+					<span class="text-ja">2016/12/19
+						<br>高画質ポスター
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled43.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/12/21
+						<br>more animations get added
+					</span>
+					<span class="text-ja">2016/12/21
+						<br>アニメーション追加
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../pasted_image_at_2016_12_21_12_31_pm.png">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/12/21
+						<br>bookshelf dynamic colors implemented
+					</span>
+					<span class="text-ja">2016/12/21
+						<br>本棚の色
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled45.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/12/22
+						<br>more animations get added
+					</span>
+					<span class="text-ja">2016/12/22
+						<br>アニメーション追加
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../pasted_image_at_2016_12_24_12_27_pm.png">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/12/24
+						<br>kanban
+					</span>
+					<span class="text-ja">2016/12/24
+						<br>kanban
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../pasted_image_at_2016_12_24_02_26_pm.png">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/12/24
+						<br>trees and hedges
+					</span>
+					<span class="text-ja">2016/12/24
+						<br>木と生垣
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled53.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/12/28
+						<br>meteor sale 
+					</span>
+					<span class="text-ja">2016/12/28
+						<br>メテオセール
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../pasted_image_at_2016_12_31_06_15_pm.png">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/12/31
+						<br>last minute implementation of New Year features
+					</span>
+					<span class="text-ja">2016/12/31
+						<br>焦ってお正月機能の実装
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled66.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2016/12/31
+						<br>last minute implementation of New Year features
+					</span>
+					<span class="text-ja">2016/12/31
+						<br>ギリギリまでお正月仕事
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled71.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2017/01/01
+						<br>holes
+					</span>
+					<span class="text-ja">2017/01/01
+						<br>穴
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled79.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2017/01/06
+						<br>animation for ending movie
+					</span>
+					<span class="text-ja">2017/01/06
+						<br>エンディングのアニメーション
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../pasted_image_at_2017_01_06_07_16_pm.png">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2017/01/06
+						<br>sprite for ending movie
+					</span>
+					<span class="text-ja">2017/01/06
+						<br>エンディングのスプライト
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="image">
+				<img class="normal" data-src="../Untitled80.gif">
+			</div>
+			<div class="caption">
+				<div class="text">
+					<span class="text-en">2017/01/06
+						<br>ojiisan
+					</span>
+					<span class="text-ja">2017/01/06
+						<br>ojiisan
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="slide">
+			<h1>Thank you</h1>
+		</div>
+		<div class="slide">
+			<h1>Thank you
+				<br>And sorry for all the bugs</h1>
+			</div>
+			<div class="slide">
+				<h1>Thank you
+					<br>And sorry for all the bugs
+					<br>🙇🏻
+				</h1>
+			</div>
+		</div>
+		<script type="text/javascript" src="presen.js"></script>
+	</body>
+</html>

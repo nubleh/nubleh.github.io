@@ -1,0 +1,14 @@
+1. AI
+	- instead of a puppetmaster coordinating where mobs do, each mob has their own AI
+		- creates congestion; but congestion is a natural phenomenon
+	- pathfinding is cached to reduce cpu load
+		- include gif of mob avoiding empty space
+	- decision making AI
+2. Graphics
+	- bookshelf coloring
+	- face spritesheet -> optimized with detached face
+3. Unintended features
+	- floor animation
+	- book towers
+	- 
+4. GIF showcase
