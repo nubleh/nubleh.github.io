@@ -39,7 +39,7 @@ Vue.component('plane', {
     };
   },
   mounted: function(){
-    window.derp = this;
+    window.vm = this;
     this.w = this.$refs.plane.offsetWidth;
     this.h = this.$refs.plane.offsetHeight;
     this.x = this.w / 2;
@@ -48,6 +48,11 @@ Vue.component('plane', {
     // main control handler
     window.onkeydown = this.handleKeyDown;
     window.onkeyup = this.handleKeyUp;
+
+    window.onresize = () => {
+      this.w = this.$refs.plane.offsetWidth;
+      this.h = this.$refs.plane.offsetHeight;
+    };
 
     // main game tick
     clearTimeout(this.tickTimeout);
