@@ -12,6 +12,7 @@ body {
 
 .land-container {
   display: inline-block;
+  display: none;
   transform: perspective(1000px) rotateX(60deg);
   transform-style: preserve-3d;
 }

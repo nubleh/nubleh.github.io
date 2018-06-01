@@ -3,11 +3,25 @@
 <head>
 <title>Land</title>
 <link rel="stylesheet" type="text/css" href="main.css">
+<link rel="stylesheet" type="text/css" href="plane.css">
 </head>
 <body>
 	<div id="mount"></div>
+	<template id="plane-template">
+		<div class="plane-container">
+			<div class="plane" ref="plane">
+
+				<div class="ship" :style="shipStyle">
+					<div class="ship-shadow"></div>
+					<div class="ship-obj" :style="shipObjStyle"></div>
+				</div>
+			</div>
+		</div>
+	</template>
 	<template id="main-app">
 		<div class="main">
+			<plane></plane>
+
 			<div class="land-container">
 				<div class="land">
 					<div class="land-row" v-for="(row, rowIndex) in this.land">
@@ -16,7 +30,7 @@
 							v-for="(col, colindex) in row"
 							@click="clickCell(rowIndex, colindex)"
 						>
-							<div class="cell-button"></div>
+							<!--<div class="cell-button"></div>-->
 						</div>
 					</div>
 				</div>

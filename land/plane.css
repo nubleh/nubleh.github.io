@@ -1,0 +1,37 @@
+.plane-container {
+  transform: perspective(1000px) rotateX(60deg);
+  transform-style: preserve-3d;
+  margin: 0 100px;
+}
+
+.plane {
+  height: 500px;
+  background: hsl(120, 40%, 80%);
+}
+
+.ship {
+  width: 1px;
+  height: 1px;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.ship-shadow {
+  width: 20px;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  border-radius: 30px 30px 0 0;
+}
+
+.ship-obj {
+  width: 30px;
+  height: 30px;
+  background: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  border-radius: 30px 30px 0 0;
+}
