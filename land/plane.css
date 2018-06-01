@@ -57,3 +57,27 @@
   background: black;
   border-radius: 4px;
 }
+
+.fade-leave-active, .fade-leave-active .enemy {
+  transition: all 0.3s;
+}
+.fade-leave-active .bullet {
+  opacity: 0;
+}
+.fade-leave-to {
+  opacity: 0;
+}
+.fade-leave-to .enemy {
+  transform: scale(2);
+}
+
+.enemy {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  top: -10px;
+  left: -10px;
+  background: red;
+  border-radius: 4px;
+  transform-style: preserve-3d;
+}

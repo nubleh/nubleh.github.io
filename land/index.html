@@ -6,52 +6,59 @@
 <link rel="stylesheet" type="text/css" href="plane.css">
 </head>
 <body>
-	<div id="mount"></div>
-	<template id="plane-template">
-		<div class="plane-container">
-			<div class="plane" ref="plane">
+  <div id="mount"></div>
+  <template id="plane-template">
+    <div class="plane-container">
+      <div class="plane" ref="plane">
 
-				<div class="ship" :style="shipStyle">
-					<div class="ship-shadow"></div>
-					<div class="ship-obj" :style="shipObjStyle"></div>
-				</div>
+        <div class="ship" :style="shipStyle">
+          <div class="ship-obj" :style="shipObjStyle"></div>
+        </div>
 
-				<div v-for="thing in entities" class="entity">
-					<div v-if="thing.type === 'bullet'" class="bullet" :style="{
-						transform: `translateX(${thing.x}px) translateY(${thing.y}px) translateZ(15px)`
-					}"></div>
-				</div>
-			</div>
-		</div>
-	</template>
-	<template id="main-app">
-		<div class="main">
-			<plane></plane>
+        <transition-group name="fade">
+          <div v-for="thing in entities"
+            class="entity"
+            :key="thing.key"
+            :style="{
+              transform: `translateX(${thing.x}px) translateY(${thing.y}px) translateZ(15px)`,
+              zIndex: thing.y
+            }"
+          >
+            <div v-if="thing.type === 'bullet'" class="bullet"></div>
+            <div v-if="thing.type === 'enemy'" class="enemy"></div>
+          </div>
+        </transition-group>
+      </div>
+    </div>
+  </template>
+  <template id="main-app">
+    <div class="main">
+      <plane></plane>
 
-			<div class="land-container">
-				<div class="land">
-					<div class="land-row" v-for="(row, rowIndex) in this.land">
-						<div
-							class="land-cell"
-							v-for="(col, colindex) in row"
-							@click="clickCell(rowIndex, colindex)"
-						>
-							<!--<div class="cell-button"></div>-->
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</template>
-	<script type="text/javascript" src="vue.min.js"></script>
-	<script type="text/javascript" src="main.js"></script>
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-59242016-3"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
+      <div class="land-container">
+        <div class="land">
+          <div class="land-row" v-for="(row, rowIndex) in this.land">
+            <div
+              class="land-cell"
+              v-for="(col, colindex) in row"
+              @click="clickCell(rowIndex, colindex)"
+            >
+              <!--<div class="cell-button"></div>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+  <script type="text/javascript" src="vue.min.js"></script>
+  <script type="text/javascript" src="main.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-59242016-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-		gtag('config', 'UA-59242016-3');
-	</script>
+    gtag('config', 'UA-59242016-3');
+  </script>
 </body>
 </html>

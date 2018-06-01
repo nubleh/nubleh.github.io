@@ -23,7 +23,7 @@ Vue.component('plane', {
       keyLeft: false,
       keyRight: false,
 
-      speed: 0.5,
+      speed: 0.4,
       velX: 0,
       velY: 0,
       fireCD: 0,
@@ -32,6 +32,7 @@ Vue.component('plane', {
 
       entities: [],
 
+      paused: false,
       lastTick: null,
       tickInterval: null
     };
@@ -63,6 +64,7 @@ Vue.component('plane', {
     },
     fire: function(){
       this.entities.push({
+        key: Math.random(),
         type: 'bullet',
         x: this.x,
         y: this.y - 15
@@ -73,6 +75,9 @@ Vue.component('plane', {
       return item.x < 0 || item.x > this.w || item.y < 0 || item.y > this.h;
     },
     tick: function(){
+      if (this.paused) {
+        return;
+      }
       if (this.lastTick === null) {
         this.lastTick = Date.now();
         return;
@@ -115,14 +120,10 @@ Vue.component('plane', {
       }
 
       // entities
+      const bullets = this.entities.filter((item) => {
+        return item.type === 'bullet';
+      });
       this.entities = this.entities.map((item) => {
-        if (this.outOfBounds(item)) {
-          return null;
-        }
-        if (item.type === 'bullet') {
-          const realBulletSpeed = this.bulletSpeed * timeDiff;
-          item.y = item.y - realBulletSpeed;
-        }
         if (item.velY) {
           const realVelY = item.velY * timeDiff;
           item.y = item.y + realVelY;
@@ -131,10 +132,55 @@ Vue.component('plane', {
           const realVelX = item.velX * timeDiff;
           item.x = item.x + realVelX;
         }
+
+        if (item.type === 'bullet') {
+          const realBulletSpeed = this.bulletSpeed * timeDiff;
+          item.y = item.y - realBulletSpeed;
+
+          if (item.x >= this.w || item.x <= 0) {
+            item.velX = -item.velX;
+            if (item.x >= this.w) {
+              item.x = this.w - 1;
+            }
+            if (item.x <= 0) {
+              item.x = 1;
+            }
+          }
+        }
+
+        if (item.type === 'enemy') {
+          const bulletRadius = 4;
+          const enemyRadius = 10 + bulletRadius;
+          for(let x = 0; x < bullets.length; x++){
+            if (bullets[x].x > item.x - enemyRadius
+              && bullets[x].x < item.x + enemyRadius
+              && bullets[x].y > item.y - enemyRadius
+              && bullets[x].y < item.y + enemyRadius) {
+              bullets[x].velX = ((Math.random() * 2) - 1);
+              return null;
+            }
+          }
+        }
+
+        if (this.outOfBounds(item)) {
+          return null;
+        }
+
         return item;
       }).filter((item => {
         return item !== null;
       }));
+
+      // spawn enemy
+      if (Math.random() > 0.97) {
+        this.entities.push({
+          key: Math.random(),
+          type: 'enemy',
+          y: 0,
+          x: 20 * (Math.round(Math.random() * (this.w / 20))),
+          velY: 0.05
+        });
+      }
 
       this.lastTick = now;
     }
@@ -145,6 +191,7 @@ Vue.component('plane', {
       const translateX = this.x;
       const translateY = this.y;
       style.transform = `translateX(${translateX}px) translateY(${translateY}px) translateZ(1px)`;
+      style.zIndex = this.y;
       return style;
     },
     shipObjStyle: function(){
