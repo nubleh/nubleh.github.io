@@ -15,6 +15,12 @@
 					<div class="ship-shadow"></div>
 					<div class="ship-obj" :style="shipObjStyle"></div>
 				</div>
+
+				<div v-for="thing in entities" class="entity">
+					<div v-if="thing.type === 'bullet'" class="bullet" :style="{
+						transform: `translateX(${thing.x}px) translateY(${thing.y}px) translateZ(15px)`
+					}"></div>
+				</div>
 			</div>
 		</div>
 	</template>

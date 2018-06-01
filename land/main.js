@@ -23,11 +23,16 @@ Vue.component('plane', {
       keyLeft: false,
       keyRight: false,
 
-      speed: 5,
-
+      speed: 0.5,
       velX: 0,
       velY: 0,
+      fireCD: 0,
+      fireRate: 1,
+      bulletSpeed: 0.6,
 
+      entities: [],
+
+      lastTick: null,
       tickInterval: null
     };
   },
@@ -43,7 +48,7 @@ Vue.component('plane', {
     window.onkeyup = this.handleKeyUp;
 
     // main game tick
-    this.tickInterval = setInterval(this.tick, 10);
+    this.tickInterval = setInterval(this.tick, 16);
   },
   methods: {
     handleKeyDown: function(e){
@@ -56,7 +61,23 @@ Vue.component('plane', {
         this[this.keyMaps[e.keyCode]] = false;
       }
     },
+    fire: function(){
+      this.entities.push({
+        type: 'bullet',
+        x: this.x,
+        y: this.y - 15
+      });
+      this.fireCD = 100;
+    },
+    outOfBounds: function(item){
+      return item.x < 0 || item.x > this.w || item.y < 0 || item.y > this.h;
+    },
     tick: function(){
+      if (this.lastTick === null) {
+        this.lastTick = Date.now();
+        return;
+      }
+
       if (this.keyUp) {
         this.velY = -this.speed;
       }
@@ -76,8 +97,46 @@ Vue.component('plane', {
         this.velX = 0;
       }
 
-      this.x = Math.min(this.w, Math.max(0, this.x + this.velX));
-      this.y = Math.min(this.h, Math.max(0, this.y + this.velY));
+      const now = Date.now();
+      const timeDiff = now - this.lastTick;
+
+      // movement
+      const realVelX = this.velX * timeDiff;
+      const realVelY = this.velY * timeDiff;
+      this.x = Math.min(this.w, Math.max(0, this.x + realVelX));
+      this.y = Math.min(this.h, Math.max(0, this.y + realVelY));
+
+      // weaponry
+      if (this.fireCD) {
+        const realFireRate = this.fireRate * timeDiff;
+        this.fireCD = Math.max(0, this.fireCD - realFireRate);
+      } else if (this.keyFire) {
+        this.fire();
+      }
+
+      // entities
+      this.entities = this.entities.map((item) => {
+        if (this.outOfBounds(item)) {
+          return null;
+        }
+        if (item.type === 'bullet') {
+          const realBulletSpeed = this.bulletSpeed * timeDiff;
+          item.y = item.y - realBulletSpeed;
+        }
+        if (item.velY) {
+          const realVelY = item.velY * timeDiff;
+          item.y = item.y + realVelY;
+        }
+        if (item.velX) {
+          const realVelX = item.velX * timeDiff;
+          item.x = item.x + realVelX;
+        }
+        return item;
+      }).filter((item => {
+        return item !== null;
+      }));
+
+      this.lastTick = now;
     }
   },
   computed: {
