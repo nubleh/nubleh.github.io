@@ -11,13 +11,13 @@ body {
   height: 480px;
   margin: 20px 0;
   background: #fff;
+  cursor: pointer;
 }
 
 #mainContainer {
   position: relative;
 }
 #mainContainer::after {
-  content: '';
   position: absolute;
   top: 50%;
   left: 50%;
