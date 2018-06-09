@@ -21,7 +21,7 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 4px;
-  height: 4px;
-  border: solid 1px black;
+  width: 1px;
+  height: 1px;
+  background: black;
 }
