@@ -72,17 +72,10 @@ function drawCursor(center){
   const centerX = center[0];
   const centerY = center[1];
 
-  let x = cursor[0] - (cursor[0] % 16);
-  let y = cursor[1] - (cursor[1] % 8);
-  if(((x - centerX)/16 + (y - centerY)/8)%2 > 0){
-    y += 8;
-  }
   ctx.drawImage(
     cursorImg,
-    x,
-    y
-//    centerX + (cursor[0] * 16) - (cursor[1] * 16),
-//    centerY + (cursor[0] * 8) + (cursor[1] * 8)
+    centerX + (cursor[0] * 16) - (cursor[1] * 16),
+    centerY + (cursor[0] * 8) + (cursor[1] * 8)
   );
 }
 
@@ -124,11 +117,28 @@ function getCenter(){
 }
 
 function handleCursor(e){
+  const center = getCenter();
+  const centerX = center[0];
+  const centerY = center[1];
+
   const x = e.layerX;
   const y = e.layerY;
-  const center = getCenter();
-  const cx = center[0] + 16;
-  const cy = center[1] + 16;
-  cursor[0] = x - 16;
-  cursor[1] = y - 8;
+
+  let targetX = x - 24;
+  let targetY = y - 16;
+  let stepX = 0;
+  let stepY = 0;
+  while(!(targetX <= centerX && targetY <= centerY)){
+    if(targetX > centerX){
+      targetX -= 16;
+      targetY -= 8;
+      stepX++;
+    } else {
+      targetX += 16;
+      targetY -= 8;
+      stepY++;
+    }
+  }
+  cursor[0] = Math.max(0, Math.min(stepX, landW - 1));
+  cursor[1] = Math.min(stepY, landH - 1);
 }
