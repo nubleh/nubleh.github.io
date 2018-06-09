@@ -1,4 +1,5 @@
 
+// canvas stuff
 const c=document.getElementById('main');
 const debug = document.getElementById('debug');
 c.width = c.clientWidth;
@@ -8,6 +9,8 @@ c.onclick = handleClick;
 const ctx=c.getContext('2d');
 ctx.imageSmoothingEnabled = false;
 
+
+// game world
 const land = [];
 const landW = 9;
 const landH = 9;
@@ -21,18 +24,30 @@ land[4][4] = 2;
 land[5][5] = 2;
 land[3][3] = 2;
 
+// easystar
+var estar = new EasyStar.js();
+estar.setGrid(land);
+estar.setAcceptableTiles([1]);
+
 const cursor = [0, 0];
 const guy = {
-  x: 3,
-  y: 3
+  x: 4,
+  y: 3,
+  targetX: 4,
+  targetY: 3,
+  speed: 3,
+  calculating: false,
+  path: null,
+  walkProgress: 0
 };
 
 let lastRender = 0;
 let fps = 0;
 setInterval(function(){
   debug.innerText = fps + 'fps';
-}, 1000);
+}, 300);
 
+// image assets
 tiles = {};
 tileAssets = [
   {
@@ -53,7 +68,6 @@ tileAssets = [
   }
 ];
 assets = {};
-
 loadAssets();
 
 // start render loop
@@ -70,10 +84,55 @@ function loadAssets(){
   }
 }
 
+function gameLoop(delta){
+  if(Math.abs(guy.x - guy.targetX) < 0.5){
+    guy.x = guy.targetX;
+  }
+  if(Math.abs(guy.y - guy.targetY) < 0.5){
+    guy.y = guy.targetY;
+  }
+
+  // calculate path if needed
+  if((guy.x !== guy.targetX || guy.y !== guy.targetY) && !guy.path && !guy.calculating){
+    guy.calculating = true;
+    estar.findPath(guy.x, guy.y, guy.targetX, guy.targetY, function(path){
+      guy.calculating = false;
+      if(!path){
+        guy.targetX = guy.x;
+        guy.targetY = guy.y;
+        return;
+      }
+      guy.path = path;
+    });
+    estar.calculate();
+  }
+
+  // traverse path
+  if(guy.path && guy.path.length < 1){
+    guy.path = null;
+  }
+  if(guy.path && guy.path.length > 0){
+    const nextStep = guy.path[0];
+    if(guy.x === nextStep.x && guy.y === nextStep.y){
+      guy.path.shift();
+    }
+    guy.walkProgress += (delta/1000) * guy.speed;
+    if(guy.walkProgress >= 1){
+      guy.walkProgress = 0;
+      guy.x = nextStep.x;
+      guy.y = nextStep.y;
+      guy.path.shift();
+    }
+  }
+}
+
 function render(){
   const now = Date.now();
-  fps = Math.round(1000 / (now - lastRender));
+  const delta = now - lastRender;
+  fps = Math.round(1000 / delta);
   lastRender = now;
+
+  gameLoop(delta);
 
   clearCanvas();
   const center = getCenter();
@@ -95,10 +154,17 @@ function drawGuy(center){
   const centerX = center[0];
   const centerY = center[1];
 
+  let x = guy.x;
+  let y = guy.y;
+  if(guy.path && guy.path.length > 0){
+    x = guy.x + guy.walkProgress * (guy.path[0].x - guy.x);
+    y = guy.y + guy.walkProgress * (guy.path[0].y - guy.y);
+  }
+
   ctx.drawImage(
     tiles['guy'],
-    centerX + (guy.x * 16) - (guy.y * 16),
-    centerY - 16 + (guy.x * 8) + (guy.y * 8)
+    centerX + (x * 16) - (y * 16),
+    centerY - 16 + (x * 8) + (y * 8)
   );
 }
 
@@ -178,6 +244,9 @@ function handleCursor(e){
 }
 
 function handleClick(e){
-  guy.x = cursor[0];
-  guy.y = cursor[1];
+  guy.targetX = cursor[0];
+  guy.targetY = cursor[1];
+  guy.path = null;
+  guy.calculating = false;
+  guy.walkProgress = 0;
 }
