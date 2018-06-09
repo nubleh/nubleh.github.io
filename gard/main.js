@@ -6,9 +6,7 @@ c.height = c.clientHeight;
 c.onmousemove = handleCursor;
 c.onclick = handleClick;
 const ctx=c.getContext('2d');
-
-let tile = null;
-let cursorImg = null;
+ctx.imageSmoothingEnabled = false;
 
 const land = [];
 const landW = 9;
@@ -24,6 +22,10 @@ land[5][5] = 2;
 land[3][3] = 2;
 
 const cursor = [0, 0];
+const guy = {
+  x: 3,
+  y: 3
+};
 
 let lastRender = 0;
 let fps = 0;
@@ -31,7 +33,7 @@ setInterval(function(){
   debug.innerText = fps + 'fps';
 }, 1000);
 
-tiles = [];
+tiles = {};
 tileAssets = [
   {
     name: 'grass',
@@ -40,6 +42,14 @@ tileAssets = [
   {
     name: 'stone',
     index: 2
+  },
+  {
+    name: 'guy',
+    index: 'guy'
+  },
+  {
+    name: 'cursor',
+    index: 'cursor'
   }
 ];
 assets = {};
@@ -64,36 +74,12 @@ function render(){
   const now = Date.now();
   fps = Math.round(1000 / (now - lastRender));
   lastRender = now;
-  /*
-  if (!tile) {
-    const img = document.createElement('img');
-    img.onload = function(e){
-      tile = e.target;
-      requestAnimationFrame(render);
-    };
-    img.src = 'tile.png';
-    return;
-  }
-  */
-  if (!cursorImg) {
-    const img = document.createElement('img');
-    img.onload = function(e){
-      cursorImg = e.target;
-      requestAnimationFrame(render);
-    };
-    img.src = 'cursor.png';
-    return;
-  }
 
-  for(let y = 0; y < land.length; y++){
-    for(let x = 0; x < land[y].length; x++){
-      //land[y][x] += Math.random() - 0.5;
-    }
-  }
   clearCanvas();
   const center = getCenter();
   drawLand(center);
   drawCursor(center);
+  drawGuy(center);
 
   requestAnimationFrame(render);
 }
@@ -102,14 +88,31 @@ function clearCanvas(){
   ctx.clearRect(0, 0, c.width, c.height);
 }
 
-function drawCursor(center){
+function drawGuy(center){
+  if(!tiles['guy']){
+    return;
+  }
   const centerX = center[0];
   const centerY = center[1];
 
   ctx.drawImage(
-    cursorImg,
+    tiles['guy'],
+    centerX + (guy.x * 16) - (guy.y * 16),
+    centerY - 16 + (guy.x * 8) + (guy.y * 8)
+  );
+}
+
+function drawCursor(center){
+  if(!tiles['cursor']){
+    return;
+  }
+  const centerX = center[0];
+  const centerY = center[1];
+
+  ctx.drawImage(
+    tiles['cursor'],
     centerX + (cursor[0] * 16) - (cursor[1] * 16),
-    centerY + (cursor[0] * 8) + (cursor[1] * 8) - 2
+    centerY + (cursor[0] * 8) + (cursor[1] * 8)
   );
 }
 
@@ -122,7 +125,7 @@ function drawLand(center){
         ctx.drawImage(
           tiles[land[y][x]],
           centerX + (x * 16) - (y * 16),
-          centerY + (y * 8) + (x * 8) - land[y][x]
+          centerY + (y * 8) + (x * 8)
         );
       }
     }    
@@ -152,8 +155,8 @@ function handleCursor(e){
   const centerX = center[0];
   const centerY = center[1];
 
-  const x = e.layerX;
-  const y = e.layerY;
+  const x = e.layerX/e.target.clientWidth * c.width;
+  const y = e.layerY/e.target.clientHeight * c.height;
 
   let targetX = x - 20;
   let targetY = y - 12;
@@ -174,6 +177,7 @@ function handleCursor(e){
   cursor[1] = Math.min(stepY, landH - 1);
 }
 
-function handleClick(){
-  land[cursor[1]][cursor[0]] = 0;
+function handleClick(e){
+  guy.x = cursor[0];
+  guy.y = cursor[1];
 }
