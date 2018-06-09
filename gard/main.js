@@ -117,11 +117,22 @@ function gameLoop(delta){
       guy.path.shift();
     }
     guy.walkProgress += (delta/1000) * guy.speed;
+
+    // finished stepping over to the next location
     if(guy.walkProgress >= 1){
       guy.walkProgress = 0;
       guy.x = nextStep.x;
       guy.y = nextStep.y;
       guy.path.shift();
+
+      // the target changed since the path was calculated?
+      if(guy.path
+        && guy.path.length > 0
+        && guy.targetX !== guy.path[guy.path.length - 1].x
+        && guy.targetY !== guy.path[guy.path.length - 1].y
+      ){
+        guy.path = null;
+      }
     }
   }
 }
@@ -246,7 +257,4 @@ function handleCursor(e){
 function handleClick(e){
   guy.targetX = cursor[0];
   guy.targetY = cursor[1];
-  guy.path = null;
-  guy.calculating = false;
-  guy.walkProgress = 0;
 }
