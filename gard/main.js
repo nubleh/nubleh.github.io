@@ -63,6 +63,10 @@ tileAssets = [
     index: 'guy'
   },
   {
+    name: 'tracks',
+    index: 'tracks'
+  },
+  {
     name: 'cursor',
     index: 'cursor'
   }
@@ -149,6 +153,7 @@ function render(){
   const center = getCenter();
   drawLand(center);
   drawCursor(center);
+  drawTracks(center);
   drawGuy(center);
 
   requestAnimationFrame(render);
@@ -177,6 +182,47 @@ function drawGuy(center){
     centerX + (x * 16) - (y * 16),
     centerY - 16 + (x * 8) + (y * 8)
   );
+}
+
+function drawTracks(center){
+  if(!tiles['tracks']){
+    return;
+  }
+  drawTrack(center, 5, 1, 0);
+  drawTrack(center, 4, 1, 0);
+  drawTrack(center, 3, 1, 0);
+  drawTrack(center, 2, 1, 0);
+  drawTrack(center, 1, 1, 5);
+  drawTrack(center, 1, 2, 1);
+  drawTrack(center, 1, 3, 2);
+  drawTrack(center, 2, 3, 3);
+  drawTrack(center, 2, 4, 2);
+  drawTrack(center, 3, 4, 3);
+  drawTrack(center, 3, 5, 2);
+  drawTrack(center, 4, 5, 3);
+}
+
+function drawTrack(center, x, y, dir){
+  const centerX = center[0];
+  const centerY = center[1];
+  ctx.drawImage(
+    tiles['tracks'],
+    0,
+    dir * 17,
+    32,
+    17,
+    centerX + getX(x, y),
+    centerY + getY(x, y),
+    32,
+    17
+  );
+}
+
+function getX(x, y){
+  return (x * 16) - (y * 16);
+}
+function getY(x, y){
+  return (x * 8) + (y * 8);
 }
 
 function drawCursor(center){
