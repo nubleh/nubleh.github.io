@@ -130,7 +130,6 @@ function drawTrain(){
     trainX = trainXStart;
   }
 }
-trainX -= 240;
 
 function drawBG(){
   const wS = tileW * scale;
