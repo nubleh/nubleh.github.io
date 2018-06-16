@@ -47,6 +47,29 @@ tileW = 28;
 tileH = 14;
 scale = 2;
 
+let trainXStart = 2;
+while (trainXStart < c.width) {
+  trainXStart += 2 * scale;
+}
+let trainX = trainXStart;
+let tYStart = 29;
+let trainSize = 11;
+let trainSpeed = 40;
+let trainVel = trainSpeed;
+document.getElementById('trainSpeed').onchange = function(e){
+  trainSpeed = parseInt(e.target.value);
+  document.getElementById('speedDisplay').innerText = trainSpeed;
+};
+document.getElementById('trainSpeed').value = trainSpeed;
+document.getElementById('speedDisplay').innerText = trainSpeed;
+
+document.getElementById('trainSize').onchange = function(e){
+  trainSize = parseInt(e.target.value);
+  document.getElementById('sizeDisplay').innerText = trainSize;
+};
+document.getElementById('trainSize').value = trainSize;
+document.getElementById('sizeDisplay').innerText = trainSize;
+
 // start render loop
 requestAnimationFrame(render);
 
@@ -62,6 +85,13 @@ function loadAssets(){
 }
 
 function gameLoop(delta){
+  trainX -= (delta / 1000) * trainVel * 2 * scale;
+  if (trainVel != trainSpeed) {
+    trainVel = trainVel + ((delta / 1000) * ((trainSpeed - trainVel) / 2));
+    if (trainVel < 0.001) {
+      trainVel = 0;
+    }
+  }
 }
 
 function render(){
@@ -84,48 +114,35 @@ function clearCanvas(){
   ctx.clearRect(0, 0, c.width, c.height);
 }
 
-
-let trainXStart = 2;
-while (trainXStart < c.width) {
-  trainXStart += 2 * scale;
-}
-let trainX = trainXStart;
-let tYStart = 29;
-let cars = 11;
-let trainSpeed = 1;
-document.getElementById('trainSpeed').onchange = function(e){
-  trainSpeed = parseInt(e.target.value);
-  document.getElementById('speedDisplay').innerText = trainSpeed;
-};
-document.getElementById('trainSpeed').value = trainSpeed;
-document.getElementById('speedDisplay').innerText = trainSpeed;
 function drawTrain(){
   if (!tiles['head'] || !tiles['head2'] || !tiles['car']){
     return;
   }
   const carW = tiles['head'].width * scale;
   const carH = tiles['head'].height * scale;
-  const trainY = tYStart + ((c.width - trainX) / 2);
+  const step = 2 * scale;
+  const _trainX = trainX - ((trainX - scale) % step);
+  const trainY = tYStart + ((c.width - _trainX) / 2);
 
-  let carPlace = cars;
+  let carPlace = trainSize;
   while(carPlace > 0){
     let name = 'car';
-    if (carPlace == cars) {
+    if (carPlace == trainSize) {
       name = 'head2';
     } else if (carPlace == 1) {
       name = 'head';
     }
+    const shake = 0;
     ctx.drawImage(
       tiles[name],
-      trainX + ((carPlace - 1) * (carW - (11 * scale))),
-      trainY - ((carPlace - 1) * (carH - (24 * scale))),
+      _trainX + ((carPlace - 1) * (carW - (11 * scale))),
+      trainY - ((carPlace - 1) * (carH - (24 * scale))) + shake,
       carW,
       carH
     );
     carPlace -= 1;
   }
-  trainX -= trainSpeed * 2 * scale;
-  const trainLength = carW + ((cars - 1) * (carW - (11 * scale)));
+  const trainLength = carW + ((trainSize - 1) * (carW - (11 * scale)));
   if (trainX < -trainLength) {
     trainX = trainXStart;
   }
