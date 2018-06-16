@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background: #fafafa;
+  font-family: sans-serif;
+}
+
+#main {
+  width: 640px;
+  height: 480px;
+  margin: 20px 0;
+  cursor: pointer;
+  background: #ffffff;
+}
+
+#mainContainer {
+  position: relative;
+}
+#mainContainer::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1px;
+  height: 1px;
+  background: black;
+}
