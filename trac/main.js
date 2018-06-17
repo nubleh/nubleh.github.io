@@ -39,6 +39,10 @@ tileAssets = [
   {
     name: 'head2',
     index: 'head2'
+  },
+  {
+    name: 'homu-edge',
+    index: 'homu-edge'
   }
 ];
 assets = {};
@@ -52,9 +56,8 @@ while (trainXStart < c.width) {
   trainXStart += 2 * scale;
 }
 let trainX = trainXStart;
-let tYStart = 29;
 let trainSize = 11;
-let trainSpeed = 40;
+let trainSpeed = 30;
 let trainVel = trainSpeed;
 document.getElementById('trainSpeed').onchange = function(e){
   trainSpeed = parseInt(e.target.value);
@@ -106,6 +109,7 @@ function render(){
   drawBG();
   drawTrack();
   drawTrain();
+  drawHomu();
 
   requestAnimationFrame(render);
 }
@@ -122,7 +126,7 @@ function drawTrain(){
   const carH = tiles['head'].height * scale;
   const step = 2 * scale;
   const _trainX = trainX - ((trainX - scale) % step);
-  const trainY = tYStart + ((c.width - _trainX) / 2);
+  const trainY = c.height - (63 * scale) - (_trainX / 2);
 
   let carPlace = trainSize;
   while(carPlace > 0){
@@ -152,8 +156,8 @@ function drawBG(){
   const wS = tileW * scale;
   const hS = tileH * scale;
   if (tiles['tile1']){
-    for(let x = 0; x < c.width; x += wS){
-      for(let y = 0; y < c.height; y += hS){
+    for(let x = 0; x < c.width + wS; x += wS){
+      for(let y = c.height; y > -hS; y -= hS){
         ctx.drawImage(
           tiles['tile1'],
           x,
@@ -165,8 +169,8 @@ function drawBG(){
     }
   }
   if (tiles['tile2']){
-    for(let x = 0; x < c.width; x += wS){
-      for(let y = 0; y < c.height; y += hS){
+    for(let x = 0; x < c.width + wS; x += wS){
+      for(let y = c.height; y > -hS; y -= hS){
         ctx.drawImage(
           tiles['tile2'],
           x - (wS / 2),
@@ -179,6 +183,10 @@ function drawBG(){
   }
 }
 
+function drawHomu(){
+
+}
+
 function drawTrack(){
   if (!tiles['track']){
     return;
@@ -186,12 +194,12 @@ function drawTrack(){
   const wS = tileW * scale;
   const hS = tileH * scale;
 
-  let x = 0;
-  for(let y = c.height; y > 0; y -= (hS / 2)){
+  let x = -(wS / 2);
+  for(let y = c.height - hS + (hS / 2); y > 0; y -= (hS / 2)){
     ctx.drawImage(
       tiles['track'],
-      x - (wS / 2),
-      y - (scale * 9),
+      x,
+      y,
       wS - (scale * 2),
       hS
     );
