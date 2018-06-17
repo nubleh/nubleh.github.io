@@ -7,7 +7,7 @@ body {
 }
 
 #main {
-  width: 640px;
+  width: 940px;
   height: 480px;
   margin: 20px 0;
   cursor: pointer;
@@ -24,4 +24,16 @@ body {
   width: 1px;
   height: 1px;
   background: black;
+}
+
+label {
+  background: #fff;
+  padding: 2px 4px;
+  border-radius: 4px;
+  margin: 0 4px;
+  cursor: pointer;
+}
+
+label:hover {
+  background: #f0f0f0;
 }

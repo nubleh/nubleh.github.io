@@ -8,9 +8,11 @@ const ctx=c.getContext('2d');
 ctx.imageSmoothingEnabled = false;
 
 let lastRender = 0;
+let fpsLimit = 0;
 let fps = 0;
+let fpsPrinted = 0;
 setInterval(function(){
-  debug.innerText = fps + 'fps';
+  debug.innerText = fpsPrinted + 'fps';
 }, 300);
 
 // image assets
@@ -52,6 +54,7 @@ tileH = 14;
 homuW = 28;
 homuH = 21;
 scale = 2;
+bgCache = null;
 
 let trainXStart = 2;
 while (trainXStart < c.width) {
@@ -74,6 +77,10 @@ document.getElementById('trainSize').onchange = function(e){
 };
 document.getElementById('trainSize').value = trainSize;
 document.getElementById('sizeDisplay').innerText = trainSize;
+
+document.getElementById('fpsSetting').onchange = function(e){
+  fpsLimit = parseInt(e.target.value, 10);
+};
 
 // start render loop
 requestAnimationFrame(render);
@@ -103,6 +110,11 @@ function render(){
   const now = Date.now();
   const delta = now - lastRender;
   fps = Math.round(1000 / delta);
+  if (fpsLimit > 0 && fps > (fpsLimit * 1.1)) {
+    requestAnimationFrame(render);
+    return;
+  }
+  fpsPrinted = fps;
   lastRender = now;
 
   gameLoop(delta);
