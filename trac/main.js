@@ -49,6 +49,8 @@ assets = {};
 loadAssets();
 tileW = 28;
 tileH = 14;
+homuW = 28;
+homuH = 21;
 scale = 2;
 
 let trainXStart = 2;
@@ -126,7 +128,7 @@ function drawTrain(){
   const carH = tiles['head'].height * scale;
   const step = 2 * scale;
   const _trainX = trainX - ((trainX - scale) % step);
-  const trainY = c.height - (63 * scale) - (_trainX / 2);
+  const trainY = c.height - (scale / 2) - (63 * scale) - (_trainX / 2);
 
   let carPlace = trainSize;
   while(carPlace > 0){
@@ -184,7 +186,33 @@ function drawBG(){
 }
 
 function drawHomu(){
+  if (!tiles['homu-edge']){
+    return;
+  }
+  const wS = homuW * scale;
+  const hS = homuH * scale;
+  const tS = tileH * scale;
+  const dS = hS - tS;
+  const start = 10;
+  const startX = start * (wS / 2);
+  let x = startX;
+  let y = c.height - (start * (tS / 2)) - dS;
 
+  while (x < c.width) {
+    x += (wS / 2);
+    y -= (tS / 2);
+  }
+  while (x >= startX) {
+    ctx.drawImage(
+      tiles['homu-edge'],
+      x,
+      y,
+      wS - (scale * 2),
+      hS
+    );
+    x -= (wS / 2);
+    y += (tS / 2);
+  }
 }
 
 function drawTrack(){
