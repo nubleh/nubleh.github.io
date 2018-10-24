@@ -1,0 +1,300 @@
+<html>
+<head>
+  <title>
+    Days of /r/wow past
+  </title>
+  <style type="text/css">
+    body {
+      font-family: sans-serif;
+    }
+    a {
+      text-decoration: none;
+    }
+    #cite {
+      text-style: italic;
+      font-size: 10px;
+      margin: 20px 0;
+    }
+    .postItem {
+      margin: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      border-radius: 4px;
+      padding: 20px;
+    }
+    .postItem img {
+      float: left;
+      margin-right: 20px;
+      max-width: 130px;
+    }
+    .postItem::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+    .bigTitle {
+      margin: 40px;
+      font-size: 40px;
+    }
+
+    #xpaclist > div:hover {
+      background: #f0f0f0;
+    }
+    #xpaclist > div {
+      display: inline-block;
+      cursor: pointer;
+      padding: 5px 10px;
+      margin: 10px;
+      transition: background 0.2s;
+    }
+    #xpacradio {
+      margin: 10px;
+    }
+    #xpacradio label {
+      margin: 10px;
+      display: inline-block;
+    }
+    #xpacradio input:checked + span {
+      font-weight: bold;
+    }
+    #nthday2 {
+      text-align: center;
+      width: 100px;
+      padding: 10px 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    #goup, #godown {
+      cursor: pointer;
+      user-select: none;
+    }
+    #intervalMode {
+      font-size: 12px;
+      margin: 20px 0;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div id="cite">(data pulled from pushshift.io)</div>
+  <div><a id="intervalMode" href="?mode=week">Switch to week view</a></div>
+  <div>
+    Today is <span id="metric"></span> <span id="nthday"></span> of <span id="currentxpac"></span>
+  </div>
+  <div>
+    Take a look at /r/wow on <span id="metric2"></span> <span id="godown">⬅️</span><input type="text" id="nthday2"></input> <span id="goup">➡️</span> of:
+    <div id="xpaclist"></div>
+    <form id="xpacradio"></form>
+  </div>
+  <div id="status"></div>
+  <div id="posts"></div>
+<script type="text/javascript">
+  // https://api.pushshift.io/reddit/submission/search/?after=1415836800&before=1415923200&sort_type=score&sort=desc&subreddit=wow
+(function(){
+  var games = [
+    {
+      title: 'Vanilla',
+      date: new Date('2004/11/23 GMT-0700')
+    },
+    {
+      title: 'The Burning Crusade',
+      date: new Date('2007/01/16 GMT-0700')
+    },
+    {
+      title: 'Wrath of the Lich King',
+      date: new Date('2008/11/13 GMT-0700')
+    },
+    {
+      title: 'Cataclysm',
+      date: new Date('2010/12/07 GMT-0700')
+    },
+    {
+      title: 'Mists of Pandaria',
+      date: new Date('2012/09/25 GMT-0700')
+    },
+    {
+      title: 'Warlords of Draenor',
+      date: new Date('2014/11/13 GMT-0700')
+    },
+    {
+      title: 'Legion',
+      date: new Date('2016/08/30 GMT-0700')
+    },
+    {
+      title: 'Battle for Azeroth',
+      date: new Date('2018/08/14 GMT-0700')
+    }
+  ];
+
+  var current = games[games.length - 1];
+  var today = new Date();
+
+  var DAY_IN_SECS = 86400;
+  var WEEK_IN_SECS = DAY_IN_SECS * 7;
+
+  var intervalUnit = DAY_IN_SECS;
+  document.getElementById('metric').innerText = 'day';
+  document.getElementById('metric2').innerText = 'day';
+  if (window.location.search === '?mode=week') {
+    var intervalUnit = WEEK_IN_SECS;
+    document.getElementById('metric').innerText = 'week';
+    document.getElementById('metric2').innerText = 'week';
+    document.getElementById('intervalMode').href = '?mode=day';
+    document.getElementById('intervalMode').innerText = 'Switch to day view';
+  }
+  var nthday = 1 + Math.floor((today - current.date) / (intervalUnit * 1000));
+
+
+  document.getElementById('nthday').innerText = nthday;
+  document.getElementById('nthday2').value = nthday;
+  document.getElementById('currentxpac').innerText = current.title;
+
+  /*
+  var xpaclist = document.getElementById('xpaclist');
+  for(var x = 0; x < games.length; x++){
+    var button = document.createElement('div');
+    button.innerText = games[x].title;
+    button.onclick = (function(game){
+      return function(){
+        getPostsForGame(game);
+      }
+    })(games[x]);
+    xpaclist.appendChild(button);
+  }
+  */
+
+  var xpacradio = document.getElementById('xpacradio');
+  xpacradio.onchange = function(e){
+    var gameIndex = e.target.value;
+    var game = games[gameIndex];
+    getPostsForGame(game);
+  };
+  for(var x = 0; x < games.length; x++){
+    var label = document.createElement('label');
+    var radioButton = document.createElement('input');
+    radioButton.type = 'radio';
+    radioButton.name = 'gameIndex';
+    radioButton.value = x;
+    if (x === games.length - 1) {
+      radioButton.checked = true;
+    }
+    label.appendChild(radioButton);
+    var radioText = document.createElement('span');
+    radioText.innerText = games[x].title;
+    label.appendChild(radioText);
+    xpacradio.appendChild(label);
+  }
+  document.getElementById('nthday2').onchange = function(){
+    getFromCurrentSettings();
+  };
+  document.getElementById('godown').onclick = function(){
+    document.getElementById('nthday2').value = Math.max(1, parseInt(document.getElementById('nthday2').value) - 1);
+    getFromCurrentSettings();
+  };
+  document.getElementById('goup').onclick = function(){
+    document.getElementById('nthday2').value = parseInt(document.getElementById('nthday2').value) + 1;
+    getFromCurrentSettings();
+  };
+
+  var lock = null;
+
+  function getFromCurrentSettings(){
+    var inputs = xpacradio.getElementsByTagName('input');
+    for(var z = 0; z < inputs.length; z++){
+      if (inputs[z].checked) {
+        getPostsForGame(games[z]);
+      }
+    }
+  }
+
+  function getPostsForGame(game){
+    var nthday = parseInt(document.getElementById('nthday2').value);
+    if (nthday < 1) {
+      return;
+    }
+    var nthdayDate = new Date(game.date.getTime() + ((nthday - 1) * intervalUnit * 1000));
+    loadRWow(nthdayDate);
+  }
+
+  function loadRWow(date){
+    var status = document.getElementById('status');
+    lock = date;
+    status.innerText = 'loading...';
+    var after = Math.floor(date.getTime() / 1000);
+    var before = after + intervalUnit;
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://api.pushshift.io/reddit/submission/search/?after=' + after + '&before=' + before + '&sort_type=num_comments&sort=desc&subreddit=wow&size=100')
+    xhr.onreadystatechange = function(e){
+      if (e.target.readyState !== 4) {
+        return;
+      }
+      if (lock !== date){
+        return;
+      }
+      var data = JSON.parse(e.target.responseText);
+      var posts = document.createElement('div');
+      var bigTitle = document.createElement('div');
+      bigTitle.className = 'bigTitle';
+      bigTitle.innerText = 'Posts submitted to /r/wow ' + (new Date(after * 1000)).toLocaleDateString() + ' - ' + (new Date(before * 1000)).toLocaleDateString();
+      posts.appendChild(bigTitle);
+      for(var y = 0; y < data.data.length; y++){
+        var post1 = data.data[y];
+        var post = document.createElement('div');
+        post.className = 'postItem';
+
+        var nothumb = ['self', 'spoiler', 'default'];
+        if (nothumb.indexOf(post1.thumbnail) === -1) {
+          var thumb = document.createElement('a');
+          thumb.className = 'postThumb';
+          thumb.target = '_blank';
+          thumb.href = post1.url;
+          var thumbImg = document.createElement('img');
+          thumbImg.src = post1.thumbnail;
+          thumb.appendChild(thumbImg);
+          post.appendChild(thumb);
+        } else if (post1.thumbnail === 'default' && post1.url.match('i.redd.it')){
+          var thumb = document.createElement('a');
+          thumb.className = 'postThumb';
+          thumb.target = '_blank';
+          thumb.href = post1.url;
+          var thumbImg = document.createElement('img');
+          thumbImg.src = post1.url;
+          thumb.appendChild(thumbImg);
+          post.appendChild(thumb);
+        }
+
+        var title = document.createElement('a');
+        title.className = 'postTitle';
+        title.target = '_blank';
+        title.href = post1.full_link;
+        title.innerText = post1.title + ' (' + post1.num_comments + ' comments)';
+        post.appendChild(title);
+
+        posts.appendChild(post);
+      }
+
+      if (data.data.length < 1) {
+        var empty = document.createElement('div');
+        empty.innerText = 'nothing!';
+        posts.appendChild(empty);
+      }
+
+      var postsContainer = document.getElementById('posts');
+      postsContainer.innerHTML = '';
+      postsContainer.appendChild(posts);
+      status.innerText = '';
+    };
+    xhr.send();
+  };
+})();
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-59242016-3"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'UA-59242016-3');
+</script>
+</body>
+</html>
