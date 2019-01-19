@@ -31,6 +31,7 @@
   <div id="tree"></div>
   <script src="Treant.min.js"></script>
   <script src="raphael.min.js"></script>
+  <script src="things.js"></script>
   <script type="text/javascript">
     'use strict';
     function make(params){
@@ -69,119 +70,6 @@
       };
     }
 
-    var things = [
-      [
-        'https://i.imgur.com/Y0Dg3lxl.jpg',
-        'https://www.reddit.com/r/pics/comments/aggom4/my_mom_painted_this_and_said_no_one_would_like_it/'
-      ],
-      [
-        'https://external-preview.redd.it/aX8AiJwaUzor0RbnKWkf7MxPAahu9CFjHCN_Nhysg5I.jpg?width=665&auto=webp&s=d87901d37f0559281e36bcd193f923aa8e0d701f',
-        'https://www.reddit.com/r/pics/comments/agpd18/i_painted_somebodys_mom/'
-      ],
-      [
-        'https://preview.redd.it/g8209u56n8b21.jpg?width=576&auto=webp&s=7c5c8a5b266a7ce34b7e92c4bc0147a8398a7c3a',
-        'https://www.reddit.com/r/pics/comments/aheepm/took_a_while_and_not_perfect_but_i_painted_the/'
-      ],
-      [
-        'https://preview.redd.it/u05ph6fm3ab21.jpg?width=690&auto=webp&s=4ab9792f8eef85dfb44f2c8e161163beece9b4b7',
-        'https://www.reddit.com/r/pics/comments/ahh6gm/i_painted_the_girl_who_painted_the_guy_who/'
-      ],
-      [
-        'https://external-preview.redd.it/fOnYp9peThPRKcxPyAyMLVBtwnBeQ3EBNkoyXxvb4fM.jpg?width=575&auto=webp&s=efea1828b8a3557128e4aa195e32a4741ae9fdc7',
-        'https://www.reddit.com/r/pics/comments/ahilt8/i_painted_the_guy_who_painted_the_girl_who/'
-      ],
-      [
-        'https://i.imgur.com/jwD2Xdfl.jpg',
-        'https://www.reddit.com/r/pics/comments/ahix0o/cheep_cheep_cheep_cheep_cheep/'
-      ],
-      [
-        'https://external-preview.redd.it/qobSvctiX6Uh-Gsuw9xca9rEhcLMsDKeB3PMO4i2AxA.jpg?width=576&auto=webp&s=124aa01ecfeb565838d4fa3b46a38d51d3eb2dc8',
-        'https://www.reddit.com/r/pics/comments/ahfsnu/took_an_hour_or_so_but_i_painted_the_girl_who/'
-      ],
-      [
-        'https://preview.redd.it/0ph71xjy3ab21.jpg?width=576&auto=webp&s=e2b54d3ae18580e7f9afb5684d030f531876c809',
-        'https://www.reddit.com/r/pics/comments/ahh7de/bit_wonky_but_i_painted_the_woman_who_painted_the/'
-      ],
-      [
-        'https://preview.redd.it/e8ohbpdz3cb21.jpg?width=1024&auto=webp&s=3f7f1f835eaccf34a97ec8332517169a9801fa2a',
-        'https://www.reddit.com/r/pics/comments/ahk441/how_could_i_choose_its_multiplying/'
-      ],
-      [
-        'https://preview.redd.it/5yoc6rstedb21.jpg?width=768&auto=webp&s=54094fb765d8e8f4678413ccdb6a12b2aae4b66d',
-        'https://www.reddit.com/r/pics/comments/ahlkis/when_it_sinks_in_that_i_stayed_up_most_of_the/'
-      ],
-      [
-        'https://i.imgur.com/uAkc6vt.jpg',
-        'https://www.reddit.com/r/pics/comments/ahjb0t/i_didnt_like_how_reddit_treated_the_ipad_guy_so_i/'
-      ],
-      [
-        'https://preview.redd.it/qzkjzm1radb21.png?width=1024&auto=webp&s=e897b9adc92a94405fe9470d47690dff7eeb1536',
-        'https://www.reddit.com/r/pics/comments/ahlfq9/it_took_over_9000_hours_in_ms_paint_but_i_painted/'
-      ],
-      [
-        'https://external-preview.redd.it/9Tqt3iwV3UnakFFSUc2ureZXI86MD1JvuBx9pROSabA.jpg?width=576&auto=webp&s=8f8c8c35ad6fe4bf5805fb9b470f3a40a5de4d92',
-        'https://www.reddit.com/r/pics/comments/ahjfie/i_drew_the_guy_who_painted_the_girl_who_painted/'
-      ],
-      [
-        'https://preview.redd.it/sr92v27dwab21.png?width=368&auto=webp&s=bef2e3917a0703e3129f82d15f9c79bdf414bcb9',
-        'https://www.reddit.com/r/pics/comments/ahih49/i_cant_paint_the_guy_who_painted_the_girl_who/'
-      ],
-      [
-        'https://preview.redd.it/v1mn2q8srab21.jpg?width=1024&auto=webp&s=088e72668cea5b950065c7baf15456573f2746dc',
-        'https://www.reddit.com/r/pics/comments/ahi9s4/i_drew_the_guy_who_painted_the_girl_who_painted/'
-      ],
-      [
-        'https://i.imgur.com/gM79Uwl.jpg',
-        'https://www.reddit.com/r/pics/comments/agpd18/i_painted_somebodys_mom/ee7zwrl/?st=jr3kuiue&sh=53e3c3bf'
-      ],
-      [
-        'https://preview.redd.it/hindzd9g2bb21.jpg?width=576&auto=webp&s=c0312cb093d79db46ed4e7ebeebb8bdff94d9c88',
-        'https://www.reddit.com/r/pics/comments/ahiq0m/someone_already_beat_me_to_it_but_heres_mine/?st=JR3KTIOX&sh=57d1fe3f'
-      ],
-      [
-        'https://preview.redd.it/sdzdgqd49eb21.jpg?width=576&auto=webp&s=5df24d70efb05e72afa21aac8aeeb5abc9375361',
-        'https://www.reddit.com/r/pics/comments/ahmq4d/bit_shitty_but_i_painted_the_woman_who_painted/'
-      ],
-      [
-        'https://i.imgur.com/3vZ4TjN.jpg',
-        'https://www.reddit.com/r/pics/comments/aheepm/took_a_while_and_not_perfect_but_i_painted_the/eeeaj5k'
-      ]
-    ];
-    var relations = {
-      i: 0,
-      c: [
-      {
-        i: 1,
-        c: [
-          {
-            i: 2,
-            c: [
-              {
-                i:3,
-                c: [
-                  {
-                    i:4,
-                    c: [{i:9}]
-                  }
-                  , {i:5}, {i:8}, {i:12}, {i:13}]
-              },
-              {
-                i:6,
-                c: [{i:10}, {i:11}, {i:14}]
-              },
-              {
-                i:7,
-                c: [{i:8}, {i:17}]
-              },
-              {i:16},
-              {i:18}
-            ]
-          },
-          {i:15}
-        ]
-      }
-      ]
-    };
     var config = {
       chart: {
         container: "#tree",
