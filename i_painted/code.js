@@ -13,8 +13,8 @@ style.selector('node')
 })
 style.selector('.embiggen')
 .css({
-  'height': 300,
-  'width': 300,
+  'height': 200,
+  'width': 200,
   'z-index': 10
 })
 .selector('edge')
