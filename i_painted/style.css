@@ -16,3 +16,14 @@ body {
   left: 0;
   z-index: 10;
 }
+
+#layout {
+  background: #000;
+  position: fixed;
+  top: 8px;
+  right: 8px;
+  z-index: 10;
+  padding: 10px 4px;
+  border-radius: 8px;
+  color: white;
+}

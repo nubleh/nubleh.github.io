@@ -84,3 +84,16 @@ cy.on('tap', 'node', function(e){
     e.target.addClass('embiggen');
   }
 });
+
+var layouts = ['grid', 'circle', 'concentric', 'breadthfirst', 'cose'];
+var active_layout = 3;
+document.getElementById('layout').onclick = function(){
+  active_layout += 1;
+  if (active_layout >= layouts.length) {
+    active_layout = 0;
+  }
+  var new_layout = cy.layout({
+    name: layouts[active_layout]
+  });
+  new_layout.run();
+};
