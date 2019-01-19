@@ -25,3 +25,5 @@ nubleh.github.io - what's on here?
   - what if bullets bounced around?
 - http://nubleh.github.io/trac/
   - it's a train
+- http://nubleh.github.io/i_painted/
+  - a bunch of redditors started painting each other
