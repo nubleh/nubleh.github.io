@@ -51,7 +51,6 @@
       var drop = 0;
       if (thing.c && thing.c.length > 0) {
         while (typeof fill[level + drop + 1] !== 'undefined' && fill[level + drop + 1] >= 3) {
-          console.log('overflow');
           drop++;
         }
       }
