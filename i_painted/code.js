@@ -95,7 +95,8 @@ document.getElementById('layout').onclick = function(){
   var new_layout = cy.layout({
     name: layouts[active_layout],
     directed: true,
-    padding: 10
+    padding: 10,
+    randomize: true
   });
   new_layout.run();
 };
