@@ -1,5 +1,4 @@
 // photos from flickr with creative commons license
-
 var style = cytoscape.stylesheet();
 style.selector('node')
 .css({
@@ -69,7 +68,7 @@ var cy = cytoscape({
   layout: {
     name: 'breadthfirst',
     directed: true,
-    padding: 10
+    padding: 20
   }
 }); // cy init
 
@@ -86,18 +85,24 @@ cy.on('tap', 'node', function(e){
   }
 });
 
-var layouts = ['grid', 'circle', 'concentric', 'breadthfirst', 'cose'];
+var layouts = ['grid', 'circle', 'concentric', 'breadthfirst', {
+  name: 'breadthfirst',
+  padding: 10,
+  directed: 10,
+  circle: true
+}, 'cose'];
 var active_layout = 3;
 document.getElementById('layout').onclick = function(){
   active_layout += 1;
   if (active_layout >= layouts.length) {
     active_layout = 0;
   }
-  var new_layout = cy.layout({
+  var new_options = typeof layouts[active_layout] === 'object' ? layouts[active_layout] : {
     name: layouts[active_layout],
     directed: true,
     padding: 10,
     randomize: true
-  });
+  };
+  var new_layout = cy.layout(new_options);
   new_layout.run();
 };
