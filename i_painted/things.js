@@ -131,6 +131,14 @@ var things = [
 [
 'https://i.imgur.com/akMWbte.jpg',
 'https://www.reddit.com/r/pics/comments/ahrz3o/obligatorily_painted_version_of_my_own_flowchart/'
+],
+[
+'https://i.imgur.com/LBJTiJY.jpg',
+'https://www.reddit.com/r/pics/comments/ahmm62/thought_i_looked_cute_might_delete_later/'
+],
+[
+'https://i.imgur.com/kDQEuYY.jpg',
+'https://www.reddit.com/r/pics/comments/ahlkis/when_it_sinks_in_that_i_stayed_up_most_of_the/eeft3mh/?sh=85a0b6e3&st=JR3PH168'
 ]
 ];
 var relations = {
@@ -156,7 +164,7 @@ var relations = {
                   i:31,
                   c: [{i:32}]
                 }]
-              }, {i:24}]
+              }, {i:24}, {i:33}, {i:34}]
             }
           ]
         }
