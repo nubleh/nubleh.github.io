@@ -123,6 +123,14 @@ var things = [
 [
 'https://i.imgur.com/FbiSHEt.jpg',
 'https://www.reddit.com/r/pics/comments/ahsbfn/i_badly_painted_a_guy_who_hadnt_painted_in_two/'
+],
+[
+'https://i.imgur.com/7vLlRgs.jpg',
+'https://www.reddit.com/r/pics/comments/ahohn6/this_seems_necessary/'
+],
+[
+'https://i.imgur.com/akMWbte.jpg',
+'https://www.reddit.com/r/pics/comments/ahrz3o/obligatorily_painted_version_of_my_own_flowchart/'
 ]
 ];
 var relations = {
@@ -144,7 +152,10 @@ var relations = {
               i:9,
               c: [{
                 i:21,
-                c: [{i:26}, {i:30}]
+                c: [{i:26}, {i:30}, {
+                  i:31,
+                  c: [{i:32}]
+                }]
               }, {i:24}]
             }
           ]
