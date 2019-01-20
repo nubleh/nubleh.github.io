@@ -1,5 +1,5 @@
-cytoscape.use(cytoscapeCoseBilkent)
-cytoscape.use(cytoscapeDagre)
+cytoscape.use(cytoscapeCoseBilkent);
+cytoscape.use(cytoscapeDagre);
 var style = cytoscape.stylesheet();
 style.selector('node')
 .css({
