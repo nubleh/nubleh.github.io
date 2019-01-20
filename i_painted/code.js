@@ -7,22 +7,21 @@ style.selector('node')
   'background-fit': 'cover',
   'border-color': '#000',
   'border-width': 3,
-  'border-opacity': 0.5,
-  'cursor': 'pointer'
+  'border-opacity': 0.5
 })
-style.selector('.embiggen')
+style.selector('node:selected')
 .css({
-  'height': 200,
-  'width': 200,
-  'z-index': 10
+  'height': 150,
+  'width': 150,
+  'border-width': 6
 })
-.selector('edge')
+style.selector('edge')
 .css({
   'curve-style': 'bezier',
-  'width': 6,
+  'width': 2,
   'target-arrow-shape': 'triangle',
   'line-color': '#ffaaaa',
-  'target-arrow-color': '#ffaaaa'
+  'target-arrow-color': '#ff6666'
 })
 
 for(var x = 0; x < things.length; x++){
@@ -56,7 +55,6 @@ var cy = cytoscape({
   container: document.getElementById('cy'),
 
   boxSelectionEnabled: false,
-  autounselectify: true,
 
   style: style,
 
@@ -74,14 +72,11 @@ var cy = cytoscape({
 
 cy.on('tap', 'node', function(e){
   console.log(e.target.id());
-  if (e.target.hasClass('embiggen')){
+  if (e.target.selected()) {
     var index = parseInt(e.target.id().match(/img_(.*)/)[1]);
     var yourWindow = window.open();
     yourWindow.opener = null;
     yourWindow.location = things[index][1];
-  } else {
-    cy.$('.embiggen').removeClass('embiggen');
-    e.target.addClass('embiggen');
   }
 });
 
