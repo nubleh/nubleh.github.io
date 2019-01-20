@@ -111,6 +111,10 @@ var things = [
 [
 'https://i.imgur.com/sXH2gaFl.jpg',
 'https://www.reddit.com/r/pics/comments/ahotoc/ok_ill_draw_the_celeb_who_painted_the_woman_who/'
+],
+[
+'https://i.imgur.com/OffyGiu.jpg',
+'https://www.reddit.com/r/pics/comments/ahr0i8/i_drew_a_shittier_version_of_the_dude_that_drew_a/'
 ]
 ];
 var relations = {
@@ -154,7 +158,7 @@ var relations = {
         i:7,
         c: [{i:8}, {
           i:17,
-          c: [{i:23}, {i:25}, {i:27}]
+          c: [{i:23}, {i:25}, {i:27}, {i:28}]
         }]
       },
       {i:16},
