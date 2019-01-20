@@ -1,4 +1,5 @@
-// photos from flickr with creative commons license
+cytoscape.use(cytoscapeCoseBilkent)
+cytoscape.use(cytoscapeDagre)
 var style = cytoscape.stylesheet();
 style.selector('node')
 .css({
@@ -52,6 +53,27 @@ var makeEdge = function(r, t){
 };
 makeEdge(relations, things);
 
+var layouts = ['grid', 'circle', 'concentric', 'dagre', {
+  name: 'breadthfirst',
+  padding: 10,
+  directed: 10
+}, 'cose', 'cose-bilkent', {
+  name: 'breadthfirst',
+  padding: 10,
+  directed: 10,
+  circle: true
+}];
+var active_layout = 3;
+
+var make_layout_options = function(){
+  return typeof layouts[active_layout] === 'object' ? layouts[active_layout] : {
+    name: layouts[active_layout],
+    directed: true,
+    padding: 10,
+    randomize: true
+  };
+};
+
 var cy = cytoscape({
   container: document.getElementById('cy'),
 
@@ -64,11 +86,7 @@ var cy = cytoscape({
     edges: edges
   },
 
-  layout: {
-    name: 'breadthfirst',
-    directed: true,
-    padding: 20
-  }
+  layout: make_layout_options()
 }); // cy init
 
 cy.on('tap', 'node', function(e){
@@ -81,24 +99,13 @@ cy.on('tap', 'node', function(e){
   }
 });
 
-var layouts = ['grid', 'circle', 'concentric', 'breadthfirst', {
-  name: 'breadthfirst',
-  padding: 10,
-  directed: 10,
-  circle: true
-}, 'cose'];
-var active_layout = 3;
-document.getElementById('layout').onclick = function(){
+var cycle_layout = function(){
   active_layout += 1;
   if (active_layout >= layouts.length) {
     active_layout = 0;
   }
-  var new_options = typeof layouts[active_layout] === 'object' ? layouts[active_layout] : {
-    name: layouts[active_layout],
-    directed: true,
-    padding: 10,
-    randomize: true
-  };
+  var new_options = make_layout_options();
   var new_layout = cy.layout(new_options);
   new_layout.run();
 };
+document.getElementById('layout').onclick = cycle_layout;
