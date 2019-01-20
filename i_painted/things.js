@@ -139,6 +139,10 @@ var things = [
 [
 'https://i.imgur.com/kDQEuYY.jpg',
 'https://www.reddit.com/r/pics/comments/ahlkis/when_it_sinks_in_that_i_stayed_up_most_of_the/eeft3mh/?sh=85a0b6e3&st=JR3PH168'
+],
+[
+'https://i.imgur.com/n3iTdUZ.png',
+'https://www.reddit.com/r/pics/comments/ahtbs7/we_painted_the_guy_that_painted_the_other_guy_who/'
 ]
 ];
 var relations = {
@@ -160,7 +164,10 @@ var relations = {
               i:9,
               c: [{
                 i:21,
-                c: [{i:26}, {i:30}, {
+                c: [{
+                  i:26,
+                  c: [{i:35}]
+                }, {i:30}, {
                   i:31,
                   c: [{i:32}]
                 }]
