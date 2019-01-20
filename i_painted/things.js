@@ -115,6 +115,14 @@ var things = [
 [
 'https://i.imgur.com/OffyGiu.jpg',
 'https://www.reddit.com/r/pics/comments/ahr0i8/i_drew_a_shittier_version_of_the_dude_that_drew_a/'
+],
+[
+'https://i.imgur.com/pfTB6uw.jpg',
+'https://www.reddit.com/r/pics/comments/ahrxcc/oh_well_heres_yet_another_layer/'
+],
+[
+'https://i.imgur.com/FbiSHEt.jpg',
+'https://www.reddit.com/r/pics/comments/ahsbfn/i_badly_painted_a_guy_who_hadnt_painted_in_two/'
 ]
 ];
 var relations = {
@@ -136,7 +144,7 @@ var relations = {
               i:9,
               c: [{
                 i:21,
-                c: [{i:26}]
+                c: [{i:26}, {i:30}]
               }, {i:24}]
             }
           ]
@@ -158,7 +166,7 @@ var relations = {
         i:7,
         c: [{i:8}, {
           i:17,
-          c: [{i:23}, {i:25}, {i:27}, {i:28}]
+          c: [{i:23}, {i:25}, {i:27}, {i:28}, {i:29}]
         }]
       },
       {i:16},
