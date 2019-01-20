@@ -74,6 +74,7 @@ var cy = cytoscape({
 }); // cy init
 
 cy.on('tap', 'node', function(e){
+  console.log(e.target.id());
   if (e.target.hasClass('embiggen')){
     var index = parseInt(e.target.id().match(/img_(.*)/)[1]);
     var yourWindow = window.open();

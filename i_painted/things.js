@@ -91,6 +91,18 @@ var things = [
 [
 'https://i.imgur.com/zUvXd95.png',
 'https://www.reddit.com/r/pics/comments/ahno49/ehhh_i_somewhat_painted_the_guy_who_painted_the/'
+],
+[
+'https://i.imgur.com/GCYD5rC.png',
+'https://www.reddit.com/r/pics/comments/ahot7g/i_painted_ushitty_watercolour_who_painted_the/'
+],
+[
+'https://i.imgur.com/SjgM0GC.png',
+'https://www.reddit.com/r/pics/comments/ahppd0/my_continuation_of_this_meme_7_hours_later/'
+],
+[
+'https://i.imgur.com/s6cgtS2.jpg',
+'https://www.reddit.com/r/pics/comments/ahr05a/bit_goofy_but_i_painted_the_guy_who_painted_the/'
 ]
 ];
 var relations = {
@@ -110,7 +122,7 @@ var relations = {
           c: [
             {
               i:9,
-              c: [{i:21}]
+              c: [{i:21}, {i:24}]
             }
           ]
         }
@@ -129,7 +141,10 @@ var relations = {
       },
       {
         i:7,
-        c: [{i:8}, {i:17}]
+        c: [{i:8}, {
+          i:17,
+          c: [{i:23}, {i:25}]
+        }]
       },
       {i:16},
       {i:18},
