@@ -2,6 +2,7 @@
 var style = cytoscape.stylesheet();
 style.selector('node')
 .css({
+  'shape': 'rectangle',
   'height': 80,
   'width': 80,
   'background-fit': 'cover',
