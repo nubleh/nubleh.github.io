@@ -183,6 +183,10 @@ var things = [
 [
 'https://i.imgur.com/8bNoFs5.jpg',
 'https://www.reddit.com/r/pics/comments/anzb37/it_arrived/'
+],
+[
+'https://i.imgur.com/vnDbIj2.jpg',
+'https://twitter.com/FeddyLumpkin/status/1093052391539294208'
 ]
 
 ];
@@ -244,7 +248,7 @@ var relations = {
         }]
       },
       {i:16},
-      {i:18},
+      {i:18, c:[{i:46}]},
       {i:19}
       ]
     },
