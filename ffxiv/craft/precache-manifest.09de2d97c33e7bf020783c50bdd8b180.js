@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "098a8834d0ba20e9f0c58c7c7db6b69c",
+    "revision": "7190b54c2f3dc4a86e4f39c7ff548d89",
     "url": "/ffxiv/craft/index.html"
   },
   {
