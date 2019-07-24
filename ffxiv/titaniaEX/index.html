@@ -23,7 +23,7 @@
         transform: rotateX(-90deg);
         width: 0;
         height: 0;
-        background: red;
+        background: #00c;
         position: absolute;
       }
       .personIcon {
@@ -32,7 +32,7 @@
       .personIcon::before, .personIcon::after {
         content: '';
         display: block;
-        background: red;
+        background: #00c;
         position: absolute;
       }
       .personIcon::before {
@@ -64,12 +64,44 @@
         left: 50%;
       }
 
+      .castBar {
+        position: absolute;
+        bottom: 120%;
+        font-size: 11px;
+        white-space: nowrap;
+      }
+      .castBar > div {
+        width: 80px;
+        height: 5px;
+        border: solid 1px #fff;
+        background: #000;
+        box-sizing: border-box;
+        border-radius: 2px;
+      }
+      .castBar > div > div {
+        width: 0;
+        height: 100%;
+        background: #fff;
+      }
+
+      .warn {
+        background: rgba(255, 203, 145, 0.5);
+        position: absolute;
+        border: solid 1px #fffb94;
+      }
+      .warn.blue {
+        background: rgba(145, 145, 255, 0.5);
+        position: absolute;
+        border: solid 1px #9494ff;
+      }
+
     </style>
   </head>
   <body>
     <div class="wrapper">
       <div class="arena">
         <div class="titania"></div>
+        <div class="warns"></div>
         <div class="person you"><div class="personIcon"></div></div>
       </div>
       <div class="clock"></div>
@@ -129,6 +161,8 @@
         // 3.14s to go 172px
         var speed = 54.7;
 
+        var events = generateTitaniaEvent();
+
         var mainLoop = function(){
           var now = Date.now();
           var dTime = now - prevTime;
@@ -172,6 +206,46 @@
             document.getElementsByClassName('clock')[0].innerText = padTime(minutes) + ':' + padTime(seconds) + '.' + padTime(centiSeconds);
           }
 
+          events.forEach(function(activeEvent){
+            var diff = runningTime - activeEvent.time;
+            if (diff < 0) {
+              return false;
+            }
+            if (diff > 50) {
+              return true;
+            }
+
+            if (activeEvent.cast) {
+              var castBar = document.createElement('div');
+              castBar.className = 'castBar';
+              castBar.innerHTML = '<span>' + activeEvent.name + '</span><div><div></div></div>';
+              var castProgress = castBar.children[1].children[0];
+              castProgress.style.transition = 'all ' + (activeEvent.cast / 1000) + 's linear';
+              document.getElementsByClassName('titania')[0].appendChild(castBar);
+              requestAnimationFrame(function(){
+                castProgress.style.width = '100%';
+              });
+              setTimeout(function(){
+                castBar.remove();
+              }, activeEvent.cast);
+            }
+
+            var warn = null;
+            if (activeEvent.warn) {
+              warn = getWarn(activeEvent.name);
+              if (warn){
+                setTimeout(function(){
+                  document.getElementsByClassName('warns')[0].appendChild(warn);
+                  setTimeout(function(){
+                      warn.remove();
+                  }, activeEvent.warnDuration);
+                }, activeEvent.warn);
+              }
+            }
+          });
+
+
+          // end loop
           requestAnimationFrame(mainLoop);
         };
         requestAnimationFrame(mainLoop);
@@ -182,6 +256,65 @@
           return '0' + num;
         }
         return num;
+      }
+
+      function generateTitaniaEvent(){
+        var events = [];
+        events = events.concat([
+          {
+            name: 'Bright Sabbath',
+            time: 8000,
+            cast: 3300,
+          },
+          {
+            name: 'Phantom Rune (Out)',
+            time: 21000,
+            cast: 5000,
+            warn: 3500,
+            warnDuration: 1500,
+          },
+          {
+            name: 'Mist Rune',
+            time: 34000,
+            cast: 3300,
+          },
+          {
+            name: 'Mist Rune Markers',
+            time: 41000,
+            warn: 1,
+            warnDuration: 11000,
+          }
+        ]);
+        events.sort(function(a, b){
+          return a.time < b.time ? -1 : 1;
+        });
+
+        return events;
+      }
+
+      function getWarn(name){
+        if (name === 'Phantom Rune (Out)') {
+          var el = document.createElement('div');
+          el.className = 'warn';
+          el.style.left = '50%';
+          el.style.top = '50%';
+          el.style.transform = 'translateX(-50%) translateY(-50%)';
+          el.style.width = '200px';
+          el.style.height = '200px';
+          el.style.borderRadius = '200px';
+          return el;
+        }
+        if (name === 'Mist Rune Markers') {
+          var el = document.createElement('div');
+          el.className = 'warn blue';
+          el.style.left = '50%';
+          el.style.top = '50%';
+          el.style.transform = 'translateX(-50%) translateY(-50%)';
+          el.style.width = '200px';
+          el.style.height = '200px';
+          el.style.borderRadius = '200px';
+          return el;
+        }
       }
     </script>
     <style type="text/css">
