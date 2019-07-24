@@ -76,7 +76,7 @@
 </head>
 <body>
   <div id="cite">(data pulled from pushshift.io)</div>
-  <div><a id="intervalMode" href="?mode=week">Switch to week view</a></div>
+  <div><a id="intervalMode" href="?mode=week">Switch to day view</a></div>
   <div>
     Today is <span id="metric"></span> <span id="nthday"></span> of <span id="currentxpac"></span>
   </div>
@@ -131,15 +131,15 @@
   var DAY_IN_SECS = 86400;
   var WEEK_IN_SECS = DAY_IN_SECS * 7;
 
-  var intervalUnit = DAY_IN_SECS;
-  document.getElementById('metric').innerText = 'day';
-  document.getElementById('metric2').innerText = 'day';
-  if (window.location.search === '?mode=week') {
-    var intervalUnit = WEEK_IN_SECS;
-    document.getElementById('metric').innerText = 'week';
-    document.getElementById('metric2').innerText = 'week';
-    document.getElementById('intervalMode').href = '?mode=day';
-    document.getElementById('intervalMode').innerText = 'Switch to day view';
+  var intervalUnit = WEEK_IN_SECS;
+  document.getElementById('metric').innerText = 'week';
+  document.getElementById('metric2').innerText = 'week';
+  if (window.location.search === '?mode=day') {
+    intervalUnit = DAY_IN_SECS;
+    document.getElementById('metric').innerText = 'day';
+    document.getElementById('metric2').innerText = 'day';
+    document.getElementById('intervalMode').href = '?mode=week';
+    document.getElementById('intervalMode').innerText = 'Switch to week view';
   }
   var nthday = 1 + Math.floor((today - current.date) / (intervalUnit * 1000));
 
