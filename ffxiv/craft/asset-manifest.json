@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/ffxiv/craft/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/ffxiv/craft/static/js/main.fe043780.chunk.js",
-    "main.js.map": "/ffxiv/craft/static/js/main.fe043780.chunk.js.map",
+    "main.js": "/ffxiv/craft/static/js/main.fd5ec4a1.chunk.js",
+    "main.js.map": "/ffxiv/craft/static/js/main.fd5ec4a1.chunk.js.map",
     "runtime~main.js": "/ffxiv/craft/static/js/runtime~main.9046a4f0.js",
     "runtime~main.js.map": "/ffxiv/craft/static/js/runtime~main.9046a4f0.js.map",
-    "static/js/2.2c2b65f4.chunk.js": "/ffxiv/craft/static/js/2.2c2b65f4.chunk.js",
-    "static/js/2.2c2b65f4.chunk.js.map": "/ffxiv/craft/static/js/2.2c2b65f4.chunk.js.map",
+    "static/js/2.b63d39ea.chunk.js": "/ffxiv/craft/static/js/2.b63d39ea.chunk.js",
+    "static/js/2.b63d39ea.chunk.js.map": "/ffxiv/craft/static/js/2.b63d39ea.chunk.js.map",
     "index.html": "/ffxiv/craft/index.html",
-    "precache-manifest.3bc254b2c229c4c0ca11eba500d2adc4.js": "/ffxiv/craft/precache-manifest.3bc254b2c229c4c0ca11eba500d2adc4.js",
+    "precache-manifest.3174b9bdea505b16861bb25085357052.js": "/ffxiv/craft/precache-manifest.3174b9bdea505b16861bb25085357052.js",
     "service-worker.js": "/ffxiv/craft/service-worker.js",
     "static/css/main.5ecd60fb.chunk.css.map": "/ffxiv/craft/static/css/main.5ecd60fb.chunk.css.map"
   }
