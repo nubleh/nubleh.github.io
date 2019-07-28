@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/ffxiv/craft/precache-manifest.0cd2b99c70f138b412df1e8a8e00f994.js"
+  "/ffxiv/craft/precache-manifest.36bae5d3e4553f46353de1cd485cb776.js"
 );
 
 self.addEventListener('message', (event) => {
