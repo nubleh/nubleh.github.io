@@ -36,11 +36,49 @@ chart.onmousemove = function(e){
 	tooltip.style.top = e.clientY + 20;
 	tooltip.style.left = e.clientX - 100;
 	tooltip.style.display = 'block';
-	var rank = e.target.getAttribute('data-rank').toUpperCase();
+	//var rank = e.target.getAttribute('data-rank').toUpperCase();
+	var rank = '';
+	switch(e.target.getAttribute('data-rank'))
+	{
+		case 'g':
+			rank = 'E';
+			break;
+		case 'f':
+			rank = 'D';
+			break;
+		case 'e':
+			rank = 'C';
+			break;
+		case 'd':
+			rank = 'B';
+			break;
+		case 'c':
+			rank = 'A';
+			break;
+		case 'b':
+			rank = 'A+';
+			break;
+		case 'a':
+			rank = 'A++';
+			break;
+		case 's':
+			rank = 'S';
+			break;
+		case 'sp':
+			rank = 'S+';
+			break;
+		case 'spp':
+			rank = 'S++';
+			break;
+	}
 	var chance = e.target.getAttribute('data-chance');
 	var level = e.target.getAttribute('data-level');
-	tooltip.innerHTML = chance + '% to encounter ' + rank + ' Rank <br>at MB level sum of ' + level + '.';
+	var average = Math.floor(level / 7);
+	tooltip.innerHTML = chance + '% to encounter ' + rank + ' Rank <br>at MB level sum of ' + level + ' (average: ' + average + ').';
 }
 chart.onmouseout = function(){
 	tooltip.style.display = 'none';
 }
+
+version = document.getElementById('version');
+version.innerHTML = gameVersion;
