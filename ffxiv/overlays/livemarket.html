@@ -1,0 +1,297 @@
+<html>
+  <head>
+    <style type="text/css">
+      body {
+        font-family: sans-serif;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      #logger {
+        background: rgba(255, 255, 255, 0.5);
+        padding: 8px;
+        width: 900px;
+      }
+      #wrapper {
+        background: rgba(0, 0, 0, 0.9);
+        min-height: 100px;
+        min-width: 100px;
+        display: inline-block;
+        color: #fff;
+        font-size: 12px;
+      }
+      #wrapper::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 10px;
+        height: 10px;
+        background: rgba(255, 255, 255, 0.5);
+        border-right: solid 1px #000;
+        border-bottom: solid 1px #000;
+      }
+
+      table {
+        background: rgba(0, 0, 0, 0.9);
+        color: #fff;
+        font-size: 10px;
+        text-align: right;
+        white-space: nowrap;
+      }
+      td {
+        padding: 0 4px;
+        border: none;
+      }
+      tr:nth-child(2n-1) {
+        background: rgba(255, 255, 255, 0.1);
+      }
+      table {
+        display: inline-block;
+        vertical-align: top;
+      }
+      thead {
+        text-align: center;
+        background: rgba(255, 255, 255, 0.8);
+        color: #000;
+      }
+
+      #missingList {
+        font-size: 10px;
+        display: none;
+      }
+      #missingList::before {
+        content: 'Missing price data for: ';
+      }
+      #missingList > div {
+        display: inline-block;
+        background: #fff;
+        border-radius: 2px;
+        padding: 3px 6px;
+        margin: 1 3px;
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div id="wrapper">
+      <div>
+        <button id="reset">Reset</button>
+      </div>
+      <div id="missingList"></div>
+      <table>
+        <thead>
+          <tr>
+            <td>
+              item
+            </td>
+            <td>
+              profit
+            </td>
+            <td>
+              price
+            </td>
+            <td>
+              price HQ
+            </td>
+            <td>
+              count
+            </td>
+            <td>
+              craft cost
+            </td>
+          </tr>
+        </thead>
+        <tbody id="dataTable">
+        </tbody>
+      </table>
+    </div>
+
+    <script type="text/javascript">
+      var reset = document.getElementById('reset');
+      var dataTable = document.getElementById('dataTable');
+      var missingList = document.getElementById('missingList');
+      var market = {};
+      var itemData = {};
+      var names = {};
+      var requested = {};
+      var searchHistory = [];
+      var missingPrice = {};
+      reset.onclick = () => {
+        searchHistory = [];
+        missingPrice = {};
+        updateTable();
+      };
+      document.addEventListener('onLogLine', function(event) {
+        var opcode = event.detail.opcode;
+        var payload = event.detail.payload;
+        if (opcode === 252 && payload[0] === '00000618') {
+          processMBListing(payload);
+        }
+      });
+
+      function processMBListing(values){
+
+        var now = Date.now();
+        for (var x = 0; x < 10; x++) {
+          var start = 10;
+          var price = parseInt(values[start + (x*38) + 6], 16);
+          var quantity = parseInt(values[start + (x*38) + 8], 16);
+          var itemId = parseInt(values[start + (x*38) + 9], 16);
+          var quality = values[start + (x*38) + 33];
+          var isHQ = quality && quality[quality.length - 1] === '1';
+
+          var realName = getRetainerName(values, [6, 7, 8, 9], start + (x*38) + 9);
+
+          if(itemId === 0) {
+            continue;
+          }
+          searchHistory = searchHistory.filter(i => i !== itemId);
+          searchHistory.unshift(itemId);
+
+          var newData = {
+            seller: realName,
+            price,
+            isHQ,
+            quantity,
+            itemId,
+            time: now,
+          };
+          if (market[itemId]) {
+            var newOnly = market[itemId].filter(oldData => now - oldData.time < 5000);
+            market[itemId] = newOnly.concat([newData]);
+          } else {
+            market[itemId] = [newData];
+          }
+          var name = names[itemId];
+          if (name) {
+            // report(itemId, price, quantity, isHQ, realName);
+          } else {
+            try {
+              getItemData(itemId);
+            }catch(e){
+              console.log(e);
+            }
+          }
+
+          updateTable();
+
+        }
+      }
+      function getRetainerName(values, pieceKeys, startKey){
+        var namePieces = pieceKeys.map(i => values[startKey + i]);
+        var realName = '';
+        namePieces.forEach(name => {
+          if (!name) {
+            return;
+          }
+          for(var y = 3; y >= 0; y--){
+            var charCode = parseInt(name.slice(y * 2, (y * 2) + 2), 16);
+            if (charCode > 0) {
+              realName += String.fromCharCode(charCode);
+            }
+          }
+        });
+        return realName;
+      }
+
+      function updateTable(){
+        dataTable.innerHTML = '';
+        searchHistory.forEach(itemId => {
+          var marketData = market[itemId];
+          var row = document.createElement('tr');
+          var name = itemData[itemId] ? itemData[itemId].item.name : itemId;
+
+          var marketDataSorted = marketData.sort((a, b) => a.price > b.price ? 1 : -1);
+          var cheapestNQ = marketDataSorted.find(data => !data.isHQ);
+          var cheapestHQ = marketDataSorted.find(data => data.isHQ);
+          var craftCost = getCraftCost(itemId);
+          var profit = cheapestHQ ? cheapestHQ.price - craftCost : '-';
+          profit = isNaN(profit) ? '-' : profit;
+          row.innerHTML = `
+            <td>${name}</td>
+            <td>${profit}</td>
+            <td>${cheapestNQ ? cheapestNQ.price : '-'}</td>
+            <td>${cheapestHQ ? cheapestHQ.price : '-'}</td>
+            <td>${marketData.reduce((carry, next) => carry + next.quantity, 0)}</td>
+            <td>${craftCost}</td>`;
+          dataTable.appendChild(row);
+        });
+
+        if (Object.keys(missingPrice).length < 1) {
+          missingList.style.display = 'none';
+        } else {
+          missingList.style.display = 'block';
+        }
+        missingList.innerHTML = '';
+        Object.keys(missingPrice).forEach(itemId => {
+          var el = document.createElement('div');
+          el.innerText = getName(itemId);
+          missingList.appendChild(el);
+        });
+      }
+
+      function getName(itemId){
+        if (!itemData[itemId]) {
+          getItemData(itemId);
+          return 'Unknown';
+        }
+        return itemData[itemId].item.name;
+      }
+
+      function getItemData(itemId){
+        if (requested[itemId] || itemData[itemId]) {
+          return;
+        }
+        requested[itemId] = true;
+        fetch(`https://www.garlandtools.org/db/doc/item/en/3/${itemId}.json`).then(r => r.json()).then(data => {
+          itemData[itemId] = data;
+          updateTable();
+        });
+      }
+
+      function getCraftCost(itemId){
+        if (!itemData[itemId]) {
+          getItemData(itemId);
+          return '.';
+        }
+
+        var ingredients = itemData[itemId].ingredients;
+        if (!ingredients) {
+          return '-';
+        }
+
+        var craft = itemData[itemId].item.craft[0];
+        var yieldCount = craft.yield ? craft.yield : 1;
+        var cost = craft.ingredients.reduce((carry, next) => {
+          return carry + (next.amount * getCost(next.id));
+        }, 0);
+        return Math.round(cost / yieldCount);
+      }
+
+      function getCost(itemId){
+        if (!itemData[itemId]) {
+          getItemData(itemId);
+          return 0;
+        }
+
+        var ingredients = itemData[itemId].ingredients;
+        if (!ingredients) {
+          // not craftable
+          var marketData = market[itemId];
+          if (marketData && marketData.length > 0) {
+            delete missingPrice[itemId];
+            return marketData[0].price;
+          } else {
+            missingPrice[itemId] = true;
+            return 0;
+          }
+        } else {
+          return getCraftCost(itemId);
+        }
+        return 10;
+      }
+    </script>
+  </body>
+</html>
