@@ -126,6 +126,7 @@
       document.addEventListener('onLogLine', function(event) {
         var opcode = event.detail.opcode;
         var payload = event.detail.payload;
+        console.log(opcode, payload);
         if (opcode === 252 && payload[0] === '00000618') {
           processMBListing(payload);
         }
