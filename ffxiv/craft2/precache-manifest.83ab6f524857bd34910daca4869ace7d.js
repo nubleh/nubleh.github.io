@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b1f0fa7a4c61bb5816432f1180d08640",
+    "revision": "e814da5d2c0df999952729e3510d03a7",
     "url": "/ffxiv/craft2/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ffxiv/craft2/static/css/main.5ecd60fb.chunk.css"
   },
   {
-    "revision": "4eb7a119e61143578f22",
-    "url": "/ffxiv/craft2/static/js/2.f8818515.chunk.js"
+    "revision": "8d7acf07208c9e5c34e4",
+    "url": "/ffxiv/craft2/static/js/2.e3e3a660.chunk.js"
   },
   {
     "revision": "f6c70162d6066d7d87b2",
