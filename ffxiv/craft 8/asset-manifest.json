@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/ffxiv/craft2/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/ffxiv/craft2/static/js/main.ab867765.chunk.js",
+    "main.js.map": "/ffxiv/craft2/static/js/main.ab867765.chunk.js.map",
+    "runtime~main.js": "/ffxiv/craft2/static/js/runtime~main.6328fe4e.js",
+    "runtime~main.js.map": "/ffxiv/craft2/static/js/runtime~main.6328fe4e.js.map",
+    "static/js/2.c8604d3e.chunk.js": "/ffxiv/craft2/static/js/2.c8604d3e.chunk.js",
+    "static/js/2.c8604d3e.chunk.js.map": "/ffxiv/craft2/static/js/2.c8604d3e.chunk.js.map",
+    "index.html": "/ffxiv/craft2/index.html",
+    "precache-manifest.a4f92d6dbd58d2599eff0f17468071d9.js": "/ffxiv/craft2/precache-manifest.a4f92d6dbd58d2599eff0f17468071d9.js",
+    "service-worker.js": "/ffxiv/craft2/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/ffxiv/craft2/static/css/main.5ecd60fb.chunk.css.map"
+  }
+}
