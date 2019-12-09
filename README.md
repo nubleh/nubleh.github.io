@@ -27,3 +27,5 @@ nubleh.github.io - what's on here?
   - it's a train
 - http://nubleh.github.io/i_painted/
   - a bunch of redditors started painting each other
+- http://nubleh.github.io/ffxiv/parseSales/
+  - https://github.com/nubleh/ffxiv-parseSales
