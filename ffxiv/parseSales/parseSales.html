@@ -1,0 +1,276 @@
+<html>
+  <head>
+    <style type="text/css">
+      body {
+        font-family: sans-serif;
+        color: #666;
+      }
+      #slider {
+        width: 100%;
+      }
+      #charts > div {
+        display: inline-block;
+        width: 33.333%;
+        text-align: center;
+        vertical-align: top;
+      }
+      h1 {
+        font-size: 20px;
+      }
+      .chart {
+        text-align: left;
+        font-size: 11px;
+        text-transform: capitalize;
+        position: relative;
+      }
+      .chart > div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 13px;
+        transition: transform 0.5s;
+        padding: 2px 4px;
+        box-sizing: border-box;
+      }
+      .chart .bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: red;
+        opacity: 0.3;
+      }
+      .chart .count {
+        font-weight: bold;
+      }
+      .old {
+        display: none;
+      }
+      #chart-crafts .bar {
+        background: blue;
+      }
+      #chart-sales .bar {
+        background: green;
+      }
+      #money {
+        position: fixed;
+        left: 50%;
+        top: 25px;
+        transform: translateX(-50%);
+        padding: 4px 8px;
+        background: #fff;
+        font-size: 17px;
+        color: #000;
+        z-index: 1;
+        border-radius: 4px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      }
+      #money::before {
+        content: 'Wallet: ';
+      }
+      #money::after {
+        content: ' gil';
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div id="date"></div>
+      <input type="range" id="slider"/>
+      <div id="money"></div>
+      <div id="charts">
+        <div>
+          <h1>Purchases</h1>
+          <div id="chart-purchases" class="chart"></div>
+        </div><div>
+          <h1>Crafts</h1>
+          <div id="chart-crafts" class="chart"></div>
+        </div><div>
+          <h1>Sales</h1>
+          <div id="chart-sales" class="chart"></div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="./activity.jsonp"></script>
+    <script type="text/javascript">
+      let isPlaying = true;
+      const dateEl = document.getElementById('date');
+      const slider = document.getElementById('slider');
+      const money = document.getElementById('money');
+      const chartPurchases = document.getElementById('chart-purchases');
+      const chartCrafts = document.getElementById('chart-crafts');
+      const chartSales = document.getElementById('chart-sales');
+      money.onclick = () => {
+        isPlaying = !isPlaying;
+      };
+
+      const dataBegin = 1568436473940;
+      const start = Date.now();
+      const times = Object.keys(data).map(t => parseInt(t)).filter(t => t >= dataBegin).sort();
+
+      const first = times[0];
+      const last = times[times.length - 1];
+
+      const dataCache = {};
+      const prevPositions = {};
+      let numberOfRowsToShow = 60;
+      // uncomment this to show all rows
+      // numberOfRowsToShow = Infinity;
+
+      slider.min = dataBegin; //first;
+      slider.max = last;
+      slider.value = first;
+      slider.onchange = updateSlider;
+      setTimeout(() => {
+        // slider.value = last;
+        updateSlider();
+      }, 500);
+
+      const itemData = {};
+      let state = {
+        crafts: {},
+        sales: {},
+        purchases: {},
+        money: 0,
+      };
+
+      let maxPurchaseCount = 0;
+      let maxCraftCount = 0;
+      let maxSaleCount = 0;
+
+      const interval = 100;
+      const animate = () => {
+        if (isPlaying){
+          const prevValue = slider.value;
+          slider.value = parseInt(slider.value) + 10000000;
+          if (prevValue !== slider.value) {
+            updateSlider();
+          }
+        }
+        setTimeout(animate, interval);
+      };
+      animate();
+
+
+      function updateSlider(){
+        const time = parseInt(slider.value);
+        const date = new Date(time);
+        dateEl.innerText = date.toString();
+
+        const validTimes = times.filter(t => t <= time);
+        const validData = validTimes.map(t => data[t]);
+        if (dataCache[time]) {
+          state = dataCache[time];
+        } else {
+          state = {
+            crafts: {},
+            sales: {},
+            purchases: {},
+            money: 0,
+          };
+          for (let x = validData.length - 1; x >= 0; x--) {
+            const thisData = validData[x];
+            if (thisData.type === 'money') {
+              state.money = thisData.money;
+              x = -1;
+            }
+          }
+
+          for (let x = 0; x < validData.length; x++) {
+            const thisData = validData[x];
+            const itemName = thisData.item
+              ? thisData.item
+              : '';
+            if (thisData.type === 'sale') {
+              if (!state.sales[itemName]) {
+                state.sales[itemName] = thisData.count;
+              } else {
+                state.sales[itemName] += thisData.count;
+              }
+              if (state.sales[itemName] > maxSaleCount) {
+                maxSaleCount = state.sales[itemName];
+              }
+            }
+            if (thisData.type === 'craft') {
+              if (!state.crafts[itemName]) {
+                state.crafts[itemName] = thisData.count;
+              } else {
+                state.crafts[itemName] += thisData.count;
+              }
+              if (state.crafts[itemName] > maxCraftCount) {
+                maxCraftCount = state.crafts[itemName];
+              }
+            }
+            if (thisData.type === 'purchase') {
+              if (!state.purchases[itemName]) {
+                state.purchases[itemName] = thisData.count;
+              } else {
+                state.purchases[itemName] += thisData.count;
+              }
+              if (state.purchases[itemName] > maxPurchaseCount) {
+                maxPurchaseCount = state.purchases[itemName];
+              }
+            }
+          }
+          // dataCache[time] = state;
+        }
+
+        updateChart('purchase', state.purchases, chartPurchases, maxPurchaseCount);
+        updateChart('sale', state.sales, chartSales, maxSaleCount);
+        updateChart('craft', state.crafts, chartCrafts, maxCraftCount);
+        money.innerText = state.money.toLocaleString();
+      }
+
+      function updateChart(name, data, el, max){
+        const rowheight = 13;
+        const itemNames = Object.keys(data).sort((keyA, keyB) => data[keyA] > data[keyB] ? -1 : 1);
+
+        for(let x = 0; x < el.children.length; x++){
+          const oldEl = el.children[x];
+          oldEl.classList.add('old');
+        }
+        // el.innerHTML = '';
+        for(let x = 0; x < Math.min(itemNames.length, numberOfRowsToShow); x++){
+          const itemName = itemNames[x];
+          const itemCount = data[itemName];
+          const elId = `${name}-${itemName.replace(/\s/g, '-')}`;
+          const oldEl = document.getElementById(elId);
+          if (!oldEl) {
+            const bar = document.createElement('div');
+            bar.id = elId;
+            bar.style= `
+              transform: translateY(${rowheight * x}px);
+            `;
+            bar.innerHTML = `
+              <span class="count">${itemCount}</span>
+              ${itemName}
+              <div class="bar" style="width: ${itemCount / max * 100}%"></div>
+            `;
+            el.appendChild(bar);
+
+            const newRect = bar.getClientRects()[0];
+            const oldRect = prevPositions[elId];
+            if (oldRect && (oldRect.top !== newRect.top || oldRect.left !== newRect.left)) {
+            }
+            prevPositions[elId] = newRect;
+          } else {
+            oldEl.style= `
+              transform: translateY(${rowheight * x}px);
+            `;
+            oldEl.getElementsByClassName('count')[0].innerText = itemCount;
+            oldEl.getElementsByClassName('bar')[0].style = `width: ${itemCount / max * 100}%`;
+            oldEl.classList.remove('old');
+          }
+        };
+
+        let staleEls = el.getElementsByClassName('old');
+        for(let x = 0; x < staleEls.length; x++){
+          const staleEl = staleEls[x];
+          staleEl.outerHTML = '';
+        }
+      }
+    </script>
+  </body>
+
+</html>
