@@ -336,6 +336,18 @@
       // overlay event
       document.addEventListener('onLogLine', function(event) {
         testButton.style.display = 'none';
+        const detail = JSON.parse(event.detail);
+        const opcode = parseInt(detail[0]);
+        const payload = detail.slice(2);
+        if (opcode === 252 && payload[0] === '00000618') {
+          processMBListing(payload);
+        }
+        if (opcode === 252 && payload[0] === '00000030') {
+          processMBSearch(payload);
+        }
+      });
+      document.addEventListener('onLogLine', function(event) {
+        testButton.style.display = 'none';
         const opcode = event.detail.opcode;
         const payload = event.detail.payload;
         if (opcode === 252 && payload[0] === '00000618') {
