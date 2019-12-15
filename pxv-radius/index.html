@@ -1,0 +1,79 @@
+<html>
+<head>
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.0/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.0/mapbox-gl.css' rel='stylesheet' />
+  <style type="text/css">
+    body {
+      margin: 0;
+    }
+    #map {
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <div id='map'></div>
+  <script>
+    const createGeoJSONCircle = (center, radiusInKm, points) => {
+      if(!points) points = 64;
+      
+      const coords = {
+        latitude: center[1],
+        longitude: center[0]
+      };
+      
+      const km = radiusInKm;
+      
+      const ret = [];
+      const distanceX = km/(111.320*Math.cos(coords.latitude*Math.PI/180));
+      const distanceY = km/110.574;
+      
+      let theta, x, y;
+      for(let i=0; i<points; i++) {
+        theta = (i/points)*(2*Math.PI);
+        x = distanceX*Math.cos(theta);
+        y = distanceY*Math.sin(theta);
+        
+        ret.push([coords.longitude+x, coords.latitude+y]);
+      }
+      ret.push(ret[0]);
+      
+      return {
+        "type": "geojson",
+        "data": {
+          "type": "FeatureCollection",
+          "features": [{
+            "type": "Feature",
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [ret]
+            }
+          }]
+        }
+      };
+    };
+    const loc = [139.7067072, 35.680952];
+    mapboxgl.accessToken = 'pk.eyJ1IjoibnVibGVoIiwiYSI6ImNpc3B4bW01cjAxM3Qyem1xMjIxMHNqdnUifQ.oEU9_QN3ciyclvVAKMXraQ';
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v9',
+      zoom: 14,
+      center: loc,
+    });
+    map.on('style.load', () => {
+      map.addSource("polygon", createGeoJSONCircle(loc, 1.2));
+      map.addLayer({
+        "id": "polygon",
+        "type": "fill",
+        "source": "polygon",
+        "layout": {},
+        "paint": {
+          "fill-color": "blue",
+          "fill-opacity": 0.1
+        }
+      });
+    });
+  </script>
+</body>
+</html>
