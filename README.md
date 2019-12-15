@@ -29,3 +29,5 @@ nubleh.github.io - what's on here?
   - a bunch of redditors started painting each other
 - http://nubleh.github.io/ffxiv/parseSales/
   - https://github.com/nubleh/ffxiv-parseSales
+- http://nubleh.github.io/ffxiv/overlays/crafterMarket/
+  - meant for use with FFXIV ACT OverlayPlugin (see [README.md](https://github.com/nubleh/nubleh.github.io/blob/master/ffxiv/overlays/crafterMarket/README.md))
