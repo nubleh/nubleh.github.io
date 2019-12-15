@@ -336,7 +336,13 @@
       // overlay event
       document.addEventListener('onLogLine', function(event) {
         testButton.style.display = 'none';
-        const detail = JSON.parse(event.detail);
+        let detail;
+        try {
+          // ngld's OverlayPlugin sends `["252", "___", "00000030", ...]` string instead
+          detail = JSON.parse(event.detail);
+        } catch (e) {
+          return;
+        }
         const opcode = parseInt(detail[0]);
         const payload = detail.slice(2);
         if (opcode === 252 && payload[0] === '00000618') {
@@ -348,6 +354,7 @@
       });
       document.addEventListener('onLogLine', function(event) {
         testButton.style.display = 'none';
+        // old hibiyasleep OverlayPlugin format
         const opcode = event.detail.opcode;
         const payload = event.detail.payload;
         if (opcode === 252 && payload[0] === '00000618') {
