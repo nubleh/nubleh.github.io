@@ -6,3 +6,4 @@
 4. Make a new MiniParse overlay (or LogParse if using hibiyasleep version)
 5. Enter `http://nubleh.github.io/ffxiv/overlays/crafterMarket/` as the source
 6. In Plugins > FFXIV Settings, make sure "(Debug) Log all Network Packets" is enabled.
+7. In the game, search for items on the marketboard.
