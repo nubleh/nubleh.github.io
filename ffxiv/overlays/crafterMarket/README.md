@@ -4,4 +4,5 @@
 2. Get ngld's [OverlayPlugin](https://github.com/ngld/OverlayPlugin) (works with [older fork by hibiyasleep](https://github.com/hibiyasleep/OverlayPlugin/) too)
 3. In Plugins > OverlayPlugin.dll create a new overlay
 4. Make a new MiniParse overlay (or LogParse if using hibiyasleep version)
-5. In Plugins > FFXIV Settings, make sure "(Debug) Log all Network Packets" is enabled.
+5. Enter `http://nubleh.github.io/ffxiv/overlays/crafterMarket/` as the source
+6. In Plugins > FFXIV Settings, make sure "(Debug) Log all Network Packets" is enabled.
