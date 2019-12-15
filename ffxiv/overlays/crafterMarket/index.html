@@ -363,6 +363,7 @@
           processMBSearch(payload);
         }
       });
+      let subsequent = false;
       function processMBSearch(values){
         const itemId = parseInt(values[8], 16);
         const k = values[10].substr(4);
@@ -370,6 +371,7 @@
           return;
         }
         evalItem(itemId, 0, 1);
+        subsequent = false;
       }
       function processMBListing(values){
         const now = Date.now();
@@ -386,8 +388,8 @@
           if(itemId === 0) {
             continue;
           }
-          cheapestNQ = (priceData[itemId] && priceData[itemId].NQ.price > 0) ? priceData[itemId].NQ.price : cheapestNQ;
-          cheapestHQ = (priceData[itemId] && priceData[itemId].HQ.price > 0) ? priceData[itemId].HQ.price : cheapestHQ;
+          cheapestNQ = (subsequent && priceData[itemId] && priceData[itemId].NQ.price > 0) ? priceData[itemId].NQ.price : cheapestNQ;
+          cheapestHQ = (subsequent && priceData[itemId] && priceData[itemId].HQ.price > 0) ? priceData[itemId].HQ.price : cheapestHQ;
           if (quantity > 0) {
             if (isHQ && price < cheapestHQ) {
               cheapestHQ = price;
@@ -397,6 +399,7 @@
             }
           }
         }
+        subsequent = true;
         if (itemId) {
           if (!priceData[itemId]) {
             priceData[itemId] = {
