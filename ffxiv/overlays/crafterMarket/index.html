@@ -59,7 +59,6 @@
       }
       .scene-item:hover .label {
         opacity: 1;
-        pointer-events: all;
       }
       .scene-item img {
         width: 40px;
@@ -743,18 +742,22 @@
         });
       }
 
-      function getCraftCost(itemId) {
+      function getCraftCost(itemId, allowMB) {
         const itemData = itemsData[itemId];
         if (!itemData) {
           return 0;
         }
 
-        const craftCost = !itemData.craft ? getCheapestFromMB(itemId) : itemData.craft[0].ingredients.reduce((carry, next) => {
-          const nextCost =  getCraftCost(next.id);
+        const MBCost = getCheapestFromMB(itemId);
+        const craftCost = !itemData.craft ? MBCost : itemData.craft[0].ingredients.reduce((carry, next) => {
+          const nextCost =  getCraftCost(next.id, true);
           return carry + (next.amount * nextCost);
         }, 0);
 
         const craftYield = (itemData.craft && itemData.craft[0].yield) || 1;
+        if (allowMB && MBCost > 0 && MBCost < craftCost / craftYield) {
+          return MBCost;
+        }
         return craftCost / craftYield;
       }
       function getCheapestFromMB(itemId) {
