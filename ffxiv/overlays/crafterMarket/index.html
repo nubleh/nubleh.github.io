@@ -35,7 +35,7 @@
         left: 0;
         background: rgba(255, 255, 255, 0.25);
         border-radius: 3px;
-        transition: transform 1s, opacity 1s;
+        transition: transform 1s, opacity 1s, filter 0.3s;
         background-position: 0 0, 0 -40px;
         background-size: 100% 100%;
         background-repeat: no-repeat;
@@ -73,12 +73,36 @@
         opacity: 0;
         pointer-events: none;
       }
+      @keyframes outdated-opacity {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      @keyframes outdated-grayscale {
+        0% {
+          filter: grayscale(0);
+        }
+        100% {
+          filter: grayscale(1);
+        }
+      }
+      .scene-item-outdated .label {
+        animation: outdated-opacity 2s alternate infinite;
+      }
+      .scene-item-outdated {
+        z-index: 100;
+        animation: outdated-grayscale 2s alternate infinite;
+      }
       .prices, .craftCost {
         position: absolute;
         background: rgba(255, 255, 255, 0.15);
         width: 100%;
         font-size: 10px;
         text-align: center;
+        transition: filter 1s;
       }
       .HQPrice {
         position: relative;
@@ -330,7 +354,7 @@
         let targetId = gears[Math.floor(Math.random() * gears.length)];
         evalItem(targetId, 0, 1)
       };
-      evalItem(28590, 0, 1)
+      evalItem(26434, 0, 1)
 
       // overlay event
       document.addEventListener('onLogLine', function(event) {
@@ -412,14 +436,14 @@
               time: now,
               price: cheapestNQ
             };
-            save();
+            save([priceData]);
           }
           if (cheapestHQ !== Infinity) {
             priceData[itemId].HQ = {
               time: now,
               price: cheapestHQ
             };
-            save();
+            save([priceData]);
           }
         }
         queueRender();
@@ -430,10 +454,29 @@
         delete localStorage['iconsDataCache'];
         delete localStorage['priceDataCache'];
       }
-      function save() {
-        localStorage.setItem('itemsDataCache', JSON.stringify(itemsData));
-        localStorage.setItem('iconsDataCache', JSON.stringify(iconsData));
-        localStorage.setItem('priceDataCache', JSON.stringify(priceData));
+      let lastSave = 0;
+      let saveTimeout = 0;
+      let itemsToSave = [];
+      function save(newItemsToSave) {
+        const now = Date.now();
+        if (now - lastSave < 5000) {
+          clearTimeout(saveTimeout);
+          itemsToSave = [...itemsToSave, ...newItemsToSave];
+          saveTimeout = setTimeout(save, 5000);
+          return;
+        }
+        lastSave = now;
+        itemsToSave = [...newItemsToSave];
+        if (itemsToSave.indexOf(itemsData) !== -1) {
+          localStorage.setItem('itemsDataCache', JSON.stringify(itemsData));
+        }
+        if (itemsToSave.indexOf(iconsData) !== -1) {
+          localStorage.setItem('iconsDataCache', JSON.stringify(iconsData));
+        }
+        if (itemsToSave.indexOf(priceData) !== -1) {
+          localStorage.setItem('priceDataCache', JSON.stringify(priceData));
+        }
+        itemsToSave = [];
       }
       function evalItem(id, tier, count, parent){
         if (itemLock !== 0 && itemLock !== id && tier === 0) {
@@ -461,7 +504,7 @@
           const path = `https://www.garlandtools.org/db/doc/item/en/3/${id}.json`;
           downloadData(path, (responseJSON) => { 
             itemsData[id] = responseJSON.item;
-            save();
+            save([itemsData]);
             evalItem(id, tier, count, parent);
           });
         }
@@ -536,7 +579,7 @@
         downloadData(path, (responseJSON) => {
           iconsData[id] = `https://xivapi.com${responseJSON.Icon}?${id}`;
           itemsData[id].canBeHQ = responseJSON.CanBeHq;
-          save();
+          save([iconsData, itemsData]);
           queueRender();
         });
         return '';
@@ -576,6 +619,7 @@
         renderTimeout = setTimeout(render, 50);
       }
       function render() {
+        const now = Date.now();
         const tierSiblings = {};
         const itemInstance = {};
         const height = 90;
@@ -648,7 +692,7 @@
           // update prices
           const NQPriceEl = itemEl.getElementsByClassName('NQPrice')[0];
           const HQPriceEl = itemEl.getElementsByClassName('HQPrice')[0];
-          const thisPriceData = priceData[item.id] || {NQ:{price: 0}, HQ:{price: 0}};
+          const thisPriceData = priceData[item.id] || {NQ:{time: 0, price: 0}, HQ:{time: 0, price: 0}};
           const newNQPrice = thisPriceData.NQ.price;
           const newHQPrice = thisPriceData.HQ.price;
           const newNQPriceS = abbreviate(newNQPrice);
@@ -663,6 +707,13 @@
             HQPriceEl.style.display = 'none';
           } else {
             HQPriceEl.style.display = '';
+          }
+          const oldestTime = Math.min(thisPriceData.NQ.time, (itemData.canBeHQ ? thisPriceData.HQ.time : Infinity));
+          console.log(itemData.name, thisPriceData);
+          if (oldestTime !== 0 && now - oldestTime > 21600000) { // 6 hours
+            itemEl.classList.add('scene-item-outdated');
+          } else {
+            itemEl.classList.remove('scene-item-outdated');
           }
 
           // update craft cost
