@@ -4,6 +4,7 @@
       body {
         margin: 0;
         background: #000;
+        font-family: sans-serif;
       }
       canvas {
         position: absolute;
@@ -12,16 +13,47 @@
         width: 100%;
         height: 100%;
       }
+      audio {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        left: 0;
+        z-index: 1;
+      }
+      #micButton {
+        position: absolute;
+        left: 20px;
+        bottom: 20px;
+        border-radius: 10px;
+        background: #600;
+        color: #fff;
+        z-index: 1;
+        font-size: 12px;
+        cursor: pointer;
+        padding: 10px 20px;
+        transition: transform 0.2s;
+      }
+      
+      #micButton:active {
+        transform: translateY(3px) scale(0.95);
+      }
     </style>
   </head>
   <body>
+    <audio id="audio" controls>
+      <source type="audio/mpeg" src="tosho-littleroot.mp3"/>
+    </audio>
+    <div id="micButton">MIC</div>
     <canvas id="vis"/>
 
     <script>
       'use strict';
       const visEl = document.getElementById('vis');
+      const audioEl = document.getElementById('audio');
+      const micButtonEl = document.getElementById('micButton');
+      
       const dpr = window.devicePixelRatio || 1;
-      let ctx, analyser, audioCtx, audioSource, freqData;
+      let ctx, analyser, audioCtx, micSource, fileSource, freqData;
       window.onresize = () => {
         const rect = visEl.getClientRects()[0];
         visEl.width = rect.width * dpr;
@@ -30,20 +62,34 @@
       };
       window.onresize();
 
-      navigator.mediaDevices.getUserMedia({
-        audio: true,
-        video: false
-      }).then((stream=>{
+      micButton.onclick = () => {
+        audioEl.pause();
+        navigator.mediaDevices.getUserMedia({
+          audio: true,
+          video: false
+        }).then((stream=>{
+          audioCtx = new (AudioContext || webkitAudioContext)();
+          micSource = audioCtx.createMediaStreamSource(stream);
+          analyser = audioCtx.createAnalyser();
+          analyser.fftSize = 256;
+          micSource.connect(analyser);
+          freqData = new Uint8Array(analyser.frequencyBinCount);
+        }));
+      };
+
+      audioEl.onplay = () => {
         audioCtx = new (AudioContext || webkitAudioContext)();
-        audioSource = audioCtx.createMediaStreamSource(stream);
+        fileSource = audioCtx.createMediaElementSource(audioEl);
         analyser = audioCtx.createAnalyser();
         analyser.fftSize = 256;
-        audioSource.connect(analyser);
+        analyser.connect(audioCtx.destination);
+        fileSource.connect(analyser);
         freqData = new Uint8Array(analyser.frequencyBinCount);
-      }));
+      };
 
       const interval = 15;
       const period = 10000;
+      const pastDots = {};
       const draw = () => {
         if (!analyser) {
           setTimeout(draw, interval);
@@ -52,15 +98,16 @@
         analyser.getByteFrequencyData(freqData);
         const { width, height } = visEl;
         const radius = Math.min(width, height) / 2;
-        const center = [radius, radius];
+        const center = [width/2, height/2];
 
-        ctx.fillStyle = `rgba(0, 0, 0, ${0.00333 * interval})`;
+        ctx.fillStyle = `rgba(0, 0, 0, ${0.03 * interval})`;
         ctx.fillRect(0, 0, width, height);
 
         const now = Date.now();
         const timeShift = ((now % period) / period) * Math.PI * 2;
         freqData.forEach((b, index) => {
           if (!b) {
+            delete pastDots[index];
             return true;
           }
           const freqRatio = index / freqData.length;
@@ -73,12 +120,26 @@
           const freqX = width * freqRatio;
           const freqAngle = Math.PI * 0.5 + freqRatio * Math.PI * 2;
 
+          const startDot = pastDots[index] || [
+            center[0] + startRadius * Math.cos(freqAngle),
+            center[1] + startRadius * Math.sin(freqAngle)
+          ];
+          if (!pastDots[index]) {
+            ctx.beginPath();
+            ctx.moveTo(center[0], center[1]);
+            ctx.lineTo(startDot[0], startDot[1]);
+            ctx.strokeStyle = getColor(Math.sin(freqAngle - timeShift));
+            ctx.lineWidth = 1;
+            ctx.lineCap = 'square';
+            ctx.stroke();
+          }
           const startX = center[0] + startRadius * Math.cos(freqAngle);
           const startY = center[1] + startRadius * Math.sin(freqAngle);
           const endX = center[0] + (startRadius + diffRadius * (b / 255)) * Math.cos(freqAngle);
           const endY = center[1] + (startRadius + diffRadius * (b / 255)) * Math.sin(freqAngle);
+          pastDots[index] = [endX, endY];
           ctx.beginPath();
-          ctx.moveTo(startX, startY);
+          ctx.moveTo(startDot[0], startDot[1]);
           ctx.lineTo(endX, endY);
           ctx.strokeStyle = getColor(Math.sin(freqAngle - timeShift));
           ctx.lineWidth = segment;
