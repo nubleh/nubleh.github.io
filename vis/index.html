@@ -82,6 +82,8 @@
       };
       window.onresize();
 
+      const fftSize = 256;
+
       micButton.onclick = () => {
         audioEl.pause();
         navigator.mediaDevices.getUserMedia({
@@ -91,7 +93,7 @@
           audioCtx = new (AudioContext || webkitAudioContext)();
           micSource = audioCtx.createMediaStreamSource(stream);
           analyser = audioCtx.createAnalyser();
-          analyser.fftSize = 256;
+          analyser.fftSize = fftSize;
           micSource.connect(analyser);
           freqData = new Uint8Array(analyser.frequencyBinCount);
           disclaimerEl.style.display = 'none';
@@ -106,7 +108,7 @@
           fileSource = fileAudioCtx.createMediaElementSource(audioEl);
         }
         analyser = fileAudioCtx.createAnalyser();
-        analyser.fftSize = 256;
+        analyser.fftSize = fftSize;
         analyser.connect(fileAudioCtx.destination);
         fileSource.connect(analyser);
         freqData = new Uint8Array(analyser.frequencyBinCount);
@@ -138,7 +140,7 @@
           const freqRatio = index / freqData.length;
 
           const startRadius = radius * 0.4 - (radius * 0.3 * freqRatio);
-          const segment = 0.5 * (Math.PI * 2 * startRadius) / freqData.length;
+          const segment = 1 * (Math.PI * 2 * startRadius) / freqData.length;
           const endRadius = radius * 0.9;
           const diffRadius = endRadius - startRadius;
 
