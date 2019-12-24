@@ -31,3 +31,5 @@ nubleh.github.io - what's on here?
   - https://github.com/nubleh/ffxiv-parseSales
 - http://nubleh.github.io/ffxiv/overlays/crafterMarket/
   - meant for use with FFXIV ACT OverlayPlugin (see [README.md](https://github.com/nubleh/nubleh.github.io/blob/master/ffxiv/overlays/crafterMarket/README.md))
+- http://nubleh.github.io/vis/
+  - audio visualization using web audio API
