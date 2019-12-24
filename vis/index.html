@@ -111,7 +111,7 @@
       };
 
       const interval = 15;
-      const period = 10000;
+      const period = 20000;
       const pastDots = {};
       const draw = () => {
         if (!analyser) {
@@ -122,12 +122,11 @@
         const { width, height } = visEl;
         const radius = Math.min(width, height) / 2;
         const center = [width/2, height/2];
-
-        ctx.fillStyle = `rgba(0, 0, 0, ${0.03 * interval})`;
-        ctx.fillRect(0, 0, width, height);
-
         const now = Date.now();
         const timeShift = ((now % period) / period) * Math.PI * 2;
+        ctx.fillStyle = `rgba(0, 0, 0, ${0.05 + timeShift * 0.1})`;
+        ctx.fillRect(0, 0, width, height);
+
         freqData.forEach((b, index) => {
           if (!b) {
             delete pastDots[index];
