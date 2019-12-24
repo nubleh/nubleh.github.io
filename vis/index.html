@@ -132,6 +132,34 @@
         ctx.fillStyle = `rgba(0, 0, 0, ${0.05 + timeShift * 0.1})`;
         ctx.fillRect(0, 0, width, height);
 
+        /* begin simple things */
+        ctx.beginPath();
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 1;
+        ctx.lineCap = 'square';
+        const simpleSkip = 4;
+        for(let x = 0; x < freqData.length; x += simpleSkip) {
+          const b = freqData[x];
+          const freqRatio = x / freqData.length;
+          const simpleY = visEl.height - freqRatio * visEl.height;
+          const simpleX = visEl.width;
+          if (x === 0) {
+            ctx.moveTo(simpleX - b, simpleY);
+          } else {
+            const prevB = freqData[x-simpleSkip];
+            const prevFreqRatio = (x - simpleSkip) / freqData.length;
+            const prevSimpleY = visEl.height - prevFreqRatio * visEl.height;
+            const prevSimpleX = visEl.width;
+            const midSimpleY = prevSimpleY + (simpleY - prevSimpleY) / 2;
+            ctx.bezierCurveTo(
+              prevSimpleX - prevB, midSimpleY,
+              simpleX - b, midSimpleY,
+              simpleX - b, simpleY);
+          }
+        }
+        ctx.stroke();
+        /* end simple things */
+
         freqData.forEach((b, index) => {
           if (!b) {
             delete pastDots[index];
