@@ -1,0 +1,140 @@
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0;
+        background: #000;
+      }
+      canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="vis"/>
+
+    <script>
+      'use strict';
+      const visEl = document.getElementById('vis');
+      const dpr = window.devicePixelRatio || 1;
+      let ctx, analyser, audioCtx, audioSource, freqData;
+      window.onresize = () => {
+        const rect = visEl.getClientRects()[0];
+        visEl.width = rect.width * dpr;
+        visEl.height = rect.height * dpr;
+        ctx = visEl.getContext('2d');
+      };
+      window.onresize();
+
+      navigator.mediaDevices.getUserMedia({
+        audio: true,
+        video: false
+      }).then((stream=>{
+        audioCtx = new (AudioContext || webkitAudioContext)();
+        audioSource = audioCtx.createMediaStreamSource(stream);
+        analyser = audioCtx.createAnalyser();
+        analyser.fftSize = 256;
+        audioSource.connect(analyser);
+        freqData = new Uint8Array(analyser.frequencyBinCount);
+      }));
+
+      const interval = 15;
+      const period = 10000;
+      const draw = () => {
+        if (!analyser) {
+          setTimeout(draw, interval);
+          return;
+        }
+        analyser.getByteFrequencyData(freqData);
+        const { width, height } = visEl;
+        const radius = Math.min(width, height) / 2;
+        const center = [radius, radius];
+
+        ctx.fillStyle = `rgba(0, 0, 0, ${0.00333 * interval})`;
+        ctx.fillRect(0, 0, width, height);
+
+        const now = Date.now();
+        const timeShift = ((now % period) / period) * Math.PI * 2;
+        freqData.forEach((b, index) => {
+          if (!b) {
+            return true;
+          }
+          const freqRatio = index / freqData.length;
+
+          const startRadius = radius * 0.4 - (radius * 0.3 * freqRatio);
+          const segment = 0.5 * (Math.PI * 2 * startRadius) / freqData.length;
+          const endRadius = radius * 0.9;
+          const diffRadius = endRadius - startRadius;
+
+          const freqX = width * freqRatio;
+          const freqAngle = Math.PI * 0.5 + freqRatio * Math.PI * 2;
+
+          const startX = center[0] + startRadius * Math.cos(freqAngle);
+          const startY = center[1] + startRadius * Math.sin(freqAngle);
+          const endX = center[0] + (startRadius + diffRadius * (b / 255)) * Math.cos(freqAngle);
+          const endY = center[1] + (startRadius + diffRadius * (b / 255)) * Math.sin(freqAngle);
+          ctx.beginPath();
+          ctx.moveTo(startX, startY);
+          ctx.lineTo(endX, endY);
+          ctx.strokeStyle = getColor(Math.sin(freqAngle - timeShift));
+          ctx.lineWidth = segment;
+          ctx.lineCap = 'round';
+          ctx.stroke();
+        });
+        setTimeout(draw, interval);
+      };
+      draw();
+
+      function getColor(phase) {
+        const min = 80;
+        const max = 255;
+        const diff = max - min;
+        let phasePos = phase + 1; // 0.0 ~ 2.0
+        const blockSize = 2 / 6;
+        let blockIndex = 0;
+        while (phasePos > blockSize) {
+          phasePos -= blockSize;
+          blockIndex++;
+        }
+        let r, g, b;
+        switch(blockIndex) {
+          case 0:
+            r = max;
+            g = max - ((phasePos / blockSize) * diff);
+            b = min;
+            break;
+          case 1:
+            r = max;
+            g = min;
+            b = min + ((phasePos / blockSize) * diff);
+            break;
+          case 2:
+            r = max - ((phasePos / blockSize) * diff);
+            g = min;
+            b = max;
+            break;
+          case 3:
+            r = min;
+            g = min + ((phasePos / blockSize) * diff);
+            b = max;
+            break;
+          case 4:
+            r = min;
+            g = max;
+            b = max - ((phasePos / blockSize) * diff);
+            break;
+          case 5:
+            r = min + ((phasePos / blockSize) * diff);
+            g = max;
+            b = min;
+            break;
+        }
+        return `rgb(${r}, ${g}, ${b})`;
+      }
+    </script>
+  </body>
+</html>
