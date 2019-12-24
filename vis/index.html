@@ -21,40 +21,56 @@
         left: 0;
         z-index: 1;
       }
-      #micButton {
+
+      #notes {
         position: absolute;
         left: 20px;
         bottom: 20px;
+        z-index: 1;
+      }
+      #micButton {
         border-radius: 10px;
         background: #600;
         color: #fff;
-        z-index: 1;
         font-size: 12px;
         cursor: pointer;
         padding: 10px 20px;
         transition: transform 0.2s;
+        display: inline-block;
       }
-      
       #micButton:active {
         transform: translateY(3px) scale(0.95);
+      }
+      #disclaimer {
+        font-size: 12px;
+        padding: 10px 0;
       }
     </style>
   </head>
   <body>
     <audio id="audio" controls>
-      <source type="audio/mpeg" src="tosho-littleroot.mp3"/>
+      <!-- <source type="audio/mpeg" src="tosho-littleroot.mp3"/> -->
+      <source type="audio/mpeg" src="httpssoundcloud.comuser-760374093shikutomoto-lofi-hiphopchillhop.mp3"/>
     </audio>
-    <div id="micButton">MIC</div>
+    <div id="notes">
+      <div id="disclaimer" style="display: none;">
+        <a target="_blank" rel="noopener" href="https://soundcloud.com/user-760374093/shikutomoto-lofi-hiphopchillhop">
+          Shikutomoto by Neighbourhood Vandal
+        </a>
+      </div>
+      <div id="micButton">MIC</div>
+    </div>
     <canvas id="vis"/>
 
     <script>
       'use strict';
       const visEl = document.getElementById('vis');
       const audioEl = document.getElementById('audio');
+      const disclaimerEl = document.getElementById('disclaimer');
       const micButtonEl = document.getElementById('micButton');
       
       const dpr = window.devicePixelRatio || 1;
-      let ctx, analyser, audioCtx, micSource, fileSource, freqData;
+      let ctx, analyser, audioCtx, micSource, fileSource, freqData, fileAudioCtx;
       window.onresize = () => {
         const rect = visEl.getClientRects()[0];
         visEl.width = rect.width * dpr;
@@ -75,17 +91,23 @@
           analyser.fftSize = 256;
           micSource.connect(analyser);
           freqData = new Uint8Array(analyser.frequencyBinCount);
+          disclaimerEl.style.display = 'none';
         }));
       };
 
       audioEl.onplay = () => {
-        audioCtx = new (AudioContext || webkitAudioContext)();
-        fileSource = audioCtx.createMediaElementSource(audioEl);
-        analyser = audioCtx.createAnalyser();
+        if (!fileAudioCtx) {
+          fileAudioCtx = new (AudioContext || webkitAudioContext)();
+        }
+        if (!fileSource) {
+          fileSource = fileAudioCtx.createMediaElementSource(audioEl);
+        }
+        analyser = fileAudioCtx.createAnalyser();
         analyser.fftSize = 256;
-        analyser.connect(audioCtx.destination);
+        analyser.connect(fileAudioCtx.destination);
         fileSource.connect(analyser);
         freqData = new Uint8Array(analyser.frequencyBinCount);
+        disclaimerEl.style.display = '';
       };
 
       const interval = 15;
