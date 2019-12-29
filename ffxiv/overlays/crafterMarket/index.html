@@ -55,7 +55,7 @@
         pointer-events: none;
       }
       .scene-item:hover {
-        z-index: 100;
+        z-index: 200;
       }
       .scene-item:hover .label {
         opacity: 1;
@@ -90,7 +90,7 @@
         }
       }
       .scene-item-outdated .label {
-        animation: outdated-opacity 2s alternate infinite;
+        /* animation: outdated-opacity 2s alternate infinite; */
       }
       .scene-item-outdated {
         z-index: 100;
@@ -303,7 +303,14 @@
       window.onresize = updateCtx;
       ctx.strokeStyle = lineStrokeDefault;
 
+      let drawLinesTimeout = 0;
+      let isTransitioning = true;
       const drawLines = () => {
+        if (!isTransitioning) {
+          clearTimeout(drawLinesTimeout);
+          drawLinesTimeout = requestAnimationFrame(drawLines, 100);
+          return;
+        }
         updateCtx();
         const bodyRect = bodyEl.getClientRects()[0];
         let colorIndex = 0;
@@ -334,6 +341,7 @@
           );
           ctx.stroke();
         });
+
         requestAnimationFrame(drawLines);
       };
       drawLines();
@@ -412,8 +420,22 @@
           if(itemId === 0) {
             continue;
           }
-          cheapestNQ = (subsequent && priceData[itemId] && priceData[itemId].NQ.price > 0) ? priceData[itemId].NQ.price : cheapestNQ;
-          cheapestHQ = (subsequent && priceData[itemId] && priceData[itemId].HQ.price > 0) ? priceData[itemId].HQ.price : cheapestHQ;
+          cheapestNQ = (
+            subsequent
+            && priceData[itemId]
+            && priceData[itemId].NQ.price > 0
+            && (now - priceData[itemId].NQ.time) < 5000
+          )
+            ? priceData[itemId].NQ.price
+            : cheapestNQ;
+          cheapestHQ = (
+            subsequent
+            && priceData[itemId]
+            && priceData[itemId].HQ.price > 0
+            && (now - priceData[itemId].HQ.time) < 5000
+          )
+            ? priceData[itemId].HQ.price
+            : cheapestHQ;
           if (quantity > 0) {
             if (isHQ && price < cheapestHQ) {
               cheapestHQ = price;
@@ -462,19 +484,33 @@
         if (now - lastSave < 5000) {
           clearTimeout(saveTimeout);
           itemsToSave = [...itemsToSave, ...newItemsToSave];
-          saveTimeout = setTimeout(save, 5000);
+          saveTimeout = setTimeout(() => {
+            save(itemsToSave);
+          }, 5000);
           return;
         }
         lastSave = now;
         itemsToSave = [...newItemsToSave];
         if (itemsToSave.indexOf(itemsData) !== -1) {
-          localStorage.setItem('itemsDataCache', JSON.stringify(itemsData));
+          try {
+            localStorage.setItem('itemsDataCache', JSON.stringify(itemsData));
+          } catch (e) {
+            delete localStorage['itemsDataCache'];
+          }
         }
         if (itemsToSave.indexOf(iconsData) !== -1) {
-          localStorage.setItem('iconsDataCache', JSON.stringify(iconsData));
+          try {
+            localStorage.setItem('iconsDataCache', JSON.stringify(itemsData));
+          } catch (e) {
+            delete localStorage['iconsDataCache'];
+          }
         }
         if (itemsToSave.indexOf(priceData) !== -1) {
-          localStorage.setItem('priceDataCache', JSON.stringify(priceData));
+          try {
+            localStorage.setItem('priceDataCache', JSON.stringify(itemsData));
+          } catch (e) {
+            delete localStorage['priceDataCache'];
+          }
         }
         itemsToSave = [];
       }
@@ -614,6 +650,18 @@
         };
       }
 
+      let disableTransitioningTimeout = 0;
+      function transitionStart(){
+        clearTimeout(disableTransitioningTimeout);
+        isTransitioning = true;
+      }
+      function transitionEnd(e){
+        clearTimeout(disableTransitioningTimeout);
+        disableTransitioningTimeout = setTimeout(() => {
+          isTransitioning = false;
+        }, 2000);
+      }
+
       function queueRender(){
         clearTimeout(renderTimeout);
         renderTimeout = setTimeout(render, 50);
@@ -635,6 +683,8 @@
           let itemEl = document.getElementById(elId);
           if (!itemEl) {
             itemEl = document.createElement('div');
+            itemEl.addEventListener('transitionend', transitionEnd)
+            itemEl.addEventListener('transitionrun', transitionStart)
             itemEl.id = elId;
             itemEl.title = item.id + ' ' + itemData.name;
             itemEl.className = 'scene-item';
@@ -709,7 +759,6 @@
             HQPriceEl.style.display = '';
           }
           const oldestTime = Math.min(thisPriceData.NQ.time, (itemData.canBeHQ ? thisPriceData.HQ.time : Infinity));
-          console.log(itemData.name, thisPriceData);
           if (oldestTime !== 0 && now - oldestTime > 21600000) { // 6 hours
             itemEl.classList.add('scene-item-outdated');
           } else {
