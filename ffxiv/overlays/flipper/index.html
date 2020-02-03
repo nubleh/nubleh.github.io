@@ -311,7 +311,6 @@
           opcode === 251
           && payload[0].indexOf('New connection detected for Process') !== -1
         ) {
-          inventory = {};
           updateTable();
         }
         if (opcode === 0 && payload[0] === '0003') {
