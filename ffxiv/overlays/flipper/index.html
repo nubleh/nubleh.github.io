@@ -190,7 +190,7 @@
           const itemData = getItemData(itemId);
           const pricesData = flipperData[itemId];
           if (!itemData || !pricesData) {
-            return '<tr></tr>';
+            return `<tr>${itemId}</tr>`;
           }
           const minNQ = Object.values(pricesData).reduce((c, n) => Math.min(c, n.NQ ? n.NQ.price : c), Infinity);
           const minHQ = Object.values(pricesData).reduce((c, n) => Math.min(c, n.HQ ? n.HQ.price : c), Infinity);
@@ -364,7 +364,9 @@
           if (e.target.readyState !== 4) {
             return;
           }
-          xhrBusy[path] = false;
+          setTimeout(() => {
+            xhrBusy[path] = false;
+          }, 60000);
           try {
             onComplete(JSON.parse(e.target.responseText));
           } catch(e) {
