@@ -190,7 +190,7 @@
           const itemData = getItemData(itemId);
           const pricesData = flipperData[itemId];
           if (!itemData || !pricesData) {
-            return `<tr>${itemId}</tr>`;
+            return '';
           }
           const minNQ = Object.values(pricesData).reduce((c, n) => Math.min(c, n.NQ ? n.NQ.price : c), Infinity);
           const minHQ = Object.values(pricesData).reduce((c, n) => Math.min(c, n.HQ ? n.HQ.price : c), Infinity);
@@ -370,6 +370,7 @@
           try {
             onComplete(JSON.parse(e.target.responseText));
           } catch(e) {
+
           } finally {
             setTimeout(() => {
               downloadRunning = false;
