@@ -325,6 +325,7 @@
       });
 
       const xhrBusy = {};
+      let downloadQueue = [];
       function downloadData(path, onComplete) {
         if (xhrBusy[path]) {
           return;
