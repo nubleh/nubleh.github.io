@@ -150,6 +150,7 @@
       }
     </script>
     <script>
+      'use strict';
       const msgEl = document.getElementById('msg');
       const head_serversEl = document.getElementById('head_servers');
       const flipper_bodyEl = document.getElementById('flipper_body');
@@ -326,6 +327,7 @@
 
       const xhrBusy = {};
       let downloadQueue = [];
+      let downloadRunning = false;
       function downloadData(path, onComplete) {
         if (xhrBusy[path]) {
           return;
@@ -337,7 +339,6 @@
       function startDownload() {
         if (downloadQueue.length < 1) {
           downloadRunning = false;
-          downloadStatusEl.style.display = '';
           // rerun evalItem to rearrange mats
           evalItem(scene[0].id, 0, 1);
           return;
@@ -346,8 +347,6 @@
           return;
         }
         downloadRunning = true;
-        downloadStatusEl.style.display = 'block';
-        downloadStatusEl.innerHTML = `<span>${downloadQueue.length}</span>`;
         const queueItem = downloadQueue.pop();
         const path = queueItem.path;
         const onComplete = queueItem.onComplete;
