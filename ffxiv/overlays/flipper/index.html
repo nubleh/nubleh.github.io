@@ -270,7 +270,7 @@
         // remove half of each data object
         const newFlipperData = {};
         Object.keys(flipperData).map(k => ({k, data: flipperData[k]})).sort((a, b) => {
-          return Math.max(a.data.HQ.time, a.data.NQ.time) > Math.max(b.data.HQ.time, b.data.NQ.time) ? -1 : 1;
+          return Math.max(a.data.time, a.data.time) > Math.max(b.data.time, b.data.time) ? -1 : 1;
         }).slice(0, Math.floor(Object.keys(flipperData).length / 2)).forEach(i => {
           newFlipperData[i.k] = i.data;
         });
@@ -342,8 +342,6 @@
       function startDownload() {
         if (downloadQueue.length < 1) {
           downloadRunning = false;
-          // rerun evalItem to rearrange mats
-          evalItem(scene[0].id, 0, 1);
           return;
         }
         if (downloadRunning) {
@@ -374,7 +372,6 @@
       }
 
       function processWelcomeMessage(payload) {
-        console.log('welcome', payload);
         const welcomeServerMsg = payload[2].match(/Welcome to (\w+)!/);
         if (!welcomeServerMsg) {
           return;
@@ -456,7 +453,6 @@
           ...searchHistory.slice(0, 100),
         ];
         updateTable();
-        subsequent = false;
       }
       let listingBuffer = [];
       let updateItemListingTimeout = 0;
