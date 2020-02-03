@@ -449,7 +449,7 @@
         }, 2000);
         searchHistory = [
           itemId,
-          ...searchHistory.slice(0, 100),
+          ...searchHistory.filter(i => i !== itemId).slice(0, 100),
         ];
         updateTable();
       }
