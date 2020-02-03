@@ -189,7 +189,7 @@
         flipper_bodyEl.innerHTML = searchHistory.map(itemId => {
           const itemData = getItemData(itemId);
           const pricesData = flipperData[itemId];
-          if (!itemData) {
+          if (!itemData || !pricesData) {
             return '<tr></tr>';
           }
           const minNQ = Object.values(pricesData).reduce((c, n) => Math.min(c, n.NQ ? n.NQ.price : c), Infinity);
@@ -270,7 +270,15 @@
         // remove half of each data object
         const newFlipperData = {};
         Object.keys(flipperData).map(k => ({k, data: flipperData[k]})).sort((a, b) => {
-          return Math.max(a.data.time, a.data.time) > Math.max(b.data.time, b.data.time) ? -1 : 1;
+          const newestA = Object.keys(a.data).reduce((c, n) => {
+            const time = a.data[n].time;
+            return Math.max(c, time);
+          }, 0);
+          const newestB = Object.keys(b.data).reduce((c, n) => {
+            const time = b.data[n].time;
+            return Math.max(c, time);
+          }, 0);
+          return newestA > newestB ? -1 : 1;
         }).slice(0, Math.floor(Object.keys(flipperData).length / 2)).forEach(i => {
           newFlipperData[i.k] = i.data;
         });
