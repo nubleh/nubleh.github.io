@@ -1,0 +1,540 @@
+<html>
+  <head>
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        color: #fff;
+        font-size: 10px;
+      }
+      #logger {
+        background: rgba(255, 255, 255, 0.5);
+        padding: 8px;
+        width: 900px;
+      }
+      #wrapper {
+        background: rgba(0, 0, 0, 0.9);
+        min-height: 100vh;
+        min-width: 100vw;
+        display: inline-block;
+        opacity: 0.8;
+      }
+      #wrapper::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 10px;
+        height: 10px;
+        background: rgba(255, 255, 255, 0.5);
+        border-right: solid 1px #000;
+        border-bottom: solid 1px #000;
+      }
+      table {
+        background: rgba(0, 0, 0, 0.9);
+        text-align: right;
+        white-space: nowrap;
+        font-size: 10px;
+      }
+      tr {
+      }
+      td:first-child {
+        min-width: 25px;
+      }
+      td {
+        box-sizing: border-box;
+        padding: 0 4px;
+        border: none;
+      }
+      table {
+        display: inline-block;
+        vertical-align: top;
+      }
+      thead {
+        text-align: center;
+        background: rgba(255, 255, 255, 0.8);
+        color: #000;
+        cursor: pointer;
+      }
+      #wrapper {
+        white-space: nowrap;
+      }
+      .sortable {
+        cursor: pointer;
+      }
+
+      #buttons {
+        position: fixed;
+        bottom: 10px;
+        right: 0;
+      }
+      #buttons > div {
+        background: rgba(255, 255, 255, 0.5);
+        width: 15px;
+        height: 15px;
+        border-radius: 15px;
+        margin: 4px 0;
+      }
+      .age-bar {
+        background: #fff;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 1px;
+        opacity: 0.5;
+      }
+      #toggle430 {
+      }
+      .top-buttons {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        background: #000;
+      }
+      .top-buttons > div {
+        color: #fff;
+        font-size: 10px;
+        border: solid 1px #fff;
+        border-radius: 2px;
+        padding: 2px;
+        margin: 2px;
+        display: inline-block;
+        cursor: pointer;
+      }
+      .top-buttons > div.is-on {
+        background: #666;
+      }
+
+      #flipper_body tr {
+        position: relative;
+        transition: transform 0.5s, opacity 1s, background-color 2s;
+      }
+      #flipper_body tr:nth-child(2n + 1) {
+        background: #333;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <div id="msg"></div>
+      <div class="top-buttons">
+      </div>
+      <table id="profits">
+        <thead>
+          <tr id="head_servers"></tr>
+
+        </thead>
+        <tbody id="flipper_body">
+        </tbody>
+      </table>
+    </div>
+
+    <div id="buttons">
+      <div id="goUp"></div>
+      <div id="goDown"></div>
+    </div>
+
+    <script>
+      let paging = 0;
+      document.getElementById('goUp').onclick = function(){
+        paging = Math.max(0, paging - 1);
+        document.getElementById('profits').style.transform = `translateY(${paging * -1 * 50}vh)`;
+      }
+      document.getElementById('goDown').onclick = function(){
+        paging = paging + 1;
+        document.getElementById('profits').style.transform = `translateY(${paging * -1 * 50}vh)`;
+      }
+    </script>
+    <script>
+      const msgEl = document.getElementById('msg');
+      const head_serversEl = document.getElementById('head_servers');
+      const flipper_bodyEl = document.getElementById('flipper_body');
+      let searchHistory = [];
+      let currentServer = '';
+      const servers = [
+        'Aegis',
+        'Atomos',
+        'Carbuncle',
+        'Garuda',
+        'Gungnir',
+        'Kujata',
+        'Ramuh',
+        'Tonberry',
+        'Typhon',
+        'Unicorn',
+      ];
+      const itemsData = JSON.parse(localStorage.getItem('itemsDataCache')) || {};
+      const flipperData = JSON.parse(localStorage.getItem('flipperDataCache')) || {};
+
+      let updateTableTimeout = 0;
+      function updateTable(){
+        clearTimeout(updateTableTimeout);
+        updateTableTimeout = setTimeout(runUpdateTable, 100);
+      }
+      function runUpdateTable(){
+        msgEl.innerText = currentServer || 'Server unknown. Relog or world-hop to update.';
+
+        if(head_serversEl.innerHTML === '') {
+          initHeadServers();
+        }
+
+        flipper_bodyEl.innerHTML = searchHistory.map(itemId => {
+          const itemData = getItemData(itemId);
+          const pricesData = flipperData[itemId];
+          if (!itemData) {
+            return '<tr></tr>';
+          }
+          const minNQ = Object.values(pricesData).reduce((c, n) => Math.min(c, n.NQ ? n.NQ.price : c), Infinity);
+          const minHQ = Object.values(pricesData).reduce((c, n) => Math.min(c, n.HQ ? n.HQ.price : c), Infinity);
+          const maxNQ = Object.values(pricesData).reduce((c, n) => Math.max(c, n.NQ ? n.NQ.price : c), 0);
+          const maxHQ = Object.values(pricesData).reduce((c, n) => Math.max(c, n.HQ ? n.HQ.price : c), 0);
+          return `<tr>
+            <td>${itemData.name}</td>
+            ${servers.map(server => {
+              if (!pricesData[server]) {
+                return '<td></td>';
+              }
+              const priceData = pricesData[server];
+              const max = 128;
+              const rangeNQ = priceData.NQ ? max * ((priceData.NQ.price - minNQ) / (maxNQ - minNQ)) : max/2;
+              const rangeHQ = priceData.HQ ? max * ((priceData.HQ.price - minHQ) / (maxHQ - minHQ)) : max/2;
+              return `<td>
+                <div style="background: rgb(${rangeNQ}, ${max - rangeNQ}, 0);">
+                  ${priceData.NQ ? priceData.NQ.price : 0}
+                  &nbsp;
+                  (${priceData.spdNQ})
+                </div>
+                ${priceData.HQ ? `
+                  <div style="background: rgb(${rangeHQ}, ${max - rangeHQ}, 0);">
+                    ${priceData.HQ ? priceData.HQ.price : 0}
+                    &nbsp;
+                    (${priceData.spdHQ})
+                  </div>
+                ` : ''}
+              </td>`;
+            }).join('')}
+          </tr>`;
+        }).join('');
+      }
+      updateTable();
+
+      function initHeadServers(){
+        head_serversEl.innerHTML = '<th></th>';
+        servers.forEach(server => {
+          const el = document.createElement('th');
+          el.innerText = server;
+          head_serversEl.appendChild(el);
+        });
+      }
+
+      let lastSave = 0;
+      let saveTimeout = 0;
+      let itemsToSave = [];
+      function save(newItemsToSave) {
+        const now = Date.now();
+        if (now - lastSave < 5000) {
+          clearTimeout(saveTimeout);
+          itemsToSave = [...itemsToSave, ...newItemsToSave];
+          saveTimeout = setTimeout(() => {
+            save(itemsToSave);
+          }, 5000);
+          return;
+        }
+        lastSave = now;
+        itemsToSave = [...newItemsToSave];
+        if (itemsToSave.indexOf(itemsData) !== -1) {
+          try {
+            localStorage.setItem('itemsDataCache', JSON.stringify(itemsData));
+          } catch (e) {
+            obliterateLocalStorage();
+          }
+        }
+        if (itemsToSave.indexOf(flipperData) !== -1) {
+          try {
+            localStorage.setItem('flipperDataCache', JSON.stringify(flipperData));
+          } catch (e) {
+            obliterateLocalStorage();
+          }
+        }
+        itemsToSave = [];
+      }
+      function obliterateLocalStorage() {
+        // remove half of each data object
+        const newFlipperData = {};
+        Object.keys(flipperData).map(k => ({k, data: flipperData[k]})).sort((a, b) => {
+          return Math.max(a.data.HQ.time, a.data.NQ.time) > Math.max(b.data.HQ.time, b.data.NQ.time) ? -1 : 1;
+        }).slice(0, Math.floor(Object.keys(flipperData).length / 2)).forEach(i => {
+          newFlipperData[i.k] = i.data;
+        });
+        console.log(`
+          Obliterating flipperData from ${Object.keys(flipperData).length} to ${Object.keys(newFlipperData).length}.
+        `);
+        flipperData = flipperData;
+        save([priceData]);
+      }
+      function getItemData(id) {
+        if (itemsData[id]) {
+          return itemsData[id];
+        }
+        const path = `https://www.garlandtools.org/db/doc/item/en/3/${id}.json`;
+        downloadData(path, (responseJSON) => {
+          itemsData[id] = {
+            name: responseJSON.item.name,
+            craft: responseJSON.item.craft,
+            ingredient_of: responseJSON.item.ingredient_of,
+          };
+          save([itemsData]);
+          updateTable();
+        });
+        return null;
+      }
+
+      document.addEventListener('onLogLine', function(event) {
+        let opcode, payload;
+        if (typeof event.detail.opcode === 'number') {
+          opcode = event.detail.opcode;
+          payload = event.detail.payload;
+        } else {
+          const detail = JSON.parse(event.detail);
+          opcode = parseInt(detail[0]);
+          payload = detail.slice(2);
+        }
+        if (
+          opcode === 251
+          && payload[0].indexOf('New connection detected for Process') !== -1
+        ) {
+          inventory = {};
+          updateTable();
+        }
+        if (opcode === 0 && payload[0] === '0003') {
+          processWelcomeMessage(payload);
+        }
+        if (opcode === 252 && payload[0] === '00000618') {
+          processMBListing(payload);
+        }
+        if (opcode === 252 && payload[0] === '00000030' && payload[10].substr(4) === '0902') {
+          processMBSearch(payload);
+        }
+        if (opcode === 252 && payload[0] === '00000438') {
+          processPurchaseHistory(payload);
+        }
+      });
+
+      const xhrBusy = {};
+      function downloadData(path, onComplete) {
+        if (xhrBusy[path]) {
+          return;
+        }
+        xhrBusy[path] = true;
+        downloadQueue.push({ path, onComplete });
+        startDownload();
+      }
+      function startDownload() {
+        if (downloadQueue.length < 1) {
+          downloadRunning = false;
+          downloadStatusEl.style.display = '';
+          // rerun evalItem to rearrange mats
+          evalItem(scene[0].id, 0, 1);
+          return;
+        }
+        if (downloadRunning) {
+          return;
+        }
+        downloadRunning = true;
+        downloadStatusEl.style.display = 'block';
+        downloadStatusEl.innerHTML = `<span>${downloadQueue.length}</span>`;
+        const queueItem = downloadQueue.pop();
+        const path = queueItem.path;
+        const onComplete = queueItem.onComplete;
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', path);
+        xhr.onreadystatechange = (e) => {
+          if (e.target.readyState !== 4) {
+            return;
+          }
+          xhrBusy[path] = false;
+          try {
+            onComplete(JSON.parse(e.target.responseText));
+          } catch(e) {
+          } finally {
+            setTimeout(() => {
+              downloadRunning = false;
+              startDownload();
+            }, 50);
+          }
+        };
+        xhr.send();
+      }
+
+      function processWelcomeMessage(payload) {
+        console.log('welcome', payload);
+        const welcomeServerMsg = payload[2].match(/Welcome to (\w+)!/);
+        if (!welcomeServerMsg) {
+          return;
+        }
+        currentServer = welcomeServerMsg[1];
+        updateTable();
+      }
+
+      let historyBuffer = [];
+      let updateItemHistoryTimeout;
+      function processPurchaseHistory(payload) {
+        const values = [].concat(payload);
+        let cursor = 8;
+        const itemId = parseInt(values[cursor], 16);
+        cursor++;
+        while (cursor + 12 < values.length) {
+          const price = parseInt(values[cursor + 1], 16);
+          const date = (parseInt(values[cursor + 2], 16)) * 1000;
+          const quantity = parseInt(values[cursor + 3], 16);
+          const isHQ = values[cursor + 4][7] === '1';
+          const buyerName = getRetainerName(values, [
+            4,5,6,7,8,9,10,11,12
+          ], cursor).substr(1);
+          historyBuffer.push({
+            itemId,
+            price,
+            date,
+            quantity,
+            isHQ,
+            buyerName,
+          });
+          cursor += 13;
+        }
+        clearTimeout(updateItemHistoryTimeout);
+        updateItemHistoryTimeout = setTimeout(() => {
+          if (!currentServer) {
+            return;
+          }
+          const now = Date.now();
+          if (!flipperData[itemId]) {
+            flipperData[itemId] = {};
+          }
+          const fallback = {date: 0};
+          const oldestSale = (historyBuffer[historyBuffer.length - 1] || fallback).date;
+          const totalSale = historyBuffer.reduce((c, n) => c + n.quantity, 0);
+          const spd = totalSale / ((now - oldestSale) / 86400000);
+
+          const historyBufferHQ = historyBuffer.filter(h => h.isHQ);
+          const oldestSaleHQ = (historyBufferHQ[historyBufferHQ.length - 1] || fallback).date;
+          const totalSaleHQ = historyBufferHQ.reduce((c, n) => c + n.quantity, 0);
+          const spdHQ = totalSaleHQ / ((now - oldestSaleHQ) / 86400000);
+
+          const historyBufferNQ = historyBuffer.filter(h => !h.isHQ);
+          const oldestSaleNQ = (historyBufferNQ[historyBufferNQ.length - 1] || fallback).date;
+          const totalSaleNQ = historyBufferNQ.reduce((c, n) => c + n.quantity, 0);
+          const spdNQ = totalSaleNQ / ((now - oldestSaleNQ) / 86400000);
+          flipperData[itemId][currentServer] = {
+            ...flipperData[itemId][currentServer],
+            spd: Math.round(spd * 100) / 100,
+            spdNQ: Math.round(spdNQ * 100) / 100,
+            spdHQ: Math.round(spdHQ * 100) / 100,
+          };
+          save([flipperData]);
+          updateTable();
+
+          historyBuffer = [];
+        }, 200);
+      }
+
+      const isSearchingItem = {};
+      function processMBSearch(values){
+        const itemId = parseInt(values[8], 16);
+        isSearchingItem[itemId] = setTimeout(() => {
+          console.log(`${itemId} has 0 listings`);
+          updateItemListingEmpty(itemId);
+        }, 2000);
+        searchHistory = [
+          itemId,
+          ...searchHistory.slice(0, 100),
+        ];
+        updateTable();
+        subsequent = false;
+      }
+      let listingBuffer = [];
+      let updateItemListingTimeout = 0;
+      function processMBListing(values){
+        const now = Date.now();
+        let itemId;
+        const listings = [];
+        for (let x = 0; x < 10; x++) {
+          const start = 10;
+          const artisanId = '' + values[start + (x*38) + 4] + values[start + (x*38) + 5];
+          const price = parseInt(values[start + (x*38) + 6], 16);
+          const quantity = parseInt(values[start + (x*38) + 8], 16);
+          itemId = parseInt(values[start + (x*38) + 9], 16) || itemId;
+          const quality = values[start + (x*38) + 33];
+          const isHQ = quality && quality[quality.length - 1] === '1';
+          const retainerName = getRetainerName(values, [8, 9, 10, 11], start + (x*38) + 9);
+
+          listingBuffer.push({ itemId, price, quantity, isHQ, retainerName, artisanId });
+          if(itemId === 0) {
+            continue;
+          }
+        }
+        clearTimeout(isSearchingItem[itemId]);
+        clearTimeout(updateItemListingTimeout);
+        updateItemListingTimeout = setTimeout(() => {
+          if (!currentServer) {
+            return;
+          }
+          if (!flipperData[itemId]) {
+            flipperData[itemId] = {};
+          }
+          const listingsNQ = listingBuffer.filter(l => !l.isHQ && l.retainerName);
+          const listingsHQ = listingBuffer.filter(l => l.isHQ && l.retainerName);
+          const now = Date.now();
+          const oldData = flipperData[itemId][currentServer];
+          if (now - oldData.time < 5000) {
+            if (oldData.NQ) {
+              listingsNQ.push(oldData.NQ);
+            }
+            if (oldData.HQ) {
+              listingsHQ.push(oldData.HQ);
+            }
+          }
+          listingsNQ.sort((a, b) => a.price > b.price ? 1 : -1);
+          listingsHQ.sort((a, b) => a.price > b.price ? 1 : -1);
+          flipperData[itemId][currentServer] = {
+            ...flipperData[itemId][currentServer],
+            NQ: listingsNQ[0],
+            HQ: listingsHQ[0],
+            time: now,
+          };
+          save([flipperData]);
+          updateTable();
+
+          listingBuffer = [];
+        }, 200);
+      }
+      function updateItemListingEmpty(itemId) {
+        clearTimeout(updateItemListingTimeout);
+        updateItemListingTimeout = setTimeout(() => {
+          // do something with empty listing
+          listingBuffer = [];
+        }, 200);
+      }
+      
+      function getRetainerName(values, pieceKeys, startKey){
+        const namePieces = pieceKeys.map(i => values[startKey + i]);
+        let realName = '';
+        namePieces.forEach(name => {
+          if (!name) {
+            return;
+          }
+          for(let y = 3; y >= 0; y--){
+            const charCode = parseInt(name.slice(y * 2, (y * 2) + 2), 16);
+            if (charCode > 0) {
+              realName += String.fromCharCode(charCode);
+            }
+          }
+        });
+        return realName;
+      }
+    </script>
+  </body>
+</html>
