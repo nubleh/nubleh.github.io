@@ -118,6 +118,19 @@
       #flipper_body tr:nth-child(2n + 1) {
         background: #333;
       }
+      .averageBar {
+        height: 4px;
+        background: #000;
+        position: relative;
+      }
+      .averageBar > div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 2px;
+        height: 4px;
+        background: #fff;
+      }
     </style>
   </head>
 
@@ -211,12 +224,26 @@
                   ${priceData.NQ ? priceData.NQ.price : 0}
                   &nbsp;
                   (${priceData.spdNQ})
+                  ${priceData.NQ && isFinite(priceData.averageNQ) ? `
+                    <div class="averageBar">
+                      <div style="left: ${
+                        100 * Math.min(1, priceData.averageNQ / (priceData.NQ.price * 2))
+                      }%"/>
+                    </div>
+                  ` : ''}
                 </div>
                 ${priceData.HQ ? `
                   <div style="background: rgb(${rangeHQ}, ${max - rangeHQ}, 0);">
                     ${priceData.HQ ? priceData.HQ.price : 0}
                     &nbsp;
                     (${priceData.spdHQ})
+                    ${priceData.HQ && isFinite(priceData.averageHQ) ? `
+                      <div class="averageBar">
+                        <div style="left: ${
+                          100 * Math.min(1, priceData.averageHQ / (priceData.HQ.price * 2))
+                        }%"/>
+                      </div>
+                    ` : ''}
                   </div>
                 ` : ''}
               </td>`;
@@ -433,16 +460,21 @@
           const oldestSaleHQ = (historyBufferHQ[historyBufferHQ.length - 1] || fallback).date;
           const totalSaleHQ = historyBufferHQ.reduce((c, n) => c + n.quantity, 0);
           const spdHQ = totalSaleHQ / ((now - oldestSaleHQ) / 86400000);
+          const totalMoneyHQ = historyBufferHQ.reduce((c, n) => c + (n.quantity * n.price), 0);
+
 
           const historyBufferNQ = historyBuffer.filter(h => !h.isHQ);
           const oldestSaleNQ = (historyBufferNQ[historyBufferNQ.length - 1] || fallback).date;
           const totalSaleNQ = historyBufferNQ.reduce((c, n) => c + n.quantity, 0);
           const spdNQ = totalSaleNQ / ((now - oldestSaleNQ) / 86400000);
+          const totalMoneyNQ = historyBufferNQ.reduce((c, n) => c + (n.quantity * n.price), 0);
           flipperData[itemId][currentServer] = {
             ...flipperData[itemId][currentServer],
             spd: Math.round(spd * 100) / 100,
             spdNQ: Math.round(spdNQ * 100) / 100,
             spdHQ: Math.round(spdHQ * 100) / 100,
+            averageNQ: Math.round(totalMoneyNQ/ totalSaleNQ),
+            averageHQ: Math.round(totalMoneyHQ/ totalSaleHQ),
           };
           save([flipperData]);
           updateTable();
