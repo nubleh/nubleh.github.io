@@ -40,16 +40,20 @@
         text-align: right;
         white-space: nowrap;
         font-size: 10px;
+        border-collapse: collapse
       }
       tr {
       }
       td:first-child {
         min-width: 25px;
+        color: #fff;
       }
       td {
         box-sizing: border-box;
-        padding: 0 4px;
         border: none;
+      }
+      td > div {
+        padding: 2px 4px;
       }
       table {
         display: inline-block;
@@ -139,6 +143,7 @@
         position: relative;
         z-index: 1;
         background: rgba(255, 255, 255, 0.8);
+        padding: 0 8px;
       }
     </style>
   </head>
@@ -149,6 +154,7 @@
         <div id="msg"></div>
         <div id="toggleShowNQ">NQ</div>
         <div id="toggleShowHQ">HQ</div>
+        <div id="toggleShowNums">Nums</div>
       </div>
       <table id="profits">
         <thead>
@@ -183,7 +189,8 @@
       const flipper_bodyEl = document.getElementById('flipper_body');
       const toggleShowNQEl = document.getElementById('toggleShowNQ');
       const toggleShowHQEl = document.getElementById('toggleShowHQ');
-      let searchHistory = [];
+      const toggleShowNumsEl = document.getElementById('toggleShowNums');
+      let searchHistory = localStorage.getItem('flipperHistory') ? JSON.parse(localStorage.getItem('flipperHistory')) : [];
       let currentServer = '';
       const servers = [
         'Aegis',
@@ -201,6 +208,7 @@
       const flipperData = JSON.parse(localStorage.getItem('flipperDataCache')) || {};
       let showNQ = localStorage.getItem('flipperShowNQ') ? JSON.parse(localStorage.getItem('flipperShowNQ')) : false;
       let showHQ = localStorage.getItem('flipperShowHQ') ? JSON.parse(localStorage.getItem('flipperShowHQ')) : true;
+      let showNums = localStorage.getItem('flipperShowNums') ? JSON.parse(localStorage.getItem('flipperShowNums')) : true;
       toggleShowNQEl.onclick = () => {
         showNQ = !showNQ;
         localStorage.setItem('flipperShowNQ', showNQ);
@@ -209,6 +217,11 @@
       toggleShowHQEl.onclick = () => {
         showHQ = !showHQ;
         localStorage.setItem('flipperShowHQ', showHQ);
+        updateTable();
+      };
+      toggleShowNumsEl.onclick = () => {
+        showNums = !showNums;
+        localStorage.setItem('flipperShowNums', showNums);
         updateTable();
       };
 
@@ -236,7 +249,7 @@
           const minHQ = Object.values(pricesData).reduce((c, n) => Math.min(c, n.HQ ? n.HQ.price : c), Infinity);
           const maxNQ = Object.values(pricesData).reduce((c, n) => Math.max(c, n.NQ ? n.NQ.price : c), 0);
           const maxHQ = Object.values(pricesData).reduce((c, n) => Math.max(c, n.HQ ? n.HQ.price : c), 0);
-          return `<tr>
+          return `<tr style="${showNums ? '' : 'color: transparent;'}">
             <td>${itemData.name}</td>
             ${servers.map(server => {
               if (!pricesData[server]) {
@@ -246,7 +259,12 @@
               const max = 128;
               const rangeNQ = priceData.NQ ? max * ((priceData.NQ.price - minNQ) / (maxNQ - minNQ)) : max/2;
               const rangeHQ = priceData.HQ ? max * ((priceData.HQ.price - minHQ) / (maxHQ - minHQ)) : max/2;
-              return `<td>
+              const wholeBG = (showNQ && !(priceData.HQ && showHQ))
+                ? `background: rgb(${rangeNQ}, ${max - rangeNQ}, 0);`
+                : (!showNQ && (priceData.HQ && showHQ))
+                  ? `background: rgb(${rangeHQ}, ${max - rangeHQ}, 0);`
+                  : '';
+              return `<td style="${wholeBG}">
                 ${showNQ ? `<div style="background: rgb(${rangeNQ}, ${max - rangeNQ}, 0);">
                   ${priceData.NQ ? priceData.NQ.price : 0}
                   &nbsp;
@@ -521,6 +539,7 @@
           itemId,
           ...searchHistory.filter(i => i !== itemId).slice(0, 100),
         ];
+        localStorage.setItem('flipperHistory', JSON.stringify(searchHistory));
         updateTable();
       }
       let listingBuffer = [];
