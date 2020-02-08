@@ -14,7 +14,7 @@
         padding: 8px;
         width: 900px;
       }
-      #profits {
+      #profits tbody {
         transition: transform 0.5s;
       }
       #wrapper {
@@ -57,7 +57,6 @@
       }
       thead {
         text-align: center;
-        background: rgba(255, 255, 255, 0.8);
         color: #000;
         cursor: pointer;
       }
@@ -131,13 +130,25 @@
         height: 4px;
         background: #fff;
       }
+      .top-buttons {
+        background: #000;
+        position: relative;
+        z-index: 1;
+      }
+      th {
+        position: relative;
+        z-index: 1;
+        background: rgba(255, 255, 255, 0.8);
+      }
     </style>
   </head>
 
   <body>
     <div id="wrapper">
-      <div id="msg"></div>
       <div class="top-buttons">
+        <div id="msg"></div>
+        <div id="toggleShowNQ">NQ</div>
+        <div id="toggleShowHQ">HQ</div>
       </div>
       <table id="profits">
         <thead>
@@ -158,11 +169,11 @@
       let paging = 0;
       document.getElementById('goUp').onclick = function(){
         paging = Math.max(0, paging - 1);
-        document.getElementById('profits').style.transform = `translateY(${paging * -1 * 50}vh)`;
+        document.getElementById('flipper_body').style.transform = `translateY(${paging * -1 * 50}vh)`;
       }
       document.getElementById('goDown').onclick = function(){
         paging = paging + 1;
-        document.getElementById('profits').style.transform = `translateY(${paging * -1 * 50}vh)`;
+        document.getElementById('flipper_body').style.transform = `translateY(${paging * -1 * 50}vh)`;
       }
     </script>
     <script>
@@ -170,6 +181,8 @@
       const msgEl = document.getElementById('msg');
       const head_serversEl = document.getElementById('head_servers');
       const flipper_bodyEl = document.getElementById('flipper_body');
+      const toggleShowNQEl = document.getElementById('toggleShowNQ');
+      const toggleShowHQEl = document.getElementById('toggleShowHQ');
       let searchHistory = [];
       let currentServer = '';
       const servers = [
@@ -186,6 +199,18 @@
       ];
       const itemsData = JSON.parse(localStorage.getItem('itemsDataCache')) || {};
       const flipperData = JSON.parse(localStorage.getItem('flipperDataCache')) || {};
+      let showNQ = localStorage.getItem('flipperShowNQ') ? JSON.parse(localStorage.getItem('flipperShowNQ')) : false;
+      let showHQ = localStorage.getItem('flipperShowHQ') ? JSON.parse(localStorage.getItem('flipperShowHQ')) : true;
+      toggleShowNQEl.onclick = () => {
+        showNQ = !showNQ;
+        localStorage.setItem('flipperShowNQ', showNQ);
+        updateTable();
+      };
+      toggleShowHQEl.onclick = () => {
+        showHQ = !showHQ;
+        localStorage.setItem('flipperShowHQ', showHQ);
+        updateTable();
+      };
 
       let updateTableTimeout = 0;
       function updateTable(){
@@ -194,6 +219,8 @@
       }
       function runUpdateTable(){
         msgEl.innerText = currentServer || 'Server unknown. Relog or world-hop to update.';
+        toggleShowNQ.style.background = showNQ ? '#666' : '';
+        toggleShowHQ.style.background = showHQ ? '#666' : '';
 
         if(head_serversEl.innerHTML === '') {
           initHeadServers();
@@ -220,7 +247,7 @@
               const rangeNQ = priceData.NQ ? max * ((priceData.NQ.price - minNQ) / (maxNQ - minNQ)) : max/2;
               const rangeHQ = priceData.HQ ? max * ((priceData.HQ.price - minHQ) / (maxHQ - minHQ)) : max/2;
               return `<td>
-                <div style="background: rgb(${rangeNQ}, ${max - rangeNQ}, 0);">
+                ${showNQ ? `<div style="background: rgb(${rangeNQ}, ${max - rangeNQ}, 0);">
                   ${priceData.NQ ? priceData.NQ.price : 0}
                   &nbsp;
                   (${priceData.spdNQ})
@@ -231,8 +258,8 @@
                       }%"/>
                     </div>
                   ` : ''}
-                </div>
-                ${priceData.HQ ? `
+                </div>` : ''}
+                ${priceData.HQ && showHQ ? `
                   <div style="background: rgb(${rangeHQ}, ${max - rangeHQ}, 0);">
                     ${priceData.HQ ? priceData.HQ.price : 0}
                     &nbsp;
