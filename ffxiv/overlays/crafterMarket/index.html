@@ -984,8 +984,8 @@
           const NQPriceEl = itemEl.getElementsByClassName('NQPrice')[0];
           const HQPriceEl = itemEl.getElementsByClassName('HQPrice')[0];
           const thisPriceData = priceData[item.id] || {NQ:{time: 0, price: 0}, HQ:{time: 0, price: 0}};
-          const newNQPrice = thisPriceData.NQ.price;
-          const newHQPrice = thisPriceData.HQ.price;
+          const newNQPrice = thisPriceData.NQ ? thisPriceData.NQ.price : 0;
+          const newHQPrice = thisPriceData.HQ ? thisPriceData.HQ.price : 0;
           const newNQPriceS = abbreviate(newNQPrice);
           const newHQPriceS = abbreviate(newHQPrice);
           if (NQPriceEl.innerText !== newNQPriceS) {
