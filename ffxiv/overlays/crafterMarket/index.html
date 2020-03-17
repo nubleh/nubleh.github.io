@@ -22,8 +22,7 @@
       }
       #body {
         width: 100vw;
-        position: absolute;
-        top: 5vh;
+        position: relative;
         height: 95vh;
         z-index: 10;
         border: solid 10px transparent;
@@ -209,9 +208,8 @@
       }
       #lockNotice {
         position: absolute;
-        top: 5vh;
+        top: 28px;
         left: 60px;
-        margin-top: 40px;
       }
       @keyframes pointLeft {
         0% {
@@ -245,9 +243,80 @@
       #history > img:active {
         transform: translateY(1px) scale(0.95);
       }
+
+      #ingredientOf {
+        margin-bottom: 30px;
+        width: 400px;
+        cursor: crosshair;
+      }
+      .scene-item-upstream {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        margin: 1px;
+        overflow: hidden;
+        vertical-align: top;
+      }
+      .scene-item-upstream img {
+        width: 20px;
+        height: 20px;
+      }
+      .scene-item-upstream:hover {
+        overflow: visible;
+      }
+      .scene-item-upstream:hover .label {
+        display: block;
+      }
+      .scene-item-upstream .label {
+        display: none;
+        position: absolute;
+        z-index: 10;
+        background: rgba(0, 0, 0, 0.5);
+        white-space: nowrap;
+        font-size: 10px;
+      }
+      #downloadStatus {
+        position: fixed;
+        bottom: 4px;
+        left: 4px;
+        display: none;
+        font-size: 10px;
+      }
+      #downloadStatus span {
+        vertical-align: middle;
+      }
+      #downloadStatus::before {
+        content: '';
+        display: inline-block;
+        margin-right: 4px;
+        width: 8px;
+        height: 8px;
+        border-radius: 8px;
+        background: #fff;
+        vertical-align: middle;
+        animation: outdated-opacity 0.5s alternate infinite;
+      }
+      .craftCostByServer {
+        font-size: 10px;
+        background: #000;
+        padding: 4px;
+        position: absolute;
+        white-space: nowrap;
+        z-index: 10;
+        border: solid 1px #fff;
+        border-radius: 0 0 4px 4px;
+        border-width: 0 1px 1px 1px;
+        text-align: right;
+        display: none;
+      }
+      .scene-item:hover .craftCostByServer {
+        display: block;
+      }
     </style>
   </head>
   <body>
+    <div id="currentServer"></div>
     <div>
       <button id="test">
         debug
@@ -257,10 +326,12 @@
       </button>
     </div>
     <div id="dummy"></div>
+    <div id="ingredientOf"></div>
     <div id="body">
+      <div id="lockNotice"><span><</span> Click to lock in place</div>
       <div id="history"></div>
     </div>
-    <div id="lockNotice"><span><</span> Click to lock in place</div>
+    <div id="downloadStatus"></div>
     <canvas id="canvas"/>
     <script type="text/javascript">
       'use strict';
@@ -268,7 +339,8 @@
       const iconsLoaded = {};
       const itemsData = JSON.parse(localStorage.getItem('itemsDataCache')) || {};
       const iconsData = JSON.parse(localStorage.getItem('iconsDataCache')) || {};
-      const priceData = JSON.parse(localStorage.getItem('priceDataCache')) || {};
+      let priceData = JSON.parse(localStorage.getItem('priceDataCache')) || {};
+      let priceDataByServer = JSON.parse(localStorage.getItem('priceDataByServerCache')) || {};
       const craftCost = {};
       let connections = [];
       let scene = [];
@@ -278,7 +350,23 @@
       let itemLock = 0;
       let itemHighlight = 0;
       let history = [];
+      let ingredientOf = [];
+      let currentServer = '';
       const bodyEl = document.getElementById('body');
+      const currentServerEl = document.getElementById('currentServer');
+      const downloadStatusEl = document.getElementById('downloadStatus');
+      const ingredientOfEl = document.getElementById('ingredientOf');
+      ingredientOfEl.onclick = (e) => {
+        let thisEl = e.target;
+        let targetId = '';
+        while(thisEl !== e.currentTarget) {
+          if (thisEl.className === 'scene-item-upstream') {
+            targetId = thisEl.getAttribute('data-item-id');
+          }
+          thisEl = thisEl.parentElement;
+        }
+        evalItem(targetId, 0, 1);
+      };
       const historyEl = document.getElementById('history');
       const lockNoticeEl = document.getElementById('lockNotice');
       const canvasEl = document.getElementById('canvas');
@@ -362,25 +450,34 @@
         let targetId = gears[Math.floor(Math.random() * gears.length)];
         evalItem(targetId, 0, 1)
       };
-      evalItem(26434, 0, 1)
+      // evalItem(26434, 0, 1)
+      evalItem(27716, 0, 1)
 
       // overlay event
       document.addEventListener('onLogLine', function(event) {
         testButton.style.display = 'none';
         let detail;
-        try {
-          // ngld's OverlayPlugin sends `["252", "___", "00000030", ...]` string instead
-          detail = JSON.parse(event.detail);
-        } catch (e) {
-          return;
+        let opcode, payload;
+        if (typeof event.detail.opcode === 'number') {
+          opcode = event.detail.opcode;
+          payload = event.detail.payload;
+        } else {
+          const detail = JSON.parse(event.detail);
+          opcode = parseInt(detail[0]);
+          payload = detail.slice(2);
         }
-        const opcode = parseInt(detail[0]);
-        const payload = detail.slice(2);
         if (opcode === 252 && payload[0] === '00000618') {
           processMBListing(payload);
         }
         if (opcode === 252 && payload[0] === '00000030') {
           processMBSearch(payload);
+        }
+        if(payload.join('').indexOf('Welcome') >= 0) {
+          processWelcomeMessage(payload);
+        }
+        // (4) ["000c", "Moo Bleh", "Facet Mail of Fending zxc", "fc34dd38a4d4b5aef61ba8347df6a020"]
+        if (opcode === 0 && payload[0] === '000c' && payload[2][0] === '') {
+          processItemByName(payload[2].substr(1));
         }
       });
       document.addEventListener('onLogLine', function(event) {
@@ -395,6 +492,24 @@
           processMBSearch(payload);
         }
       });
+
+      function processItemByName(name) {
+        const path = `https://xivapi.com/search?string=${name}`;
+        fetch(path).then(e => e.json()).then(data => {
+          const item = data.Results.filter(i => i.UrlType === 'Item');
+          if (item.length > 0) {
+            evalItem(item[0].ID, 0, 1);
+          }
+        });
+      }
+      function processWelcomeMessage(values) {
+        const message = values[2].match(/Welcome to (\w+)!/);
+        if (message) {
+          const serverName = message[1];
+          currentServer = serverName;
+          currentServerEl.innerText = currentServer;
+        }
+      }
       let subsequent = false;
       function processMBSearch(values){
         const itemId = parseInt(values[8], 16);
@@ -467,14 +582,51 @@
             };
             save([priceData]);
           }
+
+          if (currentServer) {
+            if (!priceDataByServer[itemId]) {
+              priceDataByServer[itemId] = {};
+            }
+            priceDataByServer[itemId][currentServer] = {
+              price: Math.min(
+                priceData[itemId].NQ.price || Infinity,
+                priceData[itemId].HQ.price || Infinity
+              ),
+              time: Date.now(),
+            }
+            save([priceDataByServer]);
+          }
         }
         queueRender();
       }
 
+      function obliterateLocalStorage() {
+        // remove half of each data object
+        const newPriceData = {};
+        Object.keys(priceData).map(k => ({k, data: priceData[k]})).sort((a, b) => {
+          return Math.max(a.data.HQ.time, a.data.NQ.time) > Math.max(b.data.HQ.time, b.data.NQ.time) ? -1 : 1;
+        }).slice(0, Math.floor(Object.keys(priceData).length / 2)).forEach(i => {
+          newPriceData[i.k] = i.data;
+        });
+        const newPriceDataByServer = {};
+        Object.keys(priceDataByServer).map(k => ({k, data: priceDataByServer[k]})).sort((a, b) => {
+          return Math.max(...Object.keys(a.data).map(server => a.data[server].time || 0)) > Math.max(...Object.keys(b.data).map(server => b.data[server].time || 0)) ? -1 : 1;
+        }).slice(0, Math.floor(Object.keys(priceDataByServer).length / 2)).forEach(i => {
+          newPriceDataByServer[i.k] = i.data;
+        });
+        console.log(`
+        Obliterating priceData from ${Object.keys(priceData).length} to ${Object.keys(newPriceData).length}.
+        Obliterating priceData from ${Object.keys(priceDataByServer).length} to ${Object.keys(newPriceDataByServer).length}.
+        `);
+        priceData = newPriceData;
+        priceDataByServer = newPriceDataByServer;
+        save([priceData, priceDataByServer]);
+      }
       function unsave() {
         delete localStorage['itemsDataCache'];
         delete localStorage['iconsDataCache'];
         delete localStorage['priceDataCache'];
+        delete localStorage['priceDataByServerCache'];
       }
       let lastSave = 0;
       let saveTimeout = 0;
@@ -495,21 +647,28 @@
           try {
             localStorage.setItem('itemsDataCache', JSON.stringify(itemsData));
           } catch (e) {
-            delete localStorage['itemsDataCache'];
+            obliterateLocalStorage();
           }
         }
         if (itemsToSave.indexOf(iconsData) !== -1) {
           try {
-            localStorage.setItem('iconsDataCache', JSON.stringify(itemsData));
+            localStorage.setItem('iconsDataCache', JSON.stringify(iconsData));
           } catch (e) {
-            delete localStorage['iconsDataCache'];
+            obliterateLocalStorage();
           }
         }
         if (itemsToSave.indexOf(priceData) !== -1) {
           try {
-            localStorage.setItem('priceDataCache', JSON.stringify(itemsData));
+            localStorage.setItem('priceDataCache', JSON.stringify(priceData));
           } catch (e) {
-            delete localStorage['priceDataCache'];
+            obliterateLocalStorage();
+          }
+        }
+        if (itemsToSave.indexOf(priceDataByServer) !== -1) {
+          try {
+            localStorage.setItem('priceDataByServerCache', JSON.stringify(priceDataByServer));
+          } catch (e) {
+            obliterateLocalStorage();
           }
         }
         itemsToSave = [];
@@ -538,12 +697,32 @@
           }
         } else {
           const path = `https://www.garlandtools.org/db/doc/item/en/3/${id}.json`;
-          downloadData(path, (responseJSON) => { 
-            itemsData[id] = responseJSON.item;
+          downloadData(path, (responseJSON) => {
+            itemsData[id] = {
+              name: responseJSON.item.name,
+              craft: responseJSON.item.craft,
+              ingredient_of: responseJSON.item.ingredient_of,
+            };
             save([itemsData]);
             evalItem(id, tier, count, parent);
           });
         }
+      }
+      function getItemData(id) {
+        if (itemsData[id]) {
+          return itemsData[id];
+        }
+        const path = `https://www.garlandtools.org/db/doc/item/en/3/${id}.json`;
+        downloadData(path, (responseJSON) => {
+          itemsData[id] = {
+            name: responseJSON.item.name,
+            craft: responseJSON.item.craft,
+            ingredient_of: responseJSON.item.ingredient_of,
+          };
+          save([itemsData]);
+          queueRender();
+        });
+        return null;
       }
       function addItemToScene(id, tier, count, parent) {
         const itemData = itemsData[id];
@@ -561,6 +740,13 @@
             evalItem(rItem.id, tier + 1, rItem.amount, thisIndex);
           });
         }
+        if (tier === 0) {
+          if (itemData.ingredient_of) {
+            ingredientOf = Object.keys(itemData.ingredient_of);
+          } else {
+            ingredientOf = [];
+          }
+        }
         queueRender();
         return thisIndex;
       }
@@ -576,6 +762,7 @@
       function startDownload() {
         if (downloadQueue.length < 1) {
           downloadRunning = false;
+          downloadStatusEl.style.display = '';
           // rerun evalItem to rearrange mats
           evalItem(scene[0].id, 0, 1);
           return;
@@ -584,7 +771,9 @@
           return;
         }
         downloadRunning = true;
-        const queueItem = downloadQueue.shift();
+        downloadStatusEl.style.display = 'block';
+        downloadStatusEl.innerHTML = `<span>${downloadQueue.length}</span>`;
+        const queueItem = downloadQueue.pop();
         const path = queueItem.path;
         const onComplete = queueItem.onComplete;
         const xhr = new XMLHttpRequest();
@@ -607,14 +796,14 @@
         xhr.send();
       }
 
-      function getIcon(id) {
-        if (iconsData[id]) {
+      function getIcon(id, force) {
+        if (iconsData[id] && !force) {
           return iconsData[id];
         }
         const path = `https://xivapi.com/item/${id}`;
         downloadData(path, (responseJSON) => {
           iconsData[id] = `https://xivapi.com${responseJSON.Icon}?${id}`;
-          itemsData[id].canBeHQ = responseJSON.CanBeHq;
+          itemsData[id].canBeHQ = !!responseJSON.CanBeHq;
           save([iconsData, itemsData]);
           queueRender();
         });
@@ -662,16 +851,37 @@
         }, 2000);
       }
 
+      let lastRendered = 0;
       function queueRender(){
         clearTimeout(renderTimeout);
         renderTimeout = setTimeout(render, 50);
       }
       function render() {
         const now = Date.now();
+        if (now - lastRendered < 1000) {
+          queueRender();
+          return;
+        }
+        lastRendered = now;
         const tierSiblings = {};
         const itemInstance = {};
         const height = 90;
         const existingItems = document.getElementsByClassName('scene-item');
+
+        ingredientOfEl.innerHTML = ingredientOf.map(i => {
+          const itemData = getItemData(i);
+          const itemIcon = getIcon(i);
+          if (!itemData || !itemIcon) {
+            return '<div class="scene-item-upstream"></div>';
+          }
+          const title = itemData.name;
+          const name = itemData.name;
+          return `<div title="${title}" class="scene-item-upstream" data-item-id="${i}" style="position: relative">
+              <img src="${itemIcon}">
+              <div class="label">${name}</div>
+            </div>`;
+        }).join('');
+
         for(let x = 0; x < existingItems.length; x++) {
           existingItems[x].className = 'scene-item scene-item-inactive';
         }
@@ -680,6 +890,9 @@
           itemInstance[item.id] = itemInstance[item.id] ? itemInstance[item.id] + 1 : 1;
           const elId = `${item.id}-${thisInstance}`;
           const itemData = itemsData[item.id];
+          if (typeof itemData.canBeHQ === 'undefined') {
+            getIcon(item.id, true);
+          }
           let itemEl = document.getElementById(elId);
           if (!itemEl) {
             itemEl = document.createElement('div');
@@ -699,6 +912,7 @@
                 <div class="NQPrice"></div>
               </div>
               <div class="craftCost"></div>
+              <div class="craftCostByServer"></div>
             `;
             const iconImg = document.createElement('img');
             iconImg.className = 'icon-loader-real';
@@ -737,6 +951,33 @@
           const newSrc = getIcon(item.id);
           if (newSrc && newSrc !== iconEl.src) {
             iconEl.src = newSrc;
+          }
+
+          // update server prices
+          const serverPriceEl = itemEl.getElementsByClassName('craftCostByServer')[0];
+          if (priceDataByServer[item.id]) {
+            serverPriceEl.style.opacity = '';
+            const cheapest = Object.entries(priceDataByServer[item.id]).reduce((carry, next) => {
+              if (next[1].price < carry.price) {
+                carry.price = next[1].price;
+                carry.server = next[0];
+              }
+              return carry;
+            }, {
+              server: '',
+              price: Infinity,
+            });
+            serverPriceEl.innerHTML = Object.entries(priceDataByServer[item.id]).sort((a, b) => {
+              return a[0] > b[0] ? 1 : -1;
+            }).map(entry => {
+              const server = entry[0];
+              const price = entry[1].price;
+              return `
+                <div style="${cheapest.server === server && 'font-size: 12px;'}">${server}: ${price.toLocaleString()}</div>
+              `;
+            }).join('');
+          } else {
+            serverPriceEl.style.opacity = 0;
           }
 
           // update prices
